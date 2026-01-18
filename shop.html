@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kollektion – LUNARA</title>
+    <meta name="description" content="Entdecke unsere handverlesene Kollektion exklusiver Dessous & Lingerie.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='none' stroke='%23D4A5A5' stroke-width='2'/%3E%3Cpath d='M16 4 Q24 16 16 28' fill='none' stroke='%23D4A5A5' stroke-width='1.5'/%3E%3C/svg%3E">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Quicksand:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{
+            --bg-primary:#FDF5F6;--bg-secondary:#FAF0F1;--bg-card:#FFFFFF;
+            --rose:#D4A5A5;--rose-light:#E8C4C4;--rose-dark:#B88A8A;
+            --gold:#C9A962;--gold-light:#E8D5A3;
+            --sage:#A8B5A0;--sage-light:#C5D1BE;
+            --text-primary:#2D2D2D;--text-secondary:#5A5A5A;--text-muted:#8A8A8A;
+            --green:#4CAF50;--yellow:#FFC107;--red:#F44336;
+            --shadow-sm:0 2px 10px rgba(212,165,165,.1);
+            --shadow-md:0 8px 30px rgba(212,165,165,.15);
+            --shadow-lg:0 20px 60px rgba(212,165,165,.2)
+        }
+        html{scroll-behavior:smooth}
+        body{font-family:'Quicksand',sans-serif;background:var(--bg-primary);color:var(--text-primary);overflow-x:hidden;line-height:1.7}
+
+        /* NAVIGATION */
+        .nav-wrapper{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(253,245,246,.95);backdrop-filter:blur(20px);box-shadow:var(--shadow-sm)}
+        .nav-main{display:flex;justify-content:space-between;align-items:center;padding:20px 60px;max-width:1400px;margin:0 auto}
+        .logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+        .logo-icon{width:45px;height:45px}
+        .logo-text{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;letter-spacing:6px;color:var(--text-primary)}
+        .nav-links{display:flex;gap:35px;list-style:none}
+        .nav-links a{color:var(--text-secondary);text-decoration:none;font-size:.9rem;font-weight:500;letter-spacing:1px;transition:all .3s}
+        .nav-links a:hover{color:var(--rose)}
+        .nav-right{display:flex;align-items:center;gap:20px}
+        .cart-btn{position:relative;padding:10px;background:transparent;border:none;cursor:pointer}
+        .cart-btn svg{width:24px;height:24px;stroke:var(--text-primary)}
+        .cart-count{position:absolute;top:0;right:0;width:18px;height:18px;background:var(--rose);color:#fff;font-size:.7rem;font-weight:700;border-radius:50%;display:flex;align-items:center;justify-content:center}
+        .nav-cta{padding:12px 28px;background:var(--rose);color:#fff;text-decoration:none;font-size:.85rem;font-weight:600;letter-spacing:1px;border-radius:30px;transition:all .4s}
+        .nav-cta:hover{background:var(--rose-dark)}
+        .nav-mobile-toggle{display:none;flex-direction:column;gap:5px;padding:10px;background:transparent;border:none;cursor:pointer}
+        .nav-mobile-toggle span{width:25px;height:2px;background:var(--text-primary)}
+
+        /* PAGE HEADER */
+        .page-header{padding:150px 60px 60px;text-align:center;background:linear-gradient(180deg,var(--bg-secondary) 0%,var(--bg-primary) 100%)}
+        .page-header h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:300;margin-bottom:15px}
+        .page-header h1 span{color:var(--rose)}
+        .page-header p{color:var(--text-secondary);font-size:1.1rem;max-width:600px;margin:0 auto}
+
+        /* LEGEND */
+        .legend-section{padding:40px 60px;background:var(--bg-card);border-bottom:1px solid rgba(212,165,165,.1)}
+        .legend-container{max-width:1200px;margin:0 auto}
+        .legend-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;margin-bottom:25px;text-align:center}
+        .legend-title span{color:var(--rose)}
+        .legend-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:20px}
+        .legend-item{text-align:center;padding:20px;background:var(--bg-primary);border-radius:15px}
+        .legend-item h4{font-size:.85rem;font-weight:600;margin-bottom:10px;color:var(--text-primary)}
+        .legend-colors{display:flex;justify-content:center;gap:8px;margin-bottom:10px}
+        .legend-dot{width:14px;height:14px;border-radius:50%}
+        .legend-dot.green{background:var(--green);box-shadow:0 0 8px rgba(76,175,80,.4)}
+        .legend-dot.yellow{background:var(--yellow);box-shadow:0 0 8px rgba(255,193,7,.4)}
+        .legend-dot.red{background:var(--red);box-shadow:0 0 8px rgba(244,67,54,.4)}
+        .legend-labels{font-size:.7rem;color:var(--text-muted);line-height:1.4}
+
+        /* FILTERS */
+        .filter-section{padding:30px 60px;background:var(--bg-primary);position:sticky;top:80px;z-index:100;border-bottom:1px solid rgba(212,165,165,.1)}
+        .filter-container{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+        .filter-tabs{display:flex;gap:10px;flex-wrap:wrap}
+        .filter-tab{padding:10px 20px;background:transparent;border:2px solid var(--rose-light);color:var(--text-secondary);font-size:.85rem;font-weight:500;border-radius:25px;cursor:pointer;transition:all .3s}
+        .filter-tab:hover,.filter-tab.active{background:var(--rose);border-color:var(--rose);color:#fff}
+        .filter-sort{display:flex;align-items:center;gap:10px}
+        .filter-sort label{font-size:.85rem;color:var(--text-muted)}
+        .filter-sort select{padding:10px 15px;border:2px solid var(--rose-light);border-radius:10px;background:var(--bg-card);font-family:inherit;font-size:.85rem;cursor:pointer}
+
+        /* PRODUCTS */
+        .products-section{padding:60px;max-width:1400px;margin:0 auto}
+        .products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:40px}
+        .product-card{background:var(--bg-card);border-radius:25px;overflow:hidden;box-shadow:var(--shadow-sm);transition:all .5s cubic-bezier(.25,.46,.45,.94)}
+        .product-card:hover{transform:translateY(-10px);box-shadow:var(--shadow-lg)}
+        .product-image{position:relative;height:350px;overflow:hidden}
+        .product-image img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+        .product-card:hover .product-image img{transform:scale(1.1)}
+        .product-badge{position:absolute;top:15px;left:15px;padding:8px 15px;background:var(--rose);color:#fff;font-size:.75rem;font-weight:600;letter-spacing:1px;border-radius:20px;text-transform:uppercase}
+        .product-rating{position:absolute;bottom:15px;left:15px;right:15px;display:flex;gap:8px;padding:12px 15px;background:rgba(255,255,255,.95);border-radius:12px;backdrop-filter:blur(10px);opacity:0;transform:translateY(10px);transition:all .3s}
+        .product-card:hover .product-rating{opacity:1;transform:translateY(0)}
+        .rating-item{flex:1;text-align:center}
+        .rating-item .dot{width:14px;height:14px;border-radius:50%;margin:0 auto 4px}
+        .rating-item span{font-size:.65rem;color:var(--text-muted);display:block}
+        .product-info{padding:25px}
+        .product-category{font-size:.75rem;color:var(--rose);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
+        .product-name{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;margin-bottom:10px}
+        .product-price{font-size:1.2rem;font-weight:600;color:var(--text-primary);margin-bottom:15px}
+        .product-btn{width:100%;padding:14px;background:transparent;border:2px solid var(--rose);color:var(--rose);font-size:.85rem;font-weight:600;border-radius:12px;cursor:pointer;transition:all .3s}
+        .product-btn:hover{background:var(--rose);color:#fff}
+
+        /* MODAL */
+        .modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.6);z-index:2000;display:none;align-items:center;justify-content:center;padding:20px;opacity:0;transition:opacity .3s}
+        .modal-overlay.active{display:flex;opacity:1}
+        .modal{background:var(--bg-card);border-radius:25px;max-width:900px;width:100%;max-height:90vh;overflow-y:auto;position:relative;transform:scale(.9);transition:transform .3s}
+        .modal-overlay.active .modal{transform:scale(1)}
+        .modal-close{position:absolute;top:20px;right:20px;width:40px;height:40px;background:var(--bg-primary);border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10}
+        .modal-close svg{width:20px;height:20px;stroke:var(--text-primary)}
+        .modal-content{display:grid;grid-template-columns:1fr 1fr;gap:0}
+        .modal-image{height:500px}
+        .modal-image img{width:100%;height:100%;object-fit:cover}
+        .modal-info{padding:40px}
+        .modal-category{font-size:.8rem;color:var(--rose);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
+        .modal-name{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:400;margin-bottom:15px}
+        .modal-price{font-size:1.5rem;font-weight:600;margin-bottom:20px}
+        .modal-desc{color:var(--text-secondary);font-size:.95rem;line-height:1.8;margin-bottom:30px}
+        .modal-ratings{margin-bottom:30px}
+        .modal-ratings h4{font-size:.9rem;font-weight:600;margin-bottom:15px;color:var(--text-primary)}
+        .modal-rating-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+        .modal-rating-item{display:flex;align-items:center;gap:10px;padding:12px 15px;background:var(--bg-primary);border-radius:10px}
+        .modal-rating-item .dot{width:16px;height:16px;border-radius:50%;flex-shrink:0}
+        .modal-rating-item .label{font-size:.85rem;color:var(--text-secondary)}
+        .modal-rating-item .value{font-size:.85rem;font-weight:600;color:var(--text-primary);margin-left:auto}
+        .modal-add-btn{width:100%;padding:16px;background:var(--rose);color:#fff;border:none;font-size:1rem;font-weight:600;letter-spacing:1px;border-radius:12px;cursor:pointer;transition:all .3s}
+        .modal-add-btn:hover{background:var(--rose-dark)}
+
+        /* BANNER */
+        .special-banner{padding:80px 60px;background:linear-gradient(135deg,var(--rose) 0%,var(--rose-dark) 100%);text-align:center;color:#fff}
+        .special-banner h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,2.5rem);font-weight:300;margin-bottom:15px}
+        .special-banner p{font-size:1.1rem;opacity:.9;max-width:600px;margin:0 auto 30px}
+        .special-banner a{display:inline-block;padding:16px 40px;background:#fff;color:var(--rose);font-weight:600;letter-spacing:1px;border-radius:30px;text-decoration:none;transition:all .3s}
+        .special-banner a:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,.2)}
+
+        /* NOTIFICATION */
+        .notification{position:fixed;bottom:30px;right:30px;padding:20px 30px;background:var(--bg-card);border-radius:15px;box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:15px;transform:translateX(150%);transition:transform .4s cubic-bezier(.68,-.55,.265,1.55);z-index:3000}
+        .notification.show{transform:translateX(0)}
+        .notification-icon{width:40px;height:40px;background:rgba(76,175,80,.1);border-radius:50%;display:flex;align-items:center;justify-content:center}
+        .notification-icon svg{width:20px;height:20px;stroke:var(--green)}
+        .notification-text{font-size:.95rem;font-weight:500}
+
+        /* FOOTER */
+        .footer{padding:60px;background:var(--text-primary);color:#fff}
+        .footer-content{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:30px}
+        .footer-brand{font-family:'Cormorant Garamond',serif;font-size:1.5rem;letter-spacing:6px}
+        .footer-links{display:flex;gap:30px}
+        .footer-links a{color:rgba(255,255,255,.7);text-decoration:none;font-size:.9rem;transition:color .3s}
+        .footer-links a:hover{color:#fff}
+        .footer-copy{color:rgba(255,255,255,.5);font-size:.85rem}
+
+        /* RESPONSIVE */
+        @media(max-width:1024px){
+            .nav-links{display:none}
+            .nav-mobile-toggle{display:flex}
+            .legend-grid{grid-template-columns:repeat(3,1fr)}
+            .modal-content{grid-template-columns:1fr}
+            .modal-image{height:300px}
+        }
+        @media(max-width:768px){
+            .nav-main{padding:15px 25px}
+            .page-header{padding:120px 25px 40px}
+            .legend-section{padding:30px 25px}
+            .legend-grid{grid-template-columns:repeat(2,1fr)}
+            .filter-section{padding:20px 25px;top:70px}
+            .products-section{padding:40px 25px}
+            .products-grid{grid-template-columns:1fr}
+            .special-banner{padding:60px 25px}
+            .footer{padding:40px 25px}
+            .footer-content{flex-direction:column;text-align:center}
+            .modal-info{padding:25px}
+            .modal-rating-grid{grid-template-columns:1fr}
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<div class="nav-wrapper">
+    <nav class="nav-main">
+        <a href="index.html" class="logo">
+            <svg class="logo-icon" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="#D4A5A5" stroke-width="2"/>
+                <path d="M50 10 Q75 50 50 90" fill="none" stroke="#D4A5A5" stroke-width="1.5"/>
+            </svg>
+            <span class="logo-text">LUNARA</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html" style="color:var(--rose)">Kollektion</a></li>
+            <li><a href="index.html#prozess">So funktioniert's</a></li>
+            <li><a href="index.html#kontakt">Kontakt</a></li>
+        </ul>
+        <div class="nav-right">
+            <button class="cart-btn" id="cartBtn">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                <span class="cart-count" id="cartCount">0</span>
+            </button>
+            <a href="index.html#kontakt" class="nav-cta">Kontakt</a>
+        </div>
+        <button class="nav-mobile-toggle" id="navToggle"><span></span><span></span><span></span></button>
+    </nav>
+</div>
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+    <h1>Unsere <span>Kollektion</span></h1>
+    <p>Handverlesene Stücke, bewertet mit unserem transparenten 6-Punkte-System.</p>
+</header>
+
+<!-- LEGEND -->
+<section class="legend-section">
+    <div class="legend-container">
+        <h3 class="legend-title">Das <span>6-Punkte Ampelsystem</span> erklärt</h3>
+        <div class="legend-grid">
+            <div class="legend-item">
+                <h4>Zustand</h4>
+                <div class="legend-colors"><span class="legend-dot green"></span><span class="legend-dot yellow"></span><span class="legend-dot red"></span></div>
+                <div class="legend-labels">Neu • Gut • Gebraucht</div>
+            </div>
+            <div class="legend-item">
+                <h4>Duft</h4>
+                <div class="legend-colors"><span class="legend-dot green"></span><span class="legend-dot yellow"></span><span class="legend-dot red"></span></div>
+                <div class="legend-labels">Stark • Mild • Neutral</div>
+            </div>
+            <div class="legend-item">
+                <h4>Waschstatus</h4>
+                <div class="legend-colors"><span class="legend-dot green"></span><span class="legend-dot yellow"></span><span class="legend-dot red"></span></div>
+                <div class="legend-labels">Ungewaschen • Teilweise • Gewaschen</div>
+            </div>
+            <div class="legend-item">
+                <h4>Material</h4>
+                <div class="legend-colors"><span class="legend-dot green"></span><span class="legend-dot yellow"></span><span class="legend-dot red"></span></div>
+                <div class="legend-labels">Premium • Standard • Basis</div>
+            </div>
+            <div class="legend-item">
+                <h4>Tragedauer</h4>
+                <div class="legend-colors"><span class="legend-dot green"></span><span class="legend-dot yellow"></span><span class="legend-dot red"></span></div>
+                <div class="legend-labels">24h+ • 12h • &lt;12h</div>
+            </div>
+            <div class="legend-item">
+                <h4>Extras</h4>
+                <div class="legend-colors"><span class="legend-dot green"></span><span class="legend-dot yellow"></span><span class="legend-dot red"></span></div>
+                <div class="legend-labels">Viele • Einige • Keine</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FILTERS -->
+<section class="filter-section">
+    <div class="filter-container">
+        <div class="filter-tabs">
+            <button class="filter-tab active" data-filter="all">Alle</button>
+            <button class="filter-tab" data-filter="dessous">Dessous</button>
+            <button class="filter-tab" data-filter="strings">Strings</button>
+            <button class="filter-tab" data-filter="bhs">BHs</button>
+            <button class="filter-tab" data-filter="sets">Sets</button>
+            <button class="filter-tab" data-filter="strumpfhosen">Strumpfhosen</button>
+        </div>
+        <div class="filter-sort">
+            <label>Sortieren:</label>
+            <select id="sortSelect">
+                <option value="newest">Neueste</option>
+                <option value="price-low">Preis: Niedrig</option>
+                <option value="price-high">Preis: Hoch</option>
+                <option value="rating">Bewertung</option>
+            </select>
+        </div>
+    </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products-section">
+    <div class="products-grid" id="productsGrid"></div>
+</section>
+
+<!-- SPECIAL BANNER -->
+<section class="special-banner">
+    <h2>Sonderwünsche?</h2>
+    <p>Nach erfolgreicher Prüfung werden individuelle Anfragen gerne berücksichtigt. Schreib uns!</p>
+    <a href="index.html#kontakt">Kontakt aufnehmen</a>
+</section>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+        <button class="modal-close" id="modalClose">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+        <div class="modal-content">
+            <div class="modal-image"><img id="modalImage" src="" alt=""></div>
+            <div class="modal-info">
+                <span class="modal-category" id="modalCategory"></span>
+                <h2 class="modal-name" id="modalName"></h2>
+                <div class="modal-price" id="modalPrice"></div>
+                <p class="modal-desc" id="modalDesc"></p>
+                <div class="modal-ratings">
+                    <h4>Qualitätsbewertung</h4>
+                    <div class="modal-rating-grid" id="modalRatings"></div>
+                </div>
+                <button class="modal-add-btn" id="modalAddBtn">In den Warenkorb</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- NOTIFICATION -->
+<div class="notification" id="notification">
+    <div class="notification-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+    </div>
+    <span class="notification-text">Zum Warenkorb hinzugefügt!</span>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-content">
+        <span class="footer-brand">LUNARA</span>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="impressum.html">Impressum</a>
+            <a href="datenschutz.html">Datenschutz</a>
+            <a href="agb.html">AGB</a>
+        </div>
+        <span class="footer-copy">© 2026 LUNARA</span>
+    </div>
+</footer>
+
+<script>
+// Product Data
+const products = [
+    {
+        id: 1, name: 'Midnight Lace Set', category: 'Sets', filter: 'sets', price: 89,
+        image: 'https://images.unsplash.com/photo-1617331721458-bd3bd3f9c7f8?w=600&q=80',
+        badge: 'Bestseller', desc: 'Elegantes Spitzen-Set in Mitternachtsblau. Perfekte Passform und edles Material.',
+        ratings: { zustand: 'green', duft: 'green', wasch: 'green', material: 'green', dauer: 'green', extras: 'yellow' }
+    },
+    {
+        id: 2, name: 'Rose Petal String', category: 'Strings', filter: 'strings', price: 49,
+        image: 'https://images.unsplash.com/photo-1616949755610-8c9bbc08f138?w=600&q=80',
+        badge: 'Neu', desc: 'Hauchzarter String in Rosa mit dezenter Spitzenborte.',
+        ratings: { zustand: 'green', duft: 'yellow', wasch: 'green', material: 'green', dauer: 'yellow', extras: 'green' }
+    },
+    {
+        id: 3, name: 'Velvet Dreams BH', category: 'BHs', filter: 'bhs', price: 69,
+        image: 'https://images.unsplash.com/photo-1620799140188-3b2a02fd9a77?w=600&q=80',
+        badge: 'Premium', desc: 'Samtiger Push-Up BH mit eleganten Golddetails.',
+        ratings: { zustand: 'green', duft: 'green', wasch: 'yellow', material: 'green', dauer: 'green', extras: 'green' }
+    },
+    {
+        id: 4, name: 'Silk Touch Dessous', category: 'Dessous', filter: 'dessous', price: 129,
+        image: 'https://images.unsplash.com/photo-1617331721458-bd3bd3f9c7f8?w=600&q=80',
+        badge: 'Exklusiv', desc: 'Luxuriöses Seiden-Ensemble für besondere Momente.',
+        ratings: { zustand: 'green', duft: 'green', wasch: 'green', material: 'green', dauer: 'green', extras: 'green' }
+    },
+    {
+        id: 5, name: 'Classic Nylon Strumpfhose', category: 'Strumpfhosen', filter: 'strumpfhosen', price: 39,
+        image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&q=80',
+        badge: '', desc: 'Hochwertige Nylonstrumpfhose in elegantem Schwarz.',
+        ratings: { zustand: 'yellow', duft: 'green', wasch: 'green', material: 'yellow', dauer: 'green', extras: 'yellow' }
+    },
+    {
+        id: 6, name: 'Champagne Lace String', category: 'Strings', filter: 'strings', price: 59,
+        image: 'https://images.unsplash.com/photo-1616949755610-8c9bbc08f138?w=600&q=80',
+        badge: 'Neu', desc: 'Edler Spitzenstring in Champagner-Farbe.',
+        ratings: { zustand: 'green', duft: 'green', wasch: 'green', material: 'green', dauer: 'yellow', extras: 'green' }
+    }
+];
+
+let cart = [];
+let currentFilter = 'all';
+
+// Render Products
+function renderProducts(filter = 'all', sort = 'newest') {
+    let filtered = filter === 'all' ? [...products] : products.filter(p => p.filter === filter);
+    
+    if (sort === 'price-low') filtered.sort((a,b) => a.price - b.price);
+    else if (sort === 'price-high') filtered.sort((a,b) => b.price - a.price);
+    else if (sort === 'rating') filtered.sort((a,b) => {
+        const countGreen = r => Object.values(r).filter(v => v === 'green').length;
+        return countGreen(b.ratings) - countGreen(a.ratings);
+    });
+
+    const grid = document.getElementById('productsGrid');
+    grid.innerHTML = filtered.map(p => `
+        <div class="product-card" onclick="openModal(${p.id})">
+            <div class="product-image">
+                <img src="${p.image}" alt="${p.name}">
+                ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ''}
+                <div class="product-rating">
+                    <div class="rating-item"><div class="dot" style="background:var(--${p.ratings.zustand})"></div><span>Zustand</span></div>
+                    <div class="rating-item"><div class="dot" style="background:var(--${p.ratings.duft})"></div><span>Duft</span></div>
+                    <div class="rating-item"><div class="dot" style="background:var(--${p.ratings.wasch})"></div><span>Wasch</span></div>
+                    <div class="rating-item"><div class="dot" style="background:var(--${p.ratings.material})"></div><span>Material</span></div>
+                    <div class="rating-item"><div class="dot" style="background:var(--${p.ratings.dauer})"></div><span>Dauer</span></div>
+                    <div class="rating-item"><div class="dot" style="background:var(--${p.ratings.extras})"></div><span>Extras</span></div>
+                </div>
+            </div>
+            <div class="product-info">
+                <span class="product-category">${p.category}</span>
+                <h3 class="product-name">${p.name}</h3>
+                <div class="product-price">€${p.price}</div>
+                <button class="product-btn" onclick="event.stopPropagation();addToCart(${p.id})">In den Warenkorb</button>
+            </div>
+        </div>
+    `).join('');
+}
+
+// Modal
+function openModal(id) {
+    const p = products.find(x => x.id === id);
+    if (!p) return;
+    
+    document.getElementById('modalImage').src = p.image;
+    document.getElementById('modalCategory').textContent = p.category;
+    document.getElementById('modalName').textContent = p.name;
+    document.getElementById('modalPrice').textContent = `€${p.price}`;
+    document.getElementById('modalDesc').textContent = p.desc;
+    
+    const ratingLabels = {
+        zustand: { green: 'Neuwertig', yellow: 'Gut', red: 'Gebraucht' },
+        duft: { green: 'Stark', yellow: 'Mild', red: 'Neutral' },
+        wasch: { green: 'Ungewaschen', yellow: 'Teilweise', red: 'Gewaschen' },
+        material: { green: 'Premium', yellow: 'Standard', red: 'Basis' },
+        dauer: { green: '24h+', yellow: '12h', red: '<12h' },
+        extras: { green: 'Viele', yellow: 'Einige', red: 'Keine' }
+    };
+    
+    const names = { zustand: 'Zustand', duft: 'Duft', wasch: 'Waschstatus', material: 'Material', dauer: 'Tragedauer', extras: 'Extras' };
+    
+    document.getElementById('modalRatings').innerHTML = Object.entries(p.ratings).map(([key, val]) => `
+        <div class="modal-rating-item">
+            <div class="dot" style="background:var(--${val})"></div>
+            <span class="label">${names[key]}</span>
+            <span class="value">${ratingLabels[key][val]}</span>
+        </div>
+    `).join('');
+    
+    document.getElementById('modalAddBtn').onclick = () => { addToCart(p.id); closeModal(); };
+    document.getElementById('modalOverlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+document.getElementById('modalClose').onclick = closeModal;
+document.getElementById('modalOverlay').onclick = e => { if (e.target === document.getElementById('modalOverlay')) closeModal(); };
+
+// Cart
+function addToCart(id) {
+    const p = products.find(x => x.id === id);
+    if (p) {
+        cart.push(p);
+        updateCartCount();
+        showNotification();
+    }
+}
+
+function updateCartCount() {
+    document.getElementById('cartCount').textContent = cart.length;
+}
+
+function showNotification() {
+    const n = document.getElementById('notification');
+    n.classList.add('show');
+    setTimeout(() => n.classList.remove('show'), 2000);
+}
+
+// Filters
+document.querySelectorAll('.filter-tab').forEach(tab => {
+    tab.onclick = () => {
+        document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        currentFilter = tab.dataset.filter;
+        renderProducts(currentFilter, document.getElementById('sortSelect').value);
+    };
+});
+
+document.getElementById('sortSelect').onchange = e => {
+    renderProducts(currentFilter, e.target.value);
+};
+
+// Init
+renderProducts();
+</script>
+
+</body>
+</html>

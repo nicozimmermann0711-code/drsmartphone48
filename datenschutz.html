@@ -5,231 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Datenschutzerklärung – LUNARA</title>
     <meta name="robots" content="noindex">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%23E8D5D0' opacity='0.3'/%3E%3Cpath d='M50 15 Q35 30 35 50 Q35 70 50 85 Q65 70 65 50 Q65 30 50 15Z' fill='%23D4B5AD' opacity='0.6'/%3E%3C/svg%3E">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='none' stroke='%23D4A5A5' stroke-width='2'/%3E%3C/svg%3E">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Quicksand:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--bg-primary:#FDF5F6;--bg-card:#FFFFFF;--rose:#D4A5A5;--rose-light:#E8C4C4;--text-primary:#2D2D2D;--text-secondary:#5A5A5A;--text-muted:#8A8A8A}
+        body{font-family:'Quicksand',sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.8}
+        
+        .nav-wrapper{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(253,245,246,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(212,165,165,.1)}
+        .nav-main{display:flex;justify-content:space-between;align-items:center;padding:20px 60px}
+        .logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+        .logo-icon{width:40px;height:40px}
+        .logo-text{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;letter-spacing:6px;color:var(--text-primary)}
+        .nav-back{padding:10px 20px;color:var(--text-secondary);text-decoration:none;font-size:.85rem;border:1px solid var(--rose-light);border-radius:20px;transition:all .3s}
+        .nav-back:hover{background:var(--rose);color:#fff;border-color:var(--rose)}
 
-        :root {
-            --off-white: #FAF9F7;
-            --beige: #E8DED3;
-            --sand: #D4C4B0;
-            --dusty-rose: #D4B5AD;
-            --dark-gray: #2A2A2A;
-            --soft-gray: #8A8A8A;
-            --border: rgba(212, 181, 173, 0.2);
-        }
+        .legal-container{max-width:800px;margin:0 auto;padding:140px 40px 80px}
+        .legal-header{margin-bottom:50px}
+        .legal-header h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:300;margin-bottom:10px}
+        .legal-header h1 span{color:var(--rose)}
+        .legal-header p{color:var(--text-muted);font-size:.9rem}
+        
+        .legal-section{margin-bottom:40px}
+        .legal-section h2{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;color:var(--rose);margin-bottom:20px;padding-bottom:10px;border-bottom:1px solid rgba(212,165,165,.2)}
+        .legal-section h3{font-size:1rem;font-weight:600;color:var(--text-primary);margin:25px 0 12px}
+        .legal-section p,.legal-section li{color:var(--text-secondary);font-size:.95rem;margin-bottom:12px}
+        .legal-section ul{list-style:none;padding-left:0;margin:15px 0}
+        .legal-section li{padding-left:20px;position:relative;margin-bottom:10px}
+        .legal-section li::before{content:'';position:absolute;left:0;top:10px;width:6px;height:6px;background:var(--rose);border-radius:50%;opacity:.6}
+        .legal-section a{color:var(--rose);text-decoration:none}
+        .legal-section a:hover{text-decoration:underline}
+        
+        .contact-box{background:var(--bg-card);border:1px solid rgba(212,165,165,.2);border-radius:15px;padding:25px;margin:20px 0}
+        .contact-box p{margin-bottom:8px}
+        .contact-box strong{color:var(--text-primary)}
+        
+        .info-box{background:rgba(212,165,165,.08);border-left:3px solid var(--rose);padding:20px;margin:20px 0;border-radius:0 10px 10px 0}
+        .info-box p{margin-bottom:0}
+        
+        .footer-mini{padding:40px;border-top:1px solid rgba(212,165,165,.1);text-align:center;margin-top:60px}
+        .footer-mini p{color:var(--text-muted);font-size:.85rem}
+        .footer-mini a{color:var(--rose);text-decoration:none;margin:0 15px}
 
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background: var(--off-white);
-            color: var(--dark-gray);
-            line-height: 1.8;
-        }
-
-        .nav-wrapper {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            background: rgba(250, 249, 247, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .nav-main {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 60px;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            text-decoration: none;
-        }
-
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-        }
-
-        .logo-text {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.6rem;
-            font-weight: 300;
-            letter-spacing: 6px;
-            color: var(--dusty-rose);
-            text-transform: uppercase;
-        }
-
-        .nav-back {
-            padding: 12px 25px;
-            color: var(--soft-gray);
-            text-decoration: none;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-            border: 1px solid var(--border);
-            transition: all 0.3s;
-        }
-
-        .nav-back:hover {
-            border-color: var(--dusty-rose);
-            color: var(--dusty-rose);
-        }
-
-        .legal-container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 160px 40px 80px;
-        }
-
-        .legal-header {
-            margin-bottom: 50px;
-        }
-
-        .legal-header h1 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 300;
-            margin-bottom: 15px;
-            color: var(--dark-gray);
-        }
-
-        .legal-header h1 span {
-            color: var(--dusty-rose);
-        }
-
-        .legal-header p {
-            color: var(--soft-gray);
-            font-size: 0.9rem;
-        }
-
-        .legal-section {
-            margin-bottom: 40px;
-        }
-
-        .legal-section h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.4rem;
-            font-weight: 400;
-            color: var(--dusty-rose);
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .legal-section h3 {
-            font-size: 1rem;
-            font-weight: 500;
-            color: var(--dark-gray);
-            margin: 25px 0 12px;
-        }
-
-        .legal-section p,
-        .legal-section li {
-            color: var(--soft-gray);
-            font-size: 0.95rem;
-            margin-bottom: 12px;
-        }
-
-        .legal-section ul {
-            list-style: none;
-            padding-left: 0;
-            margin: 15px 0;
-        }
-
-        .legal-section li {
-            padding-left: 20px;
-            position: relative;
-            margin-bottom: 8px;
-        }
-
-        .legal-section li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 10px;
-            width: 6px;
-            height: 6px;
-            background: var(--dusty-rose);
-            border-radius: 50%;
-            opacity: 0.5;
-        }
-
-        .legal-section a {
-            color: var(--dusty-rose);
-            text-decoration: none;
-        }
-
-        .legal-section a:hover {
-            text-decoration: underline;
-        }
-
-        .contact-box {
-            background: rgba(212, 181, 173, 0.05);
-            border: 1px solid var(--border);
-            padding: 25px;
-            margin: 20px 0;
-        }
-
-        .contact-box p {
-            margin-bottom: 8px;
-        }
-
-        .contact-box strong {
-            color: var(--dark-gray);
-        }
-
-        .info-box {
-            background: rgba(212, 181, 173, 0.08);
-            border-left: 3px solid var(--dusty-rose);
-            padding: 20px;
-            margin: 20px 0;
-        }
-
-        .info-box p {
-            margin-bottom: 0;
-        }
-
-        .footer-mini {
-            padding: 40px;
-            border-top: 1px solid var(--border);
-            text-align: center;
-            margin-top: 60px;
-        }
-
-        .footer-mini p {
-            color: var(--soft-gray);
-            font-size: 0.85rem;
-        }
-
-        .footer-mini a {
-            color: var(--dusty-rose);
-            text-decoration: none;
-            margin: 0 15px;
-        }
-
-        @media (max-width: 768px) {
-            .nav-main {
-                padding: 15px 25px;
-            }
-
-            .legal-container {
-                padding: 140px 25px 60px;
-            }
-        }
+        @media(max-width:768px){.nav-main{padding:15px 25px}.legal-container{padding:120px 25px 60px}}
     </style>
 </head>
 <body>
@@ -237,12 +55,11 @@
 <div class="nav-wrapper">
     <nav class="nav-main">
         <a href="index.html" class="logo">
-            <svg class="logo-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="50" cy="50" r="40" fill="#E8D5D0" opacity="0.3"/>
-                <path d="M50 15 Q35 30 35 50 Q35 70 50 85 Q65 70 65 50 Q65 30 50 15Z" fill="#D4B5AD" opacity="0.6"/>
-                <circle cx="50" cy="35" r="8" fill="#E8D5D0"/>
+            <svg class="logo-icon" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="#D4A5A5" stroke-width="2"/>
+                <path d="M50 10 Q75 50 50 90" fill="none" stroke="#D4A5A5" stroke-width="1.5"/>
             </svg>
-            <span class="logo-text">Lunara</span>
+            <span class="logo-text">LUNARA</span>
         </a>
         <a href="index.html" class="nav-back">← Zurück zur Website</a>
     </nav>
@@ -251,43 +68,38 @@
 <div class="legal-container">
     <header class="legal-header">
         <h1><span>Datenschutzerklärung</span></h1>
-        <p>Stand: Januar 2026 | Letzte Aktualisierung: 17.01.2026</p>
+        <p>Stand: Januar 2026</p>
     </header>
 
     <section class="legal-section">
         <h2>1. Verantwortlicher</h2>
         <div class="contact-box">
             <p><strong>LUNARA</strong></p>
-            <p>Inhaber: Jaquelin Handt</p>
+            <p>Jaquelin Handt</p>
+            <p>Albertstraße 20</p>
             <p>48282 Emsdetten</p>
-            <p>E-Mail: <a href="mailto:kontakt@lunara.de">kontakt@lunara.de</a></p>
+            <p>E-Mail: <a href="mailto:jaquelinhand7@gmail.com">jaquelinhand7@gmail.com</a></p>
         </div>
     </section>
 
     <section class="legal-section">
         <h2>2. Übersicht der Verarbeitungen</h2>
-        <p>Wir verarbeiten personenbezogene Daten ausschließlich im Rahmen der Bereitstellung unserer Dienstleistungen und mit höchstem Respekt für Ihre Privatsphäre. Die nachfolgende Übersicht fasst die Arten der verarbeiteten Daten und die Zwecke ihrer Verarbeitung zusammen:</p>
+        <p>Wir verarbeiten personenbezogene Daten nur, wenn dies für die Bereitstellung unserer Dienstleistungen erforderlich ist.</p>
         
         <h3>Arten der verarbeiteten Daten</h3>
         <ul>
-            <li>Bestandsdaten (Name, Adresse, Lieferadresse)</li>
-            <li>Kontaktdaten (E-Mail, Telefonnummer optional)</li>
-            <li>Zahlungsdaten (Zahlungsmethode, Transaktionsdaten)</li>
-            <li>Bestelldaten (Produktauswahl, Bestellhistorie)</li>
+            <li>Bestandsdaten (Name, Adresse)</li>
+            <li>Kontaktdaten (E-Mail)</li>
+            <li>Inhaltsdaten (Nachrichten, Bestellungen)</li>
             <li>Nutzungsdaten (besuchte Seiten, Zugriffszeit)</li>
             <li>Meta-/Kommunikationsdaten (IP-Adressen, Geräteinformationen)</li>
         </ul>
 
         <h3>Kategorien betroffener Personen</h3>
         <ul>
-            <li>Kundinnen und Kunden</li>
-            <li>Interessenten</li>
+            <li>Kunden und Interessenten</li>
             <li>Besucher der Website</li>
         </ul>
-
-        <div class="info-box">
-            <p><strong>Besonderer Hinweis zu sensiblen Daten:</strong> Aufgrund der Natur unserer Produkte behandeln wir alle Kundendaten mit besonderer Sensibilität und Diskretion. Ihre Privatsphäre hat für uns höchste Priorität.</p>
-        </div>
     </section>
 
     <section class="legal-section">
@@ -295,60 +107,20 @@
         <p>Wir verarbeiten Ihre Daten auf Grundlage folgender Rechtsgrundlagen:</p>
         <ul>
             <li><strong>Einwilligung (Art. 6 Abs. 1 lit. a DSGVO)</strong> – Sie haben Ihre Einwilligung für bestimmte Verarbeitungszwecke erteilt.</li>
-            <li><strong>Vertragserfüllung (Art. 6 Abs. 1 lit. b DSGVO)</strong> – Die Verarbeitung ist zur Erfüllung eines Vertrags erforderlich (z.B. Bestellabwicklung, Versand).</li>
-            <li><strong>Rechtliche Verpflichtung (Art. 6 Abs. 1 lit. c DSGVO)</strong> – Die Verarbeitung ist zur Erfüllung einer rechtlichen Verpflichtung erforderlich (z.B. Aufbewahrungspflichten).</li>
-            <li><strong>Berechtigte Interessen (Art. 6 Abs. 1 lit. f DSGVO)</strong> – Die Verarbeitung ist zur Wahrung unserer berechtigten Interessen erforderlich (z.B. Betrugsprävention).</li>
+            <li><strong>Vertragserfüllung (Art. 6 Abs. 1 lit. b DSGVO)</strong> – Die Verarbeitung ist zur Erfüllung eines Vertrags erforderlich.</li>
+            <li><strong>Rechtliche Verpflichtung (Art. 6 Abs. 1 lit. c DSGVO)</strong> – Die Verarbeitung ist zur Erfüllung einer rechtlichen Verpflichtung erforderlich.</li>
+            <li><strong>Berechtigte Interessen (Art. 6 Abs. 1 lit. f DSGVO)</strong> – Die Verarbeitung ist zur Wahrung unserer berechtigten Interessen erforderlich.</li>
         </ul>
     </section>
 
     <section class="legal-section">
-        <h2>4. Bestellabwicklung & Kundenkonto</h2>
-        
-        <h3>Verarbeitete Daten</h3>
-        <ul>
-            <li>Name, E-Mail-Adresse, Lieferadresse</li>
-            <li>Zahlungsinformationen (abhängig von gewählter Zahlungsmethode)</li>
-            <li>Bestelldetails und Produktauswahl</li>
-            <li>Kommunikation im Rahmen der Bestellabwicklung</li>
-        </ul>
-        
-        <h3>Zweck der Verarbeitung</h3>
-        <p>Die Verarbeitung erfolgt zur Erfüllung Ihrer Bestellung, einschließlich Versand, Zahlungsabwicklung und Kundenservice.</p>
-        
-        <h3>Rechtsgrundlage</h3>
-        <p>Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung) und Art. 6 Abs. 1 lit. c DSGVO (rechtliche Verpflichtungen).</p>
-        
-        <h3>Speicherdauer</h3>
-        <p>Bestelldaten werden für 10 Jahre aufbewahrt (gesetzliche Aufbewahrungsfristen nach HGB/AO). Danach erfolgt die Löschung, sofern keine weiteren Aufbewahrungspflichten bestehen.</p>
-
-        <div class="info-box">
-            <p><strong>Diskrete Verpackung:</strong> Alle Bestellungen werden in neutraler Verpackung ohne Hinweise auf den Inhalt oder Absender versandt. Auf Versandetiketten erscheint lediglich unser neutraler Firmenname ohne Produktbezug.</p>
-        </div>
-    </section>
-
-    <section class="legal-section">
-        <h2>5. Zahlungsabwicklung</h2>
-        <p>Wir arbeiten mit folgenden Zahlungsdienstleistern zusammen:</p>
-        <ul>
-            <li><strong>PayPal</strong> – Datenschutzerklärung: <a href="https://www.paypal.com/de/webapps/mpp/ua/privacy-full" target="_blank" rel="noopener">paypal.com/privacy</a></li>
-            <li><strong>Stripe</strong> (für Kreditkartenzahlungen) – Datenschutzerklärung: <a href="https://stripe.com/de/privacy" target="_blank" rel="noopener">stripe.com/privacy</a></li>
-        </ul>
-        
-        <p>Die Zahlungsabwicklung erfolgt über verschlüsselte Verbindungen. Wir selbst speichern keine vollständigen Kreditkartendaten.</p>
-        
-        <h3>Rechtsgrundlage</h3>
-        <p>Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung).</p>
-    </section>
-
-    <section class="legal-section">
-        <h2>6. Kontaktaufnahme</h2>
-        <p>Bei der Kontaktaufnahme mit uns (z.B. per E-Mail) werden die Angaben zur Bearbeitung der Kontaktanfrage verarbeitet.</p>
+        <h2>4. Kontaktaufnahme</h2>
+        <p>Bei der Kontaktaufnahme mit uns (z.B. per E-Mail) werden die Angaben zur Bearbeitung der Kontaktanfrage und deren Abwicklung verarbeitet.</p>
         
         <h3>Verarbeitete Daten</h3>
         <ul>
             <li>Name, E-Mail-Adresse</li>
             <li>Nachrichteninhalt</li>
-            <li>Zeitpunkt der Kontaktaufnahme</li>
         </ul>
         
         <h3>Rechtsgrundlage</h3>
@@ -359,39 +131,43 @@
     </section>
 
     <section class="legal-section">
-        <h2>7. Hosting & Server</h2>
-        <p>Unsere Website wird bei folgenden Anbietern gehostet:</p>
+        <h2>5. Bestellungen & Zahlungsabwicklung</h2>
+        <p>Bei Bestellungen verarbeiten wir die für die Vertragsabwicklung notwendigen Daten.</p>
+        
+        <h3>Verarbeitete Daten</h3>
         <ul>
-            <li><strong>STRATO AG</strong> (Deutschland) – für Website-Hosting</li>
-            <li><strong>Google Fonts</strong> – für Schriftarten (datenschutzkonform eingebunden)</li>
+            <li>Name und Lieferadresse</li>
+            <li>E-Mail-Adresse</li>
+            <li>Bestelldetails</li>
+            <li>Zahlungsinformationen (werden direkt vom Zahlungsanbieter verarbeitet)</li>
         </ul>
         
-        <p>Bei jedem Zugriff werden automatisch Server-Logfiles erstellt, die IP-Adresse, Zeitstempel, aufgerufene Seite und Browser-Informationen enthalten. Diese Daten werden ausschließlich zur Sicherstellung des technischen Betriebs und zur Abwehr von Angriffen verwendet.</p>
+        <div class="info-box">
+            <p><strong>Diskretion garantiert:</strong> Alle Bestellungen werden neutral verpackt und erscheinen diskret auf Kontoauszügen. Wir speichern keine sensiblen Zahlungsdaten.</p>
+        </div>
+        
+        <h3>Speicherdauer</h3>
+        <p>Bestelldaten werden gemäß den gesetzlichen Aufbewahrungsfristen (6-10 Jahre) gespeichert und anschließend gelöscht.</p>
+    </section>
+
+    <section class="legal-section">
+        <h2>6. Hosting & Server</h2>
+        <p>Unsere Website wird in Deutschland gehostet. Bei jedem Zugriff werden automatisch Server-Logfiles erstellt, die IP-Adresse, Zeitstempel, aufgerufene Seite und Browser-Informationen enthalten.</p>
         
         <h3>Rechtsgrundlage</h3>
         <p>Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an sicherem Betrieb).</p>
     </section>
 
     <section class="legal-section">
-        <h2>8. Cookies & Tracking</h2>
-        <p>Unsere Website verwendet ausschließlich <strong>technisch notwendige Cookies</strong>, die für den Betrieb der Website erforderlich sind (z.B. Session-Cookies, Warenkorb).</p>
+        <h2>7. Cookies</h2>
+        <p>Unsere Website verwendet derzeit <strong>keine Tracking-Cookies</strong> und keine Analyse-Tools.</p>
         
-        <h3>Verwendete Cookies</h3>
-        <ul>
-            <li>Session-Cookie (zur Aufrechterhaltung Ihrer Sitzung)</li>
-            <li>Warenkorb-Cookie (zur Speicherung Ihrer Produktauswahl)</li>
-            <li>Cookie-Consent-Cookie (zur Speicherung Ihrer Cookie-Einstellungen)</li>
-        </ul>
-        
-        <p>Wir verwenden <strong>keine Tracking-Cookies</strong> und keine Analyse-Tools wie Google Analytics.</p>
-        
-        <div class="info-box">
-            <p><strong>Ihre Privatsphäre:</strong> Wir verzichten bewusst auf umfangreiches Tracking und Analyse-Tools. Ihre Privatsphäre hat Vorrang vor unseren Analyse-Interessen.</p>
-        </div>
+        <h3>Technisch notwendige Cookies</h3>
+        <p>Es werden ausschließlich technisch notwendige Cookies verwendet, die für den Betrieb der Website erforderlich sind (z.B. Warenkorb-Funktionalität). Diese erfordern keine Einwilligung.</p>
     </section>
 
     <section class="legal-section">
-        <h2>9. Ihre Rechte</h2>
+        <h2>8. Ihre Rechte</h2>
         <p>Sie haben folgende Rechte bezüglich Ihrer personenbezogenen Daten:</p>
         <ul>
             <li><strong>Auskunftsrecht (Art. 15 DSGVO)</strong> – Bestätigung, ob Daten verarbeitet werden, und Auskunft über diese Daten.</li>
@@ -403,42 +179,20 @@
             <li><strong>Widerruf der Einwilligung (Art. 7 Abs. 3 DSGVO)</strong> – Jederzeit mit Wirkung für die Zukunft.</li>
             <li><strong>Beschwerderecht (Art. 77 DSGVO)</strong> – Bei einer Aufsichtsbehörde.</li>
         </ul>
+        <p>Zur Ausübung Ihrer Rechte kontaktieren Sie uns bitte unter: <a href="mailto:jaquelinhand7@gmail.com">jaquelinhand7@gmail.com</a></p>
         
-        <p>Zur Ausübung Ihrer Rechte kontaktieren Sie uns bitte unter: <a href="mailto:kontakt@lunara.de">kontakt@lunara.de</a></p>
+        <div class="info-box">
+            <p><strong>Datenlöschung auf Wunsch:</strong> Sie können jederzeit die vollständige Löschung Ihrer Daten beantragen. Wir kommen diesem Wunsch umgehend nach, soweit keine gesetzlichen Aufbewahrungspflichten bestehen.</p>
+        </div>
     </section>
 
     <section class="legal-section">
-        <h2>10. Datensicherheit</h2>
-        <p>Wir verwenden eine SSL/TLS-Verschlüsselung für alle Datenübertragungen. Erkennbar an "https://" in der Adresszeile und dem Schloss-Symbol Ihres Browsers.</p>
-        
-        <p>Zusätzliche Sicherheitsmaßnahmen:</p>
-        <ul>
-            <li>Verschlüsselte Speicherung sensibler Daten</li>
-            <li>Regelmäßige Sicherheitsupdates</li>
-            <li>Zugriffsbeschränkungen auf Mitarbeiterebene</li>
-            <li>Regelmäßige Backups</li>
-        </ul>
-    </section>
-
-    <section class="legal-section">
-        <h2>11. Besondere Hinweise zur Diskretion</h2>
-        <p>Aufgrund der sensiblen Natur unserer Produkte behandeln wir Ihre Daten mit besonderer Sorgfalt:</p>
-        <ul>
-            <li>Neutrale Versandetiketten ohne Produkthinweise</li>
-            <li>Diskrete Firmenbezeichnung auf allen Dokumenten</li>
-            <li>Verschlüsselte E-Mail-Kommunikation auf Wunsch</li>
-            <li>Keine Weitergabe von Kundendaten an Dritte zu Marketingzwecken</li>
-            <li>Strikte interne Zugriffskontrollen</li>
-        </ul>
-    </section>
-
-    <section class="legal-section">
-        <h2>12. Änderungen dieser Datenschutzerklärung</h2>
+        <h2>9. Änderungen dieser Datenschutzerklärung</h2>
         <p>Wir behalten uns vor, diese Datenschutzerklärung bei Bedarf anzupassen, um sie an geänderte Rechtslagen oder Änderungen unserer Dienste anzupassen. Die aktuelle Version finden Sie stets auf dieser Seite.</p>
     </section>
 
     <footer class="footer-mini">
-        <p>© 2026 LUNARA | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a> | <a href="agb.html">AGB</a></p>
+        <p>© 2026 LUNARA | <a href="impressum.html">Impressum</a> | <a href="agb.html">AGB</a></p>
     </footer>
 </div>
 
