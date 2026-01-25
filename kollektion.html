@@ -4,1772 +4,353 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kollektion – LUNARA</title>
-    <meta name="description" content="Entdecke unsere handverlesene Kollektion exklusiver Dessous & Lingerie.">
-    <meta name="robots" content="noindex, nofollow">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23FDF5F6' stroke='%23D4A5A5' stroke-width='2'/%3E%3Cpath d='M50 10 Q75 50 50 90' fill='none' stroke='%23D4A5A5' stroke-width='1.5'/%3E%3C/svg%3E">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        .page-header { padding: 140px 60px 60px; text-align: center; background: linear-gradient(135deg, rgba(201,169,166,0.1) 0%, rgba(212,181,168,0.05) 100%); }
+        .page-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 300; margin-bottom: 15px; }
+        .page-subtitle { font-size: 1.1rem; color: var(--charcoal-light); max-width: 600px; margin: 0 auto; }
         
-        :root {
-            --primary: #D4A5A5;
-            --primary-light: #E8C4C4;
-            --primary-dark: #B88B8B;
-            --accent: #C48B9F;
-            --cream: #FDF5F6;
-            --white: #FFFFFF;
-            --text: #2D2D2D;
-            --text-light: #6B6B6B;
-            --text-muted: #9A9A9A;
-            --gold: #D4AF37;
-            --success: #7CB798;
-            --green: #4CAF50;
-            --yellow: #FFC107;
-            --red: #F44336;
-            --shadow: 0 10px 40px rgba(212, 165, 165, 0.15);
-            --shadow-lg: 0 25px 80px rgba(212, 165, 165, 0.25);
-        }
-
-        html { scroll-behavior: smooth; }
+        .filter-tabs { display: flex; justify-content: center; gap: 15px; padding: 30px 60px; flex-wrap: wrap; }
+        .filter-tab { padding: 12px 25px; background: transparent; border: 1px solid var(--sand); font-family: 'Outfit', sans-serif; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; transition: all 0.3s ease; }
+        .filter-tab:hover, .filter-tab.active { background: var(--rose); border-color: var(--rose); color: var(--white); }
         
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background: var(--cream);
-            color: var(--text);
-            line-height: 1.7;
-            overflow-x: hidden;
-        }
-
-        /* NAVIGATION */
-        .nav-wrapper {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            background: rgba(253, 245, 246, 0.98);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(212, 165, 165, 0.1);
-            box-shadow: var(--shadow);
-        }
-
-        .nav-main {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 50px;
-            max-width: 1600px;
-            margin: 0 auto;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
-
-        .logo-icon { width: 45px; height: 45px; }
-
-        .logo-text {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
-            font-weight: 400;
-            letter-spacing: 8px;
-            color: var(--text);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 8px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-light);
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 500;
-            letter-spacing: 1px;
-            padding: 12px 20px;
-            border-radius: 25px;
-            transition: all 0.3s ease;
-        }
-
-        .nav-links a:hover, .nav-links a.active {
-            color: var(--primary-dark);
-            background: rgba(212, 165, 165, 0.1);
-        }
-
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .points-btn {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 18px;
-            background: linear-gradient(135deg, #D4AF37 0%, #F0D875 50%, #D4AF37 100%);
-            color: #fff;
-            text-decoration: none;
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            border-radius: 25px;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
-        }
-
-        .points-btn svg { width: 16px; height: 16px; }
-
-        .cart-btn {
-            position: relative;
-            padding: 12px;
-            background: transparent;
-            border: 2px solid var(--primary-light);
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .cart-btn:hover {
-            background: var(--primary);
-            border-color: var(--primary);
-        }
-
-        .cart-btn:hover svg { stroke: white; }
-        .cart-btn svg { width: 22px; height: 22px; stroke: var(--text); }
-
-        .cart-badge {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            width: 22px;
-            height: 22px;
-            background: var(--accent);
-            color: white;
-            font-size: 0.7rem;
-            font-weight: 700;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transform: scale(0);
-            transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        }
-
-        .cart-badge.show { transform: scale(1); }
-
-        /* PAGE HEADER */
-        .page-header {
-            padding: 140px 50px 60px;
-            text-align: center;
-            background: linear-gradient(180deg, var(--cream) 0%, white 100%);
-        }
-
-        .page-header h1 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 300;
-            margin-bottom: 15px;
-        }
-
-        .page-header h1 span { color: var(--primary); }
-
-        .page-header p {
-            color: var(--text-light);
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* LEGEND */
-        .legend-section {
-            padding: 40px 50px;
-            background: white;
-            border-bottom: 1px solid rgba(212, 165, 165, 0.1);
-        }
-
-        .legend-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .legend-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.3rem;
-            font-weight: 400;
-            margin-bottom: 25px;
-            text-align: center;
-        }
-
-        .legend-grid {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 15px;
-        }
-
-        .legend-item {
-            text-align: center;
-            padding: 15px 10px;
-            background: var(--cream);
-            border-radius: 15px;
-            transition: transform 0.3s ease;
-        }
-
-        .legend-item:hover { transform: translateY(-5px); }
-
-        .legend-item h4 {
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        .legend-colors {
-            display: flex;
-            justify-content: center;
-            gap: 6px;
-            margin-bottom: 8px;
-        }
-
-        .legend-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-        }
-
-        .legend-dot.green { background: var(--green); box-shadow: 0 0 8px rgba(76, 175, 80, 0.4); }
-        .legend-dot.yellow { background: var(--yellow); box-shadow: 0 0 8px rgba(255, 193, 7, 0.4); }
-        .legend-dot.red { background: var(--red); box-shadow: 0 0 8px rgba(244, 67, 54, 0.4); }
-
-        .legend-labels {
-            font-size: 0.65rem;
-            color: var(--text-muted);
-            line-height: 1.4;
-        }
-
-        /* FILTERS */
-        .filter-section {
-            padding: 25px 50px;
-            background: var(--cream);
-            position: sticky;
-            top: 75px;
-            z-index: 100;
-            border-bottom: 1px solid rgba(212, 165, 165, 0.1);
-        }
-
-        .filter-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .filter-tabs {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .filter-tab {
-            padding: 10px 22px;
-            background: transparent;
-            border: 2px solid var(--primary-light);
-            color: var(--text-light);
-            font-size: 0.85rem;
-            font-weight: 500;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .filter-tab:hover, .filter-tab.active {
-            background: var(--primary);
-            border-color: var(--primary);
-            color: white;
-        }
-
-        /* PRODUCTS */
-        .products-section {
-            padding: 50px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-            gap: 35px;
-        }
-
-        .product-card {
-            background: white;
-            border-radius: 25px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            cursor: pointer;
-        }
-
-        .product-card:hover {
-            transform: translateY(-15px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .product-image {
-            position: relative;
-            height: 380px;
-            overflow: hidden;
-        }
-
-        .product-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-
-        .product-card:hover .product-image img {
-            transform: scale(1.1);
-        }
-
-        .product-badge {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            padding: 8px 18px;
-            background: var(--primary);
-            color: white;
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            border-radius: 20px;
-            text-transform: uppercase;
-        }
-
-        .product-badge.sold {
-            background: var(--text);
-        }
-
-        .product-rating {
-            position: absolute;
-            bottom: 15px;
-            left: 15px;
-            right: 15px;
-            display: flex;
-            gap: 8px;
-            padding: 12px 15px;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 12px;
-            backdrop-filter: blur(10px);
-            opacity: 0;
-            transform: translateY(10px);
-            transition: all 0.3s ease;
-        }
-
-        .product-card:hover .product-rating {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .rating-dot {
-            flex: 1;
-            text-align: center;
-        }
-
-        .rating-dot .dot {
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            margin: 0 auto 4px;
-        }
-
-        .rating-dot span {
-            font-size: 0.6rem;
-            color: var(--text-muted);
-        }
-
-        .product-info {
-            padding: 25px;
-        }
-
-        .product-category {
-            font-size: 0.75rem;
-            color: var(--primary);
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 8px;
-        }
-
-        .product-name {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.4rem;
-            font-weight: 500;
-            margin-bottom: 8px;
-        }
-
-        .product-desc {
-            font-size: 0.85rem;
-            color: var(--text-light);
-            margin-bottom: 15px;
-            line-height: 1.6;
-        }
-
-        .product-price {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: var(--text);
-            margin-bottom: 15px;
-        }
-
-        .product-btn {
-            width: 100%;
-            padding: 14px;
-            background: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            font-size: 0.9rem;
-            font-weight: 600;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .product-btn:hover {
-            background: var(--primary);
-            color: white;
-        }
-
-        /* MODAL */
-        .modal-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 2000;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .modal-overlay.active {
-            display: flex;
-            opacity: 1;
-        }
-
-        .modal {
-            background: white;
-            border-radius: 30px;
-            max-width: 1000px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-            position: relative;
-            transform: scale(0.9);
-            transition: transform 0.3s ease;
-        }
-
-        .modal-overlay.active .modal {
-            transform: scale(1);
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 45px;
-            height: 45px;
-            background: var(--cream);
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .modal-close:hover { background: var(--primary-light); }
-        .modal-close svg { width: 20px; height: 20px; stroke: var(--text); }
-
-        .modal-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-        }
-
-        .modal-image {
-            height: 100%;
-            min-height: 500px;
-        }
-
-        .modal-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .modal-info {
-            padding: 40px;
-        }
-
-        .modal-category {
-            font-size: 0.8rem;
-            color: var(--primary);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-        }
-
-        .modal-name {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
-            font-weight: 400;
-            margin-bottom: 10px;
-        }
-
-        .modal-price {
-            font-size: 1.8rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            color: var(--primary);
-        }
-
-        .modal-desc {
-            color: var(--text-light);
-            font-size: 0.95rem;
-            line-height: 1.8;
-            margin-bottom: 25px;
-        }
-
-        .modal-ratings {
-            margin-bottom: 30px;
-        }
-
-        .modal-ratings h4 {
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-
-        .modal-rating-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-        }
-
-        .modal-rating-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 15px;
-            background: var(--cream);
-            border-radius: 12px;
-        }
-
-        .modal-rating-item .dot {
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-        }
-
-        .modal-rating-item .label {
-            font-size: 0.85rem;
-            color: var(--text-light);
-        }
-
-        .modal-rating-item .value {
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-left: auto;
-        }
-
-        /* SERVICES ADD-ONS */
-        .services-section {
-            margin-bottom: 25px;
-            padding: 20px;
-            background: linear-gradient(135deg, rgba(212, 165, 165, 0.1) 0%, rgba(196, 139, 159, 0.1) 100%);
-            border-radius: 20px;
-            border: 1px dashed var(--primary-light);
-        }
-
-        .services-section h4 {
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .services-section h4 svg {
-            width: 18px;
-            height: 18px;
-            stroke: var(--primary);
-        }
-
-        .service-options {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .service-option {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 15px;
-            background: white;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-
-        .service-option:hover {
-            border-color: var(--primary-light);
-        }
-
-        .service-option.selected {
-            border-color: var(--primary);
-            background: rgba(212, 165, 165, 0.1);
-        }
-
-        .service-option input {
-            width: 20px;
-            height: 20px;
-            accent-color: var(--primary);
-            cursor: pointer;
-        }
-
-        .service-option-info {
-            flex: 1;
-        }
-
-        .service-option-name {
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-bottom: 2px;
-        }
-
-        .service-option-desc {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
-
-        .service-option-price {
-            font-weight: 600;
-            color: var(--primary);
-        }
-
-        /* TIP OPTION */
-        .tip-option {
-            margin-top: 15px;
-            padding: 15px;
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(240, 216, 117, 0.1) 100%);
-            border-radius: 12px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-        }
-
-        .tip-option h5 {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--gold);
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .tip-amounts {
-            display: flex;
-            gap: 10px;
-        }
-
-        .tip-amount {
-            flex: 1;
-            padding: 10px;
-            background: white;
-            border: 2px solid rgba(212, 175, 55, 0.3);
-            border-radius: 10px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-
-        .tip-amount:hover, .tip-amount.selected {
-            border-color: var(--gold);
-            background: rgba(212, 175, 55, 0.1);
-        }
-
-        .modal-add-btn {
-            width: 100%;
-            padding: 18px;
-            background: var(--primary);
-            color: white;
-            border: none;
-            font-size: 1rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .modal-add-btn:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-        }
-
-        .modal-total {
-            text-align: center;
-            margin-top: 15px;
-            font-size: 0.9rem;
-            color: var(--text-light);
-        }
-
-        .modal-total strong {
-            color: var(--primary);
-            font-size: 1.2rem;
-        }
-
-        /* CART SIDEBAR */
-        .cart-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 2000;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .cart-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .cart-sidebar {
-            position: fixed;
-            top: 0;
-            right: -450px;
-            width: 450px;
-            height: 100vh;
-            background: white;
-            z-index: 2001;
-            transition: right 0.4s ease;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .cart-sidebar.active { right: 0; }
-
-        .cart-header {
-            padding: 25px 30px;
-            border-bottom: 1px solid rgba(212, 165, 165, 0.2);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .cart-header h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
-        }
-
-        .cart-close {
-            width: 40px;
-            height: 40px;
-            background: var(--cream);
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .cart-close svg { width: 20px; height: 20px; stroke: var(--text); }
-
-        .cart-items {
-            flex: 1;
-            overflow-y: auto;
-            padding: 20px 30px;
-        }
-
-        .cart-empty {
-            text-align: center;
-            padding: 60px 20px;
-            color: var(--text-light);
-        }
-
-        .cart-empty svg {
-            width: 80px;
-            height: 80px;
-            stroke: var(--primary-light);
-            margin-bottom: 20px;
-        }
-
-        .cart-item {
-            display: flex;
-            gap: 15px;
-            padding: 20px 0;
-            border-bottom: 1px solid rgba(212, 165, 165, 0.1);
-        }
-
-        .cart-item-image {
-            width: 80px;
-            height: 80px;
-            border-radius: 15px;
-            overflow: hidden;
-            background: var(--cream);
-        }
-
-        .cart-item-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .cart-item-info { flex: 1; }
-        .cart-item-name { font-weight: 600; margin-bottom: 5px; }
-        .cart-item-extras { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 5px; }
-        .cart-item-price { font-weight: 600; color: var(--primary); }
-
-        .cart-item-remove {
-            background: none;
-            border: none;
-            color: var(--text-muted);
-            font-size: 0.8rem;
-            cursor: pointer;
-        }
-
-        .cart-item-remove:hover { color: var(--red); }
-
-        .cart-footer {
-            padding: 25px 30px;
-            border-top: 1px solid rgba(212, 165, 165, 0.2);
-            background: var(--cream);
-        }
-
-        .cart-total {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .cart-total strong {
-            font-size: 1.5rem;
-            color: var(--primary);
-        }
-
-        .checkout-btn {
-            width: 100%;
-            padding: 18px;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 35px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .checkout-btn:hover {
-            background: var(--primary-dark);
-        }
-
-        /* CHECKOUT MODAL */
-        .checkout-modal {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 3000;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .checkout-modal.active { display: flex; }
-
-        .checkout-content {
-            background: white;
-            border-radius: 30px;
-            max-width: 500px;
-            width: 100%;
-            padding: 50px;
-            text-align: center;
-        }
-
-        .checkout-content h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
-            margin-bottom: 15px;
-        }
-
-        .checkout-content p {
-            color: var(--text-light);
-            margin-bottom: 35px;
-        }
-
-        .payment-options {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-        }
-
-        .payment-option {
-            padding: 20px;
-            border: 2px solid var(--primary-light);
-            border-radius: 15px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .payment-option:hover {
-            border-color: var(--primary);
-            background: rgba(212, 165, 165, 0.05);
-            transform: translateY(-3px);
-        }
-
-        .payment-option svg { width: 40px; height: 40px; }
-        .payment-option span { font-size: 0.85rem; font-weight: 500; }
-
-        .checkout-close {
-            margin-top: 30px;
-            background: none;
-            border: none;
-            color: var(--text-light);
-            cursor: pointer;
-        }
-
-        /* NOTIFICATION */
-        .notification {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            padding: 20px 30px;
-            background: var(--success);
-            color: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(124, 183, 152, 0.4);
-            transform: translateY(150%);
-            transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .notification.show { transform: translateY(0); }
-
-        .notification svg {
-            width: 24px;
-            height: 24px;
-            stroke: white;
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 992px) {
-            .nav-links { display: none; }
-            .modal-content { grid-template-columns: 1fr; }
-            .modal-image { height: 300px; min-height: auto; }
-            .legend-grid { grid-template-columns: repeat(3, 1fr); }
-        }
-
+        .products-section { padding: 60px; }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 35px; max-width: 1400px; margin: 0 auto; }
+        
+        .product-card { background: var(--white); border: 1px solid var(--beige); overflow: hidden; transition: all 0.4s ease; position: relative; }
+        .product-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-medium); border-color: var(--rose); }
+        .product-image { width: 100%; aspect-ratio: 1; object-fit: cover; transition: transform 0.5s ease; }
+        .product-card:hover .product-image { transform: scale(1.05); }
+        .product-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to top, rgba(45,41,38,0.8) 0%, transparent 50%); opacity: 0; transition: opacity 0.3s ease; display: flex; align-items: flex-end; padding: 25px; }
+        .product-card:hover .product-overlay { opacity: 1; }
+        .product-quick-add { width: 100%; padding: 14px; background: var(--rose); color: var(--white); border: none; font-family: 'Outfit', sans-serif; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; transition: background 0.3s ease; }
+        .product-quick-add:hover { background: var(--rose-dark); }
+        .product-info { padding: 25px; }
+        .product-category { font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: var(--rose); margin-bottom: 8px; }
+        .product-name { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 500; margin-bottom: 10px; cursor: pointer; transition: color 0.3s ease; }
+        .product-name:hover { color: var(--rose); }
+        .product-rating-preview { display: flex; gap: 5px; margin-bottom: 12px; }
+        .product-rating-preview .dot { width: 10px; height: 10px; border-radius: 50%; }
+        .product-price { font-size: 1.2rem; font-weight: 600; color: var(--rose-dark); }
+        
+        /* Modal */
+        .product-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(45,41,38,0.8); z-index: 3000; display: none; align-items: center; justify-content: center; padding: 20px; }
+        .product-modal.show { display: flex; }
+        .modal-content { background: var(--cream); width: 100%; max-width: 900px; max-height: 90vh; overflow-y: auto; display: grid; grid-template-columns: 1fr 1fr; }
+        .modal-image { width: 100%; height: 100%; object-fit: cover; }
+        .modal-details { padding: 40px; display: flex; flex-direction: column; }
+        .modal-close { position: absolute; top: 20px; right: 20px; width: 45px; height: 45px; background: var(--white); border: 1px solid var(--sand); cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .modal-close svg { width: 20px; height: 20px; stroke: var(--charcoal); }
+        .modal-category { font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: var(--rose); margin-bottom: 10px; }
+        .modal-name { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 400; margin-bottom: 15px; }
+        .modal-description { font-size: 0.95rem; color: var(--charcoal-light); line-height: 1.7; margin-bottom: 25px; }
+        .modal-rating { margin-bottom: 25px; }
+        .modal-rating h4 { font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: var(--charcoal-light); margin-bottom: 15px; }
+        .rating-row { display: flex; align-items: center; gap: 15px; padding: 8px 0; border-bottom: 1px solid var(--beige); }
+        .rating-label { font-size: 0.9rem; width: 120px; }
+        .rating-indicator { width: 14px; height: 14px; border-radius: 50%; }
+        
+        /* Services */
+        .modal-services { margin-bottom: 25px; padding: 20px; background: rgba(201,169,166,0.1); border: 1px solid rgba(201,169,166,0.2); }
+        .modal-services h4 { font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: var(--charcoal-light); margin-bottom: 15px; }
+        .service-option { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid rgba(201,169,166,0.2); cursor: pointer; }
+        .service-option:last-child { border-bottom: none; }
+        .service-checkbox { width: 20px; height: 20px; border: 2px solid var(--sand); background: var(--white); display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; flex-shrink: 0; }
+        .service-option.selected .service-checkbox { background: var(--rose); border-color: var(--rose); }
+        .service-option.selected .service-checkbox::after { content: '✓'; color: var(--white); font-size: 12px; }
+        .service-info { flex: 1; }
+        .service-name { font-size: 0.95rem; font-weight: 500; }
+        .service-desc { font-size: 0.8rem; color: var(--charcoal-light); }
+        .service-price { font-weight: 600; color: var(--rose-dark); }
+        
+        /* Tip in Modal */
+        .modal-tip { margin-bottom: 25px; padding: 20px; background: linear-gradient(135deg, rgba(212,181,168,0.2) 0%, rgba(201,169,166,0.1) 100%); border: 1px solid rgba(212,181,168,0.4); }
+        .modal-tip h4 { font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: var(--rose-gold); margin-bottom: 10px; }
+        .modal-tip p { font-size: 0.85rem; color: var(--charcoal-light); margin-bottom: 15px; }
+        .tip-options { display: flex; gap: 10px; flex-wrap: wrap; }
+        .tip-option { padding: 10px 20px; background: transparent; border: 1px solid var(--rose-gold); color: var(--rose-gold); font-size: 0.85rem; cursor: pointer; transition: all 0.3s ease; }
+        .tip-option:hover, .tip-option.selected { background: var(--rose-gold); color: var(--charcoal); }
+        
+        .modal-total { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; border-top: 2px solid var(--beige); margin-top: auto; }
+        .modal-total-label { font-size: 1rem; }
+        .modal-total-price { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 600; color: var(--rose-dark); }
+        .modal-add-btn { width: 100%; padding: 18px; background: var(--rose); color: var(--white); border: none; font-family: 'Outfit', sans-serif; font-size: 0.9rem; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all 0.3s ease; margin-top: 15px; }
+        .modal-add-btn:hover { background: var(--rose-dark); }
+        
         @media (max-width: 768px) {
-            .nav-main, .page-header, .legend-section, .filter-section, .products-section {
-                padding-left: 25px;
-                padding-right: 25px;
-            }
-            .products-grid { grid-template-columns: 1fr; }
-            .legend-grid { grid-template-columns: repeat(2, 1fr); }
-            .cart-sidebar { width: 100%; right: -100%; }
-            .tip-amounts { flex-wrap: wrap; }
+            .modal-content { grid-template-columns: 1fr; }
+            .modal-image { height: 300px; }
+            .page-header, .filter-tabs, .products-section { padding: 30px; }
+            .page-header { padding-top: 120px; }
         }
     </style>
 </head>
 <body>
-
-<!-- NAVIGATION -->
-<nav class="nav-wrapper">
-    <div class="nav-main">
-        <a href="index.html" class="logo">
-            <svg class="logo-icon" viewBox="0 0 100 100">
-                <circle cx="50" cy="50" r="45" fill="none" stroke="#D4A5A5" stroke-width="2"/>
-                <path d="M50 10 Q75 50 50 90" fill="none" stroke="#D4A5A5" stroke-width="1.5"/>
-            </svg>
-            <span class="logo-text">LUNARA</span>
-        </a>
-        
-        <ul class="nav-links">
-            <li><a href="kollektion.html" class="active">Kollektion</a></li>
-            <li><a href="merch.html">Merchandise</a></li>
-            <li><a href="feedback.html">Feedback</a></li>
-            <li><a href="index.html#faq">FAQ</a></li>
-        </ul>
-        
-        <div class="nav-right">
-            <a href="index.html#punkte" class="points-btn">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
-                </svg>
-                <span>0 Punkte</span>
-            </a>
-            
-            <button class="cart-btn" id="cartBtn">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M6 6h15l-1.5 9h-12z"/>
-                    <circle cx="9" cy="20" r="1"/>
-                    <circle cx="18" cy="20" r="1"/>
-                    <path d="M6 6L5 3H2"/>
-                </svg>
-                <span class="cart-badge" id="cartBadge">0</span>
-            </button>
-        </div>
-    </div>
-</nav>
-
-<!-- PAGE HEADER -->
-<header class="page-header">
-    <h1>Die <span>Kollektion</span></h1>
-    <p>Handverlesene Einzelstücke, jedes mit eigenem Charakter. Entdecke dein perfektes Match.</p>
-</header>
-
-<!-- LEGEND -->
-<section class="legend-section">
-    <div class="legend-container">
-        <h3 class="legend-title">Das <span style="color: var(--primary);">6-Punkte</span> Bewertungssystem</h3>
-        <div class="legend-grid">
-            <div class="legend-item">
-                <h4>Zustand</h4>
-                <div class="legend-colors">
-                    <span class="legend-dot green"></span>
-                    <span class="legend-dot yellow"></span>
-                    <span class="legend-dot red"></span>
-                </div>
-                <div class="legend-labels">Neuwertig / Gut / Getragen</div>
+    <!-- Navigation -->
+    <nav class="nav-wrapper scrolled" id="navbar">
+        <div class="nav-main">
+            <div class="nav-left">
+                <a href="index.html" class="logo">
+                    <div class="logo-moon"><svg viewBox="0 0 100 100"><path d="M50 10 A40 40 0 1 1 50 90 A25 25 0 1 0 50 10" stroke-linecap="round" fill="none" stroke="#C9A9A6" stroke-width="1.5"/></svg></div>
+                    <span class="logo-text">Lunara</span>
+                </a>
+                <a href="index.html#points" class="points-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    <span id="userPoints">0 Punkte</span>
+                </a>
             </div>
-            <div class="legend-item">
-                <h4>Duft</h4>
-                <div class="legend-colors">
-                    <span class="legend-dot green"></span>
-                    <span class="legend-dot yellow"></span>
-                    <span class="legend-dot red"></span>
-                </div>
-                <div class="legend-labels">Intensiv / Mild / Neutral</div>
-            </div>
-            <div class="legend-item">
-                <h4>Waschstatus</h4>
-                <div class="legend-colors">
-                    <span class="legend-dot green"></span>
-                    <span class="legend-dot yellow"></span>
-                    <span class="legend-dot red"></span>
-                </div>
-                <div class="legend-labels">Ungewaschen / Teilw. / Gewaschen</div>
-            </div>
-            <div class="legend-item">
-                <h4>Material</h4>
-                <div class="legend-colors">
-                    <span class="legend-dot green"></span>
-                    <span class="legend-dot yellow"></span>
-                    <span class="legend-dot red"></span>
-                </div>
-                <div class="legend-labels">Premium / Standard / Basis</div>
-            </div>
-            <div class="legend-item">
-                <h4>Tragedauer</h4>
-                <div class="legend-colors">
-                    <span class="legend-dot green"></span>
-                    <span class="legend-dot yellow"></span>
-                    <span class="legend-dot red"></span>
-                </div>
-                <div class="legend-labels">24h+ / 12h / <12h</div>
-            </div>
-            <div class="legend-item">
-                <h4>Extras</h4>
-                <div class="legend-colors">
-                    <span class="legend-dot green"></span>
-                    <span class="legend-dot yellow"></span>
-                    <span class="legend-dot red"></span>
-                </div>
-                <div class="legend-labels">Viele / Einige / Keine</div>
+            <ul class="nav-links">
+                <li><a href="kollektion.html" style="color:var(--rose)">Kollektion</a></li>
+                <li><a href="merch.html">Merch</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+                <li><a href="index.html#faq">FAQ</a></li>
+            </ul>
+            <div class="nav-right">
+                <button class="cart-btn" id="cartBtn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/><path d="M6 6L5 3H2"/></svg>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
             </div>
         </div>
-    </div>
-</section>
+    </nav>
 
-<!-- FILTERS -->
-<section class="filter-section">
-    <div class="filter-container">
-        <div class="filter-tabs">
-            <button class="filter-tab active" data-filter="all">Alle</button>
-            <button class="filter-tab" data-filter="panty">Panties</button>
-            <button class="filter-tab" data-filter="bra">BHs</button>
-            <button class="filter-tab" data-filter="set">Sets</button>
-            <button class="filter-tab" data-filter="bodystocking">Bodystockings</button>
-            <button class="filter-tab" data-filter="socks">Socken</button>
-        </div>
-    </div>
-</section>
+    <header class="page-header">
+        <h1 class="page-title">Die <span style="background:var(--gradient-rose);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Kollektion</span></h1>
+        <p class="page-subtitle">Jedes Stück wurde von mir persönlich ausgewählt und bewertet. Wähle deine Favoriten und füge optionale Services hinzu.</p>
+    </header>
 
-<!-- PRODUCTS -->
-<section class="products-section">
-    <div class="products-grid" id="productsGrid">
-        <!-- Products will be rendered here -->
+    <div class="filter-tabs">
+        <button class="filter-tab active" data-filter="all">Alle</button>
+        <button class="filter-tab" data-filter="panties">Panties</button>
+        <button class="filter-tab" data-filter="bras">BHs</button>
+        <button class="filter-tab" data-filter="sets">Sets</button>
+        <button class="filter-tab" data-filter="bodys">Bodys</button>
+        <button class="filter-tab" data-filter="socken">Socken</button>
     </div>
-</section>
 
-<!-- PRODUCT MODAL -->
-<div class="modal-overlay" id="modalOverlay">
-    <div class="modal">
-        <button class="modal-close" id="modalClose">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="18" y1="6" x2="6" y2="18"/>
-                <line x1="6" y1="6" x2="18" y2="18"/>
-            </svg>
-        </button>
+    <section class="products-section">
+        <div class="products-grid" id="productsGrid"></div>
+    </section>
+
+    <!-- Product Modal -->
+    <div class="product-modal" id="productModal">
         <div class="modal-content">
-            <div class="modal-image">
-                <img id="modalImage" src="" alt="">
-            </div>
-            <div class="modal-info">
-                <span class="modal-category" id="modalCategory"></span>
+            <button class="modal-close" id="modalClose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+            <img src="" alt="" class="modal-image" id="modalImage">
+            <div class="modal-details">
+                <div class="modal-category" id="modalCategory"></div>
                 <h2 class="modal-name" id="modalName"></h2>
-                <div class="modal-price" id="modalPrice"></div>
-                <p class="modal-desc" id="modalDesc"></p>
-                
-                <div class="modal-ratings">
-                    <h4>Bewertung</h4>
-                    <div class="modal-rating-grid" id="modalRatings"></div>
+                <p class="modal-description" id="modalDesc"></p>
+                <div class="modal-rating">
+                    <h4>6-Punkte Bewertung</h4>
+                    <div id="modalRating"></div>
                 </div>
-                
-                <!-- SERVICES ADD-ONS -->
-                <div class="services-section">
-                    <h4>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
-                        </svg>
-                        Persönliche Services hinzufügen
-                    </h4>
-                    <div class="service-options" id="serviceOptions">
-                        <label class="service-option">
-                            <input type="checkbox" name="service" value="extra-wear" data-price="15">
-                            <div class="service-option-info">
-                                <div class="service-option-name">Extra Tragezeit (+24h)</div>
-                                <div class="service-option-desc">Ich trage das Stück einen weiteren Tag für dich</div>
-                            </div>
-                            <div class="service-option-price">+€15</div>
-                        </label>
-                        <label class="service-option">
-                            <input type="checkbox" name="service" value="workout" data-price="10">
-                            <div class="service-option-info">
-                                <div class="service-option-name">Workout Session</div>
-                                <div class="service-option-desc">Beim Sport getragen</div>
-                            </div>
-                            <div class="service-option-price">+€10</div>
-                        </label>
-                        <label class="service-option">
-                            <input type="checkbox" name="service" value="sleep" data-price="12">
-                            <div class="service-option-info">
-                                <div class="service-option-name">Schlafen</div>
-                                <div class="service-option-desc">Eine Nacht darin geschlafen</div>
-                            </div>
-                            <div class="service-option-price">+€12</div>
-                        </label>
-                        <label class="service-option">
-                            <input type="checkbox" name="service" value="photo" data-price="20">
-                            <div class="service-option-info">
-                                <div class="service-option-name">Persönliches Foto</div>
-                                <div class="service-option-desc">Individuelles Tragefoto (diskret)</div>
-                            </div>
-                            <div class="service-option-price">+€20</div>
-                        </label>
-                        <label class="service-option">
-                            <input type="checkbox" name="service" value="note" data-price="5">
-                            <div class="service-option-info">
-                                <div class="service-option-name">Handgeschriebene Notiz</div>
-                                <div class="service-option-desc">Persönliche Nachricht von mir</div>
-                            </div>
-                            <div class="service-option-price">+€5</div>
-                        </label>
-                    </div>
-                    
-                    <!-- TIP OPTION -->
-                    <div class="tip-option">
-                        <h5>💕 Trinkgeld (optional)</h5>
-                        <div class="tip-amounts">
-                            <div class="tip-amount" data-tip="0">Kein</div>
-                            <div class="tip-amount" data-tip="5">€5</div>
-                            <div class="tip-amount" data-tip="10">€10</div>
-                            <div class="tip-amount" data-tip="20">€20</div>
-                        </div>
+                <div class="modal-services">
+                    <h4>✨ Persönliche Services (optional)</h4>
+                    <div id="modalServices"></div>
+                </div>
+                <div class="modal-tip">
+                    <h4>💝 Trinkgeld (optional)</h4>
+                    <p>Ich melde mich persönlich bei dir!</p>
+                    <div class="tip-options" id="tipOptions">
+                        <button class="tip-option" data-tip="0">Kein Tip</button>
+                        <button class="tip-option" data-tip="5">5€</button>
+                        <button class="tip-option" data-tip="10">10€</button>
+                        <button class="tip-option" data-tip="20">20€</button>
                     </div>
                 </div>
-                
+                <div class="modal-total">
+                    <span class="modal-total-label">Gesamt:</span>
+                    <span class="modal-total-price" id="modalTotal">0,00 €</span>
+                </div>
                 <button class="modal-add-btn" id="modalAddBtn">In den Warenkorb</button>
-                <div class="modal-total">Gesamtpreis: <strong id="modalTotal">€0,00</strong></div>
             </div>
         </div>
     </div>
-</div>
 
-<!-- CART OVERLAY & SIDEBAR -->
-<div class="cart-overlay" id="cartOverlay"></div>
-<div class="cart-sidebar" id="cartSidebar">
-    <div class="cart-header">
-        <h3>Warenkorb</h3>
-        <button class="cart-close" id="cartClose">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="18" y1="6" x2="6" y2="18"/>
-                <line x1="6" y1="6" x2="18" y2="18"/>
-            </svg>
-        </button>
-    </div>
-    <div class="cart-items" id="cartItems"></div>
-    <div class="cart-footer">
-        <div class="cart-total">
-            <span>Gesamt:</span>
-            <strong id="cartTotal">€0,00</strong>
+    <!-- Cart Sidebar -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header"><h3>Warenkorb</h3><button class="cart-close" id="cartClose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-footer">
+            <div class="cart-total"><span>Gesamt:</span><span class="cart-total-final" id="cartTotal">0,00 €</span></div>
+            <div class="cart-points-preview" id="cartPointsPreview">Du erhältst <strong>0 Punkte</strong></div>
+            <button class="cart-checkout" id="checkoutBtn">Zur Kasse</button>
         </div>
-        <button class="checkout-btn" id="checkoutBtn">Zur Kasse</button>
     </div>
-</div>
 
-<!-- CHECKOUT MODAL -->
-<div class="checkout-modal" id="checkoutModal">
-    <div class="checkout-content">
-        <h3>Zahlungsmethode wählen</h3>
-        <p>Alle Zahlungen sind sicher und diskret.</p>
-        
-        <div class="payment-options">
-            <div class="payment-option" onclick="processPayment('paypal')">
-                <svg viewBox="0 0 24 24" fill="#003087"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106z"/></svg>
-                <span>PayPal</span>
-            </div>
-            <div class="payment-option" onclick="processPayment('card')">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-                <span>Kreditkarte</span>
-            </div>
-            <div class="payment-option" onclick="processPayment('sepa')">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3"/></svg>
-                <span>SEPA</span>
-            </div>
-            <div class="payment-option" onclick="processPayment('revolut')">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                <span>Revolut</span>
-            </div>
-        </div>
-        
-        <button class="checkout-close" onclick="closeCheckout()">Abbrechen</button>
-    </div>
-</div>
-
-<!-- NOTIFICATION -->
-<div class="notification" id="notification">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-        <polyline points="22 4 12 14.01 9 11.01"/>
-    </svg>
-    <span>Zum Warenkorb hinzugefügt!</span>
-</div>
-
-<script>
-// ═══════════════════════════════════════════
-// PRODUCTS DATA
-// ═══════════════════════════════════════════
-const products = [
-    {
-        id: 1,
-        name: "Rosé Spitzentraum",
-        category: "Panty",
-        filter: "panty",
-        price: 45,
-        image: "https://images.unsplash.com/photo-1617331140180-e8262094f00d?w=600&q=80",
-        desc: "Zarte Spitze in zartem Rosé. Premium-Qualität mit aufwendigen Details. Ein echtes Liebhaberstück.",
-        badge: "Neu",
-        ratings: {
-            zustand: { color: "green", value: "Neuwertig" },
-            duft: { color: "green", value: "Intensiv" },
-            wasch: { color: "green", value: "Ungewaschen" },
-            material: { color: "green", value: "Premium" },
-            dauer: { color: "green", value: "24h+" },
-            extras: { color: "green", value: "Viele" }
-        }
-    },
-    {
-        id: 2,
-        name: "Midnight Silk",
-        category: "Set",
-        filter: "set",
-        price: 89,
-        image: "https://images.unsplash.com/photo-1616949755610-5428d5ab0695?w=600&q=80",
-        desc: "Luxuriöses Set aus edler Seide. BH und Slip perfekt aufeinander abgestimmt.",
-        badge: "Premium",
-        ratings: {
-            zustand: { color: "green", value: "Neuwertig" },
-            duft: { color: "yellow", value: "Mild" },
-            wasch: { color: "green", value: "Ungewaschen" },
-            material: { color: "green", value: "Premium" },
-            dauer: { color: "yellow", value: "12h" },
-            extras: { color: "yellow", value: "Einige" }
-        }
-    },
-    {
-        id: 3,
-        name: "Cotton Comfort",
-        category: "Panty",
-        filter: "panty",
-        price: 28,
-        image: "https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=600&q=80",
-        desc: "Bequeme Baumwolle für den Alltag. Perfekt für alle, die es natürlich mögen.",
-        badge: null,
-        ratings: {
-            zustand: { color: "yellow", value: "Gut" },
-            duft: { color: "green", value: "Intensiv" },
-            wasch: { color: "green", value: "Ungewaschen" },
-            material: { color: "yellow", value: "Standard" },
-            dauer: { color: "green", value: "24h+" },
-            extras: { color: "red", value: "Keine" }
-        }
-    },
-    {
-        id: 4,
-        name: "Velvet Dream BH",
-        category: "BH",
-        filter: "bra",
-        price: 55,
-        image: "https://images.unsplash.com/photo-1594223515528-83fbb33ea6c5?w=600&q=80",
-        desc: "Push-up BH mit samtweichem Finish. Perfekte Passform und aufregend zugleich.",
-        badge: "Bestseller",
-        ratings: {
-            zustand: { color: "green", value: "Neuwertig" },
-            duft: { color: "yellow", value: "Mild" },
-            wasch: { color: "yellow", value: "Teilweise" },
-            material: { color: "green", value: "Premium" },
-            dauer: { color: "yellow", value: "12h" },
-            extras: { color: "green", value: "Viele" }
-        }
-    },
-    {
-        id: 5,
-        name: "Fishnet Fantasy",
-        category: "Bodystocking",
-        filter: "bodystocking",
-        price: 65,
-        image: "https://images.unsplash.com/photo-1571008887538-b36bb32f4571?w=600&q=80",
-        desc: "Verführerischer Netz-Bodystocking. Ein Hingucker für besondere Momente.",
-        badge: null,
-        ratings: {
-            zustand: { color: "green", value: "Neuwertig" },
-            duft: { color: "green", value: "Intensiv" },
-            wasch: { color: "green", value: "Ungewaschen" },
-            material: { color: "yellow", value: "Standard" },
-            dauer: { color: "green", value: "24h+" },
-            extras: { color: "yellow", value: "Einige" }
-        }
-    },
-    {
-        id: 6,
-        name: "Sport Socken",
-        category: "Socken",
-        filter: "socks",
-        price: 22,
-        image: "https://images.unsplash.com/photo-1582966772680-860e372bb558?w=600&q=80",
-        desc: "Klassische weiße Sportsocken. Perfekt für Workout-Liebhaber.",
-        badge: null,
-        ratings: {
-            zustand: { color: "yellow", value: "Gut" },
-            duft: { color: "green", value: "Intensiv" },
-            wasch: { color: "green", value: "Ungewaschen" },
-            material: { color: "yellow", value: "Standard" },
-            dauer: { color: "green", value: "24h+" },
-            extras: { color: "red", value: "Keine" }
-        }
-    },
-    {
-        id: 7,
-        name: "Black Lace Set",
-        category: "Set",
-        filter: "set",
-        price: 95,
-        image: "https://images.unsplash.com/photo-1615906655593-ad0386982a0f?w=600&q=80",
-        desc: "Elegantes schwarzes Spitzenset. Klassisch verführerisch.",
-        badge: "Limited",
-        ratings: {
-            zustand: { color: "green", value: "Neuwertig" },
-            duft: { color: "green", value: "Intensiv" },
-            wasch: { color: "green", value: "Ungewaschen" },
-            material: { color: "green", value: "Premium" },
-            dauer: { color: "green", value: "24h+" },
-            extras: { color: "green", value: "Viele" }
-        }
-    },
-    {
-        id: 8,
-        name: "Sheer Delight",
-        category: "Panty",
-        filter: "panty",
-        price: 35,
-        image: "https://images.unsplash.com/photo-1596983307528-8cd49632dbdc?w=600&q=80",
-        desc: "Hauchzarter transparenter Stoff. Für alle, die es verführerisch mögen.",
-        badge: null,
-        ratings: {
-            zustand: { color: "yellow", value: "Gut" },
-            duft: { color: "yellow", value: "Mild" },
-            wasch: { color: "green", value: "Ungewaschen" },
-            material: { color: "yellow", value: "Standard" },
-            dauer: { color: "yellow", value: "12h" },
-            extras: { color: "yellow", value: "Einige" }
-        }
-    }
-];
-
-let cart = JSON.parse(localStorage.getItem('lunara_cart')) || [];
-let currentProduct = null;
-let selectedServices = [];
-let selectedTip = 0;
-
-// ═══════════════════════════════════════════
-// RENDER PRODUCTS
-// ═══════════════════════════════════════════
-function renderProducts(filter = 'all') {
-    const filtered = filter === 'all' ? products : products.filter(p => p.filter === filter);
-    const grid = document.getElementById('productsGrid');
-    
-    grid.innerHTML = filtered.map(p => `
-        <div class="product-card" onclick="openModal(${p.id})">
-            <div class="product-image">
-                <img src="${p.image}" alt="${p.name}">
-                ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ''}
-                <div class="product-rating">
-                    <div class="rating-dot"><div class="dot" style="background: var(--${p.ratings.zustand.color})"></div><span>Zustand</span></div>
-                    <div class="rating-dot"><div class="dot" style="background: var(--${p.ratings.duft.color})"></div><span>Duft</span></div>
-                    <div class="rating-dot"><div class="dot" style="background: var(--${p.ratings.wasch.color})"></div><span>Wasch</span></div>
-                    <div class="rating-dot"><div class="dot" style="background: var(--${p.ratings.material.color})"></div><span>Material</span></div>
-                    <div class="rating-dot"><div class="dot" style="background: var(--${p.ratings.dauer.color})"></div><span>Dauer</span></div>
-                    <div class="rating-dot"><div class="dot" style="background: var(--${p.ratings.extras.color})"></div><span>Extras</span></div>
+    <!-- Checkout Modal -->
+    <div class="checkout-modal" id="checkoutModal">
+        <div class="checkout-content">
+            <div class="checkout-header"><h3>Zahlungsart wählen</h3><button class="checkout-close" id="checkoutClose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
+            <div class="checkout-body">
+                <div class="checkout-summary"><h4>Bestellübersicht</h4><div class="checkout-total"><span>Gesamtbetrag:</span><span id="checkoutTotal">0,00 €</span></div></div>
+                <div class="payment-methods">
+                    <h4>Zahlungsmethode</h4>
+                    <div class="payment-options">
+                        <div class="payment-option" onclick="processPayment('paypal')"><span>💳 PayPal</span></div>
+                        <div class="payment-option" onclick="processPayment('card')"><span>💳 Kreditkarte</span></div>
+                        <div class="payment-option" onclick="processPayment('sepa')"><span>🏦 SEPA-Überweisung</span></div>
+                        <div class="payment-option" onclick="processPayment('revolut')"><span>📱 Revolut</span></div>
+                    </div>
                 </div>
             </div>
-            <div class="product-info">
-                <span class="product-category">${p.category}</span>
-                <h3 class="product-name">${p.name}</h3>
-                <p class="product-desc">${p.desc.substring(0, 80)}...</p>
-                <div class="product-price">€${p.price.toFixed(2).replace('.', ',')}</div>
-                <button class="product-btn" onclick="event.stopPropagation(); quickAdd(${p.id})">Schnell hinzufügen</button>
-            </div>
         </div>
-    `).join('');
-}
+    </div>
 
-// ═══════════════════════════════════════════
-// MODAL
-// ═══════════════════════════════════════════
-function openModal(id) {
-    currentProduct = products.find(p => p.id === id);
-    if (!currentProduct) return;
-    
-    selectedServices = [];
-    selectedTip = 0;
-    
-    document.getElementById('modalImage').src = currentProduct.image;
-    document.getElementById('modalCategory').textContent = currentProduct.category;
-    document.getElementById('modalName').textContent = currentProduct.name;
-    document.getElementById('modalPrice').textContent = `€${currentProduct.price.toFixed(2).replace('.', ',')}`;
-    document.getElementById('modalDesc').textContent = currentProduct.desc;
-    
-    const ratingNames = {
-        zustand: 'Zustand',
-        duft: 'Duft',
-        wasch: 'Waschstatus',
-        material: 'Material',
-        dauer: 'Tragedauer',
-        extras: 'Extras'
-    };
-    
-    document.getElementById('modalRatings').innerHTML = Object.entries(currentProduct.ratings).map(([key, data]) => `
-        <div class="modal-rating-item">
-            <div class="dot" style="background: var(--${data.color})"></div>
-            <span class="label">${ratingNames[key]}</span>
-            <span class="value">${data.value}</span>
-        </div>
-    `).join('');
-    
-    // Reset checkboxes
-    document.querySelectorAll('#serviceOptions input').forEach(cb => {
-        cb.checked = false;
-        cb.closest('.service-option').classList.remove('selected');
-    });
-    
-    // Reset tips
-    document.querySelectorAll('.tip-amount').forEach(t => t.classList.remove('selected'));
-    document.querySelector('.tip-amount[data-tip="0"]').classList.add('selected');
-    
-    updateModalTotal();
-    
-    document.getElementById('modalOverlay').classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
+    <div class="toast" id="toast"></div>
+    <script src="main.js"></script>
+    <script>
+        const products = [
+            { id: 1, name: 'Spitzen-Panty Rosa', category: 'panties', price: 35, image: 'https://images.unsplash.com/photo-1617331140180-e8262094733a?w=500', desc: 'Zartes Spitzen-Panty in romantischem Rosa mit feinen Details.', rating: ['green','green','yellow','green','green','yellow'] },
+            { id: 2, name: 'Satin Slip Schwarz', category: 'panties', price: 40, image: 'https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=500', desc: 'Eleganter Satin-Slip in klassischem Schwarz.', rating: ['green','yellow','green','green','yellow','green'] },
+            { id: 3, name: 'Push-Up BH Nude', category: 'bras', price: 55, image: 'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=500', desc: 'Figurschmeichelnder Push-Up BH in natürlichem Nude-Ton.', rating: ['green','green','green','green','green','green'] },
+            { id: 4, name: 'Bralette Bordeaux', category: 'bras', price: 45, image: 'https://images.unsplash.com/photo-1616530940355-351fabd9524b?w=500', desc: 'Bequeme Bralette in verführerischem Bordeaux.', rating: ['yellow','yellow','yellow','green','yellow','yellow'] },
+            { id: 5, name: 'Dessous Set Champagner', category: 'sets', price: 85, image: 'https://images.unsplash.com/photo-1617331140180-e8262094733a?w=500', desc: 'Exklusives 2-teiliges Set in elegantem Champagner.', rating: ['green','green','green','green','green','green'] },
+            { id: 6, name: 'Spitzen Body Schwarz', category: 'bodys', price: 75, image: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=500', desc: 'Verführerischer Spitzen-Body mit raffinierten Cut-Outs.', rating: ['green','yellow','green','green','green','yellow'] },
+            { id: 7, name: 'Kniestrümpfe Weiß', category: 'socken', price: 25, image: 'https://images.unsplash.com/photo-1582966772680-860e372bb558?w=500', desc: 'Verspielte Kniestrümpfe in reinem Weiß.', rating: ['green','green','yellow','green','yellow','green'] },
+            { id: 8, name: 'Tanga Mint', category: 'panties', price: 30, image: 'https://images.unsplash.com/photo-1617331140180-e8262094733a?w=500', desc: 'Frischer Tanga in zartem Mint.', rating: ['yellow','green','yellow','green','green','yellow'] },
+        ];
 
-function closeModal() {
-    document.getElementById('modalOverlay').classList.remove('active');
-    document.body.style.overflow = '';
-    currentProduct = null;
-}
+        const services = [
+            { name: 'Extra Tragetage (+3 Tage)', price: 15, desc: 'Wird 3 Tage länger getragen' },
+            { name: 'Workout Session', price: 10, desc: 'Wird beim Sport getragen' },
+            { name: 'Schlaf-Nacht', price: 12, desc: 'Wird eine Nacht beim Schlafen getragen' },
+            { name: 'Polaroid Foto', price: 20, desc: 'Persönliches Polaroid inklusive' },
+            { name: 'Handgeschriebene Notiz', price: 5, desc: 'Liebevolle persönliche Nachricht' },
+        ];
 
-document.getElementById('modalClose').onclick = closeModal;
-document.getElementById('modalOverlay').onclick = e => {
-    if (e.target === document.getElementById('modalOverlay')) closeModal();
-};
+        const ratingLabels = ['Zustand', 'Duft', 'Waschstatus', 'Material', 'Tragedauer', 'Extras'];
+        const colorMap = { green: '#7CB77C', yellow: '#E8C547', red: '#C97A7A' };
 
-// Service checkboxes
-document.querySelectorAll('#serviceOptions input').forEach(cb => {
-    cb.addEventListener('change', function() {
-        this.closest('.service-option').classList.toggle('selected', this.checked);
-        updateModalTotal();
-    });
-});
+        let currentProduct = null;
+        let selectedServices = [];
+        let selectedTip = 0;
 
-// Tip buttons
-document.querySelectorAll('.tip-amount').forEach(btn => {
-    btn.addEventListener('click', function() {
-        document.querySelectorAll('.tip-amount').forEach(t => t.classList.remove('selected'));
-        this.classList.add('selected');
-        selectedTip = parseInt(this.dataset.tip);
-        updateModalTotal();
-    });
-});
+        function renderProducts(filter = 'all') {
+            const grid = document.getElementById('productsGrid');
+            const filtered = filter === 'all' ? products : products.filter(p => p.category === filter);
+            grid.innerHTML = filtered.map(p => `
+                <div class="product-card" data-id="${p.id}">
+                    <img src="${p.image}" alt="${p.name}" class="product-image">
+                    <div class="product-overlay">
+                        <button class="product-quick-add" onclick="quickAdd(${p.id})">Schnell hinzufügen</button>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">${p.category}</div>
+                        <h3 class="product-name" onclick="openModal(${p.id})">${p.name}</h3>
+                        <div class="product-rating-preview">
+                            ${p.rating.map(r => `<span class="dot" style="background:${colorMap[r]}"></span>`).join('')}
+                        </div>
+                        <div class="product-price">${p.price.toFixed(2).replace('.', ',')} €</div>
+                    </div>
+                </div>
+            `).join('');
+        }
 
-function updateModalTotal() {
-    if (!currentProduct) return;
-    
-    let total = currentProduct.price;
-    
-    document.querySelectorAll('#serviceOptions input:checked').forEach(cb => {
-        total += parseInt(cb.dataset.price);
-    });
-    
-    total += selectedTip;
-    
-    document.getElementById('modalTotal').textContent = `€${total.toFixed(2).replace('.', ',')}`;
-}
-
-// Add to cart from modal
-document.getElementById('modalAddBtn').onclick = () => {
-    if (!currentProduct) return;
-    
-    const services = [];
-    document.querySelectorAll('#serviceOptions input:checked').forEach(cb => {
-        services.push({
-            name: cb.closest('.service-option').querySelector('.service-option-name').textContent,
-            price: parseInt(cb.dataset.price)
-        });
-    });
-    
-    let totalPrice = currentProduct.price;
-    services.forEach(s => totalPrice += s.price);
-    totalPrice += selectedTip;
-    
-    const cartItem = {
-        id: Date.now(),
-        productId: currentProduct.id,
-        name: currentProduct.name,
-        category: currentProduct.category,
-        image: currentProduct.image,
-        basePrice: currentProduct.price,
-        services: services,
-        tip: selectedTip,
-        totalPrice: totalPrice
-    };
-    
-    cart.push(cartItem);
-    updateCart();
-    closeModal();
-    showNotification();
-};
-
-function quickAdd(id) {
-    const product = products.find(p => p.id === id);
-    if (!product) return;
-    
-    cart.push({
-        id: Date.now(),
-        productId: product.id,
-        name: product.name,
-        category: product.category,
-        image: product.image,
-        basePrice: product.price,
-        services: [],
-        tip: 0,
-        totalPrice: product.price
-    });
-    
-    updateCart();
-    showNotification();
-}
-
-// ═══════════════════════════════════════════
-// CART
-// ═══════════════════════════════════════════
-const cartBtn = document.getElementById('cartBtn');
-const cartOverlay = document.getElementById('cartOverlay');
-const cartSidebar = document.getElementById('cartSidebar');
-const cartClose = document.getElementById('cartClose');
-const cartBadge = document.getElementById('cartBadge');
-
-function openCart() {
-    cartOverlay.classList.add('active');
-    cartSidebar.classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
-
-function closeCart() {
-    cartOverlay.classList.remove('active');
-    cartSidebar.classList.remove('active');
-    document.body.style.overflow = '';
-}
-
-cartBtn.addEventListener('click', openCart);
-cartClose.addEventListener('click', closeCart);
-cartOverlay.addEventListener('click', closeCart);
-
-function updateCart() {
-    const cartItems = document.getElementById('cartItems');
-    const cartTotal = document.getElementById('cartTotal');
-    
-    if (cart.length === 0) {
-        cartItems.innerHTML = `
-            <div class="cart-empty">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-                    <path d="M6 6h15l-1.5 9h-12z"/>
-                    <circle cx="9" cy="20" r="1"/>
-                    <circle cx="18" cy="20" r="1"/>
-                    <path d="M6 6L5 3H2"/>
-                </svg>
-                <h4>Dein Warenkorb ist leer</h4>
-                <p>Entdecke unsere Kollektion!</p>
-            </div>
-        `;
-        cartBadge.classList.remove('show');
-    } else {
-        cartItems.innerHTML = cart.map((item, index) => {
-            const extras = [];
-            if (item.services.length > 0) {
-                extras.push(item.services.map(s => s.name).join(', '));
-            }
-            if (item.tip > 0) {
-                extras.push(`Trinkgeld €${item.tip}`);
-            }
+        function openModal(id) {
+            currentProduct = products.find(p => p.id === id);
+            selectedServices = [];
+            selectedTip = 0;
             
-            return `
-                <div class="cart-item">
-                    <div class="cart-item-image">
-                        <img src="${item.image}" alt="${item.name}">
-                    </div>
-                    <div class="cart-item-info">
-                        <div class="cart-item-name">${item.name}</div>
-                        ${extras.length > 0 ? `<div class="cart-item-extras">+ ${extras.join(', ')}</div>` : ''}
-                        <div class="cart-item-price">€${item.totalPrice.toFixed(2).replace('.', ',')}</div>
-                        <button class="cart-item-remove" onclick="removeFromCart(${index})">Entfernen</button>
-                    </div>
+            document.getElementById('modalImage').src = currentProduct.image;
+            document.getElementById('modalCategory').textContent = currentProduct.category;
+            document.getElementById('modalName').textContent = currentProduct.name;
+            document.getElementById('modalDesc').textContent = currentProduct.desc;
+            
+            document.getElementById('modalRating').innerHTML = ratingLabels.map((label, i) => `
+                <div class="rating-row">
+                    <span class="rating-label">${label}</span>
+                    <span class="rating-indicator" style="background:${colorMap[currentProduct.rating[i]]}"></span>
                 </div>
-            `;
-        }).join('');
-        
-        cartBadge.textContent = cart.length;
-        cartBadge.classList.add('show');
-    }
-    
-    const total = cart.reduce((sum, item) => sum + item.totalPrice, 0);
-    cartTotal.textContent = `€${total.toFixed(2).replace('.', ',')}`;
-    
-    localStorage.setItem('lunara_cart', JSON.stringify(cart));
-}
+            `).join('');
+            
+            document.getElementById('modalServices').innerHTML = services.map((s, i) => `
+                <div class="service-option" data-index="${i}" onclick="toggleService(${i})">
+                    <div class="service-checkbox"></div>
+                    <div class="service-info">
+                        <div class="service-name">${s.name}</div>
+                        <div class="service-desc">${s.desc}</div>
+                    </div>
+                    <div class="service-price">+${s.price}€</div>
+                </div>
+            `).join('');
+            
+            document.querySelectorAll('.tip-option').forEach(btn => {
+                btn.classList.toggle('selected', parseInt(btn.dataset.tip) === 0);
+            });
+            
+            updateModalTotal();
+            document.getElementById('productModal').classList.add('show');
+        }
 
-function removeFromCart(index) {
-    cart.splice(index, 1);
-    updateCart();
-}
+        function toggleService(index) {
+            const el = document.querySelector(`.service-option[data-index="${index}"]`);
+            if (selectedServices.includes(index)) {
+                selectedServices = selectedServices.filter(i => i !== index);
+                el.classList.remove('selected');
+            } else {
+                selectedServices.push(index);
+                el.classList.add('selected');
+            }
+            updateModalTotal();
+        }
 
-// ═══════════════════════════════════════════
-// CHECKOUT
-// ═══════════════════════════════════════════
-document.getElementById('checkoutBtn').addEventListener('click', () => {
-    if (cart.length > 0) {
-        document.getElementById('checkoutModal').classList.add('active');
-    }
-});
+        document.querySelectorAll('.tip-option').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.tip-option').forEach(b => b.classList.remove('selected'));
+                btn.classList.add('selected');
+                selectedTip = parseInt(btn.dataset.tip);
+                updateModalTotal();
+            });
+        });
 
-function closeCheckout() {
-    document.getElementById('checkoutModal').classList.remove('active');
-}
+        function updateModalTotal() {
+            const serviceTotal = selectedServices.reduce((sum, i) => sum + services[i].price, 0);
+            const total = currentProduct.price + serviceTotal + selectedTip;
+            document.getElementById('modalTotal').textContent = total.toFixed(2).replace('.', ',') + ' €';
+        }
 
-function processPayment(method) {
-    const total = cart.reduce((sum, item) => sum + item.totalPrice, 0);
-    
-    switch(method) {
-        case 'paypal':
-            window.open(`https://www.paypal.com/paypalme/lunara/${total.toFixed(2)}EUR`, '_blank');
-            break;
-        case 'card':
-            alert(`Kreditkarten-Zahlung über €${total.toFixed(2)}\n\nDu wirst zu unserem sicheren Zahlungsanbieter weitergeleitet.`);
-            break;
-        case 'sepa':
-            alert(`SEPA Überweisung:\n\nBetrag: €${total.toFixed(2)}\nIBAN: DE89 3704 0044 0532 0130 00\nVerwendungszweck: LUNARA-${Date.now()}`);
-            break;
-        case 'revolut':
-            window.open(`https://revolut.me/lunara`, '_blank');
-            break;
-    }
-    
-    closeCheckout();
-    closeCart();
-}
+        document.getElementById('modalAddBtn').addEventListener('click', () => {
+            const serviceNames = selectedServices.map(i => services[i].name);
+            const serviceTotal = selectedServices.reduce((sum, i) => sum + services[i].price, 0);
+            addToCart({
+                id: currentProduct.id,
+                name: currentProduct.name,
+                price: currentProduct.price,
+                image: currentProduct.image,
+                services: serviceNames,
+                servicesTotal: serviceTotal,
+                tip: selectedTip
+            });
+            document.getElementById('productModal').classList.remove('show');
+        });
 
-// ═══════════════════════════════════════════
-// FILTERS
-// ═══════════════════════════════════════════
-document.querySelectorAll('.filter-tab').forEach(tab => {
-    tab.addEventListener('click', function() {
-        document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
-        this.classList.add('active');
-        renderProducts(this.dataset.filter);
-    });
-});
+        function quickAdd(id) {
+            const p = products.find(x => x.id === id);
+            addToCart({ id: p.id, name: p.name, price: p.price, image: p.image, services: [], servicesTotal: 0, tip: 0 });
+        }
 
-// ═══════════════════════════════════════════
-// NOTIFICATION
-// ═══════════════════════════════════════════
-function showNotification() {
-    const notification = document.getElementById('notification');
-    notification.classList.add('show');
-    setTimeout(() => notification.classList.remove('show'), 2500);
-}
+        document.getElementById('modalClose').addEventListener('click', () => {
+            document.getElementById('productModal').classList.remove('show');
+        });
+        document.getElementById('productModal').addEventListener('click', (e) => {
+            if (e.target.id === 'productModal') document.getElementById('productModal').classList.remove('show');
+        });
 
-// ═══════════════════════════════════════════
-// INIT
-// ═══════════════════════════════════════════
-renderProducts();
-updateCart();
-</script>
+        document.querySelectorAll('.filter-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                renderProducts(tab.dataset.filter);
+            });
+        });
 
+        renderProducts();
+    </script>
 </body>
 </html>

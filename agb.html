@@ -4,175 +4,99 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AGB – LUNARA</title>
-    <meta name="robots" content="noindex">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='none' stroke='%23D4A5A5' stroke-width='2'/%3E%3C/svg%3E">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Quicksand:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     <style>
-        *{margin:0;padding:0;box-sizing:border-box}
-        :root{--bg-primary:#FDF5F6;--bg-card:#FFFFFF;--rose:#D4A5A5;--rose-light:#E8C4C4;--text-primary:#2D2D2D;--text-secondary:#5A5A5A;--text-muted:#8A8A8A}
-        body{font-family:'Quicksand',sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.8}
-        
-        .nav-wrapper{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(253,245,246,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(212,165,165,.1)}
-        .nav-main{display:flex;justify-content:space-between;align-items:center;padding:20px 60px}
-        .logo{display:flex;align-items:center;gap:12px;text-decoration:none}
-        .logo-icon{width:40px;height:40px}
-        .logo-text{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;letter-spacing:6px;color:var(--text-primary)}
-        .nav-back{padding:10px 20px;color:var(--text-secondary);text-decoration:none;font-size:.85rem;border:1px solid var(--rose-light);border-radius:20px;transition:all .3s}
-        .nav-back:hover{background:var(--rose);color:#fff;border-color:var(--rose)}
-
-        .legal-container{max-width:800px;margin:0 auto;padding:140px 40px 80px}
-        .legal-header{margin-bottom:50px}
-        .legal-header h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:300;margin-bottom:10px}
-        .legal-header h1 span{color:var(--rose)}
-        .legal-header p{color:var(--text-muted);font-size:.9rem}
-        
-        .legal-section{margin-bottom:40px}
-        .legal-section h2{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;color:var(--rose);margin-bottom:20px;padding-bottom:10px;border-bottom:1px solid rgba(212,165,165,.2)}
-        .legal-section h3{font-size:1rem;font-weight:600;color:var(--text-primary);margin:25px 0 12px}
-        .legal-section p,.legal-section li{color:var(--text-secondary);font-size:.95rem;margin-bottom:12px}
-        .legal-section ul,.legal-section ol{padding-left:25px;margin:15px 0}
-        .legal-section li{margin-bottom:10px}
-        .legal-section a{color:var(--rose);text-decoration:none}
-        .legal-section a:hover{text-decoration:underline}
-        
-        .info-box{background:rgba(212,165,165,.08);border-left:3px solid var(--rose);padding:20px;margin:20px 0;border-radius:0 10px 10px 0}
-        .info-box p{margin-bottom:0}
-        
-        .footer-mini{padding:40px;border-top:1px solid rgba(212,165,165,.1);text-align:center;margin-top:60px}
-        .footer-mini p{color:var(--text-muted);font-size:.85rem}
-        .footer-mini a{color:var(--rose);text-decoration:none;margin:0 15px}
-
-        @media(max-width:768px){.nav-main{padding:15px 25px}.legal-container{padding:120px 25px 60px}}
+        .legal-page { padding: 140px 60px 80px; max-width: 900px; margin: 0 auto; }
+        .legal-page h1 { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 300; margin-bottom: 40px; }
+        .legal-page h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 500; margin: 40px 0 20px; color: var(--rose-dark); }
+        .legal-page p, .legal-page li { font-size: 1rem; line-height: 1.8; color: var(--charcoal-light); margin-bottom: 15px; }
+        .legal-page ul, .legal-page ol { margin-left: 25px; margin-bottom: 20px; }
+        .legal-page strong { color: var(--charcoal); }
+        @media (max-width: 768px) { .legal-page { padding: 120px 30px 60px; } }
     </style>
 </head>
 <body>
-
-<div class="nav-wrapper">
-    <nav class="nav-main">
-        <a href="index.html" class="logo">
-            <svg class="logo-icon" viewBox="0 0 100 100">
-                <circle cx="50" cy="50" r="45" fill="none" stroke="#D4A5A5" stroke-width="2"/>
-                <path d="M50 10 Q75 50 50 90" fill="none" stroke="#D4A5A5" stroke-width="1.5"/>
-            </svg>
-            <span class="logo-text">LUNARA</span>
-        </a>
-        <a href="index.html" class="nav-back">← Zurück zur Website</a>
+    <nav class="nav-wrapper scrolled" id="navbar">
+        <div class="nav-main">
+            <div class="nav-left">
+                <a href="index.html" class="logo">
+                    <div class="logo-moon"><svg viewBox="0 0 100 100"><path d="M50 10 A40 40 0 1 1 50 90 A25 25 0 1 0 50 10" stroke-linecap="round" fill="none" stroke="#C9A9A6" stroke-width="1.5"/></svg></div>
+                    <span class="logo-text">Lunara</span>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="kollektion.html">Kollektion</a></li>
+                <li><a href="merch.html">Merch</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+                <li><a href="index.html#faq">FAQ</a></li>
+            </ul>
+        </div>
     </nav>
-</div>
 
-<div class="legal-container">
-    <header class="legal-header">
-        <h1>Allgemeine <span>Geschäftsbedingungen</span></h1>
-        <p>Stand: Januar 2026</p>
-    </header>
+    <main class="legal-page">
+        <h1>Allgemeine Geschäftsbedingungen</h1>
 
-    <section class="legal-section">
         <h2>§ 1 Geltungsbereich</h2>
-        <p>(1) Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für alle Verträge zwischen LUNARA (Jaquelin Handt), Albertstraße 20, 48282 Emsdetten (nachfolgend "Verkäufer") und dem jeweiligen Käufer.</p>
-        <p>(2) Abweichende Bedingungen des Käufers werden nicht anerkannt, es sei denn, der Verkäufer stimmt ihrer Geltung ausdrücklich schriftlich zu.</p>
-        <p>(3) Diese AGB gelten auch für alle zukünftigen Geschäftsbeziehungen, selbst wenn sie nicht nochmals ausdrücklich vereinbart werden.</p>
-    </section>
+        <p>(1) Diese Allgemeinen Geschäftsbedingungen (nachfolgend "AGB") gelten für alle Verträge, die zwischen LUNARA (nachfolgend "Verkäufer") und dem Kunden (nachfolgend "Käufer") über den Online-Shop geschlossen werden.</p>
+        <p>(2) Maßgeblich ist die jeweils zum Zeitpunkt des Vertragsschlusses gültige Fassung dieser AGB.</p>
 
-    <section class="legal-section">
-        <h2>§ 2 Vertragsgegenstand</h2>
-        <p>(1) Der Verkäufer bietet über die Website handverlesene Dessous, Lingerie und verwandte Artikel an.</p>
-        <p>(2) Die Präsentation der Waren auf der Website stellt kein rechtlich bindendes Angebot, sondern eine Aufforderung zur Abgabe eines Angebots dar.</p>
-        <p>(3) Alle angebotenen Artikel sind Einzelstücke. Die Verfügbarkeit kann sich ohne Vorankündigung ändern.</p>
-    </section>
+        <h2>§ 2 Vertragsschluss</h2>
+        <p>(1) Die Darstellung der Produkte im Online-Shop stellt kein rechtlich bindendes Angebot, sondern einen unverbindlichen Online-Katalog dar.</p>
+        <p>(2) Durch Anklicken des Buttons "Kaufen" oder "Zahlungspflichtig bestellen" geben Sie eine verbindliche Bestellung der im Warenkorb enthaltenen Waren ab.</p>
+        <p>(3) Der Vertrag kommt zustande, wenn wir Ihre Bestellung durch eine Auftragsbestätigung per E-Mail annehmen.</p>
 
-    <section class="legal-section">
-        <h2>§ 3 Vertragsschluss</h2>
-        <p>(1) Der Käufer gibt durch Absenden der Bestellung ein verbindliches Angebot zum Kauf ab.</p>
-        <p>(2) Der Vertrag kommt durch die Annahme des Angebots in Form einer Auftragsbestätigung per E-Mail oder durch Versand der Ware zustande.</p>
-        <p>(3) Der Verkäufer behält sich vor, Bestellungen ohne Angabe von Gründen abzulehnen.</p>
-    </section>
-
-    <section class="legal-section">
-        <h2>§ 4 Produktbeschreibung & Bewertungssystem</h2>
-        <p>(1) Jeder Artikel wird mit einem 6-Punkte-Ampelsystem bewertet:</p>
+        <h2>§ 3 Preise und Zahlung</h2>
+        <p>(1) Alle angegebenen Preise sind Endpreise. Eine Mehrwertsteuer wird aufgrund der Kleinunternehmerregelung (§ 19 UStG) nicht ausgewiesen.</p>
+        <p>(2) Zusätzlich zu den angegebenen Preisen berechnen wir für die Lieferung Versandkosten, die auf der Produktseite und im Bestellprozess angezeigt werden.</p>
+        <p>(3) Wir akzeptieren folgende Zahlungsmethoden:</p>
         <ul>
-            <li><strong>Zustand:</strong> Beschreibt den allgemeinen Zustand des Artikels</li>
-            <li><strong>Duft:</strong> Gibt die Intensität des natürlichen Dufts an</li>
-            <li><strong>Waschstatus:</strong> Zeigt an, ob der Artikel gewaschen wurde</li>
-            <li><strong>Material:</strong> Beschreibt die Qualität des Materials</li>
-            <li><strong>Tragedauer:</strong> Gibt die bisherige Tragedauer an</li>
-            <li><strong>Extras:</strong> Zeigt verfügbare Zusatzoptionen an</li>
+            <li>PayPal</li>
+            <li>Kreditkarte (Visa, Mastercard, American Express)</li>
+            <li>SEPA-Überweisung</li>
+            <li>Revolut</li>
         </ul>
-        <p>(2) Die Bewertungen sind nach bestem Wissen und Gewissen erstellt. Abweichungen in der subjektiven Wahrnehmung sind möglich.</p>
-        
-        <div class="info-box">
-            <p><strong>Hinweis:</strong> Aufgrund der Natur der Produkte können geringfügige Abweichungen von der Beschreibung nicht ausgeschlossen werden. Bei Fragen kontaktieren Sie uns bitte vor dem Kauf.</p>
-        </div>
-    </section>
 
-    <section class="legal-section">
-        <h2>§ 5 Preise und Zahlung</h2>
-        <p>(1) Alle Preise verstehen sich in Euro inklusive der gesetzlichen Mehrwertsteuer.</p>
-        <p>(2) Versandkosten werden gesondert ausgewiesen und sind vom Käufer zu tragen.</p>
-        <p>(3) Die Zahlung erfolgt über die auf der Website angebotenen Zahlungsmethoden (z.B. PayPal, Kreditkarte, Überweisung).</p>
-        <p>(4) Bei Zahlung per Vorkasse ist der Kaufpreis innerhalb von 7 Tagen nach Vertragsschluss zu überweisen.</p>
-        
-        <div class="info-box">
-            <p><strong>Diskretion bei der Zahlung:</strong> Alle Zahlungen erscheinen neutral auf Kontoauszügen. Es werden keine eindeutigen Bezeichnungen verwendet.</p>
-        </div>
-    </section>
+        <h2>§ 4 Lieferung</h2>
+        <p>(1) Die Lieferung erfolgt an die vom Käufer angegebene Lieferadresse.</p>
+        <p>(2) Die Lieferzeit beträgt in der Regel 2-4 Werktage innerhalb Deutschlands, sofern keine abweichende Lieferzeit auf der Produktseite angegeben ist.</p>
+        <p>(3) Bei Zusatzservices kann sich die Lieferzeit entsprechend verlängern.</p>
 
-    <section class="legal-section">
-        <h2>§ 6 Versand und Lieferung</h2>
-        <p>(1) Der Versand erfolgt ausschließlich innerhalb Deutschlands.</p>
-        <p>(2) Die Lieferzeit beträgt in der Regel 2-5 Werktage nach Zahlungseingang.</p>
-        <p>(3) Alle Sendungen werden neutral verpackt, ohne erkennbaren Hinweis auf den Inhalt oder den Absender.</p>
-        <p>(4) Mit der Übergabe an den Versanddienstleister geht die Gefahr des zufälligen Untergangs auf den Käufer über.</p>
-    </section>
+        <h2>§ 5 Eigentumsvorbehalt</h2>
+        <p>Die gelieferte Ware bleibt bis zur vollständigen Bezahlung des Kaufpreises Eigentum des Verkäufers.</p>
 
-    <section class="legal-section">
-        <h2>§ 7 Widerrufsrecht</h2>
-        <p>(1) Aufgrund der besonderen Natur der Waren (Hygieneartikel, personalisierte Intimitätsprodukte) ist das Widerrufsrecht gemäß § 312g Abs. 2 Nr. 3 BGB ausgeschlossen.</p>
-        <p>(2) Der Käufer wird vor Abschluss der Bestellung ausdrücklich auf diesen Ausschluss hingewiesen und muss diesem zustimmen.</p>
-        
-        <div class="info-box">
-            <p><strong>Wichtig:</strong> Mit der Bestellung bestätigen Sie, dass Sie über den Ausschluss des Widerrufsrechts informiert wurden und diesem zustimmen.</p>
-        </div>
-    </section>
+        <h2>§ 6 Widerrufsrecht</h2>
+        <p>(1) Verbraucher haben grundsätzlich ein 14-tägiges Widerrufsrecht. Details entnehmen Sie bitte unserer <a href="widerruf.html" style="color:var(--rose)">Widerrufsbelehrung</a>.</p>
+        <p>(2) Das Widerrufsrecht besteht nicht bei Waren, die aus Gründen des Gesundheitsschutzes oder der Hygiene nicht zur Rückgabe geeignet sind, wenn ihre Versiegelung nach der Lieferung entfernt wurde.</p>
 
-    <section class="legal-section">
-        <h2>§ 8 Gewährleistung</h2>
+        <h2>§ 7 Gewährleistung</h2>
         <p>(1) Es gelten die gesetzlichen Gewährleistungsrechte.</p>
-        <p>(2) Bei gebrauchten Waren beträgt die Gewährleistungsfrist ein Jahr ab Lieferung.</p>
-        <p>(3) Offensichtliche Mängel sind unverzüglich nach Erhalt der Ware zu rügen.</p>
-    </section>
+        <p>(2) Bitte beachten Sie die Produktbeschreibungen. Die Artikel werden "wie beschrieben" verkauft.</p>
 
-    <section class="legal-section">
-        <h2>§ 9 Haftung</h2>
-        <p>(1) Der Verkäufer haftet unbeschränkt für Vorsatz und grobe Fahrlässigkeit.</p>
-        <p>(2) Bei leichter Fahrlässigkeit haftet der Verkäufer nur bei Verletzung wesentlicher Vertragspflichten, begrenzt auf den vorhersehbaren, vertragstypischen Schaden.</p>
-        <p>(3) Die vorstehenden Haftungsbeschränkungen gelten nicht bei Verletzung von Leben, Körper oder Gesundheit.</p>
-    </section>
+        <h2>§ 8 Haftungsbeschränkung</h2>
+        <p>(1) Der Verkäufer haftet unbeschränkt für vorsätzlich oder grob fahrlässig verursachte Schäden.</p>
+        <p>(2) Im Übrigen ist die Haftung auf den vorhersehbaren, typischerweise eintretenden Schaden begrenzt.</p>
 
-    <section class="legal-section">
-        <h2>§ 10 Datenschutz</h2>
-        <p>(1) Der Verkäufer verarbeitet personenbezogene Daten des Käufers gemäß der Datenschutzerklärung.</p>
-        <p>(2) Die Daten werden ausschließlich zur Vertragsabwicklung verwendet und nicht an Dritte weitergegeben, außer dies ist zur Vertragserfüllung erforderlich (z.B. Versanddienstleister).</p>
-        <p>(3) Details entnehmen Sie bitte unserer <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
-    </section>
+        <h2>§ 9 Datenschutz</h2>
+        <p>Die Verarbeitung personenbezogener Daten erfolgt gemäß unserer <a href="datenschutz.html" style="color:var(--rose)">Datenschutzerklärung</a>.</p>
 
-    <section class="legal-section">
-        <h2>§ 11 Vertraulichkeit</h2>
-        <p>(1) Der Verkäufer verpflichtet sich zur absoluten Verschwiegenheit über alle Kundendaten und Bestellungen.</p>
-        <p>(2) Kundendaten werden auf Wunsch vollständig gelöscht, soweit keine gesetzlichen Aufbewahrungspflichten bestehen.</p>
-    </section>
+        <h2>§ 10 Streitbeilegung</h2>
+        <p>Die EU-Kommission stellt eine Plattform für außergerichtliche Streitschlichtung bereit. Wir sind nicht verpflichtet, an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
 
-    <section class="legal-section">
-        <h2>§ 12 Schlussbestimmungen</h2>
-        <p>(1) Es gilt das Recht der Bundesrepublik Deutschland unter Ausschluss des UN-Kaufrechts.</p>
-        <p>(2) Gerichtsstand ist, soweit gesetzlich zulässig, der Sitz des Verkäufers.</p>
-        <p>(3) Sollten einzelne Bestimmungen unwirksam sein, bleibt die Wirksamkeit der übrigen Bestimmungen unberührt.</p>
-    </section>
+        <h2>§ 11 Schlussbestimmungen</h2>
+        <p>(1) Es gilt das Recht der Bundesrepublik Deutschland.</p>
+        <p>(2) Sollten einzelne Bestimmungen dieser AGB unwirksam sein oder werden, bleibt die Wirksamkeit der übrigen Bestimmungen davon unberührt.</p>
 
-    <footer class="footer-mini">
-        <p>© 2026 LUNARA | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p>
+        <p style="margin-top: 40px; color: var(--charcoal-light);"><small>Stand: Januar 2025</small></p>
+    </main>
+
+    <footer class="footer" style="margin-top: 60px;">
+        <div class="footer-bottom">
+            <p>© 2025 LUNARA. Alle Rechte vorbehalten.</p>
+            <div class="footer-legal"><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a><a href="agb.html">AGB</a><a href="widerruf.html">Widerruf</a></div>
+        </div>
     </footer>
-</div>
-
 </body>
 </html>
