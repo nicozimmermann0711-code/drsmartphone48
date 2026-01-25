@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUNARA Newsletter – Exklusive Einblicke</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ═══════════════════════════════════════════════════════════════════
+           RESET & BASE
+           ═══════════════════════════════════════════════════════════════════ */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --bg-void: #050505;
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #0f0f0f;
+            --bg-elevated: #151515;
+            --bg-glass: rgba(15, 15, 15, 0.9);
+            
+            --rose: #C9A396;
+            --rose-light: #D4B5A9;
+            --rose-dark: #8A6B60;
+            --rose-glow: rgba(201, 163, 150, 0.2);
+            
+            --gold: #B8956E;
+            --gold-light: #D4B896;
+            --gold-glow: rgba(184, 149, 110, 0.15);
+            
+            --cream: #F5F0EB;
+            --text-secondary: #9A9590;
+            --text-muted: #5A5550;
+            
+            --border-subtle: rgba(201, 163, 150, 0.15);
+            
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-body: 'Cormorant Garamond', Georgia, serif;
+            --font-ui: 'Montserrat', sans-serif;
+            
+            --ease-elegant: cubic-bezier(0.4, 0, 0.2, 1);
+            --ease-bounce: cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            --ease-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-void);
+            color: var(--cream);
+            line-height: 1.7;
+        }
+        
+        /* ═══════════════════════════════════════════════════════════════════
+           COSMIC BACKGROUND
+           ═══════════════════════════════════════════════════════════════════ */
+        .cosmic-bg {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        
+        .nebula {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            animation: nebulaFloat 25s ease-in-out infinite;
+        }
+        
+        .nebula--1 {
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, var(--rose-glow) 0%, transparent 70%);
+            top: -300px;
+            right: -200px;
+        }
+        
+        .nebula--2 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--gold-glow) 0%, transparent 70%);
+            bottom: -200px;
+            left: -150px;
+            animation-delay: -10s;
+        }
+        
+        .nebula--3 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(201, 163, 150, 0.1) 0%, transparent 70%);
+            top: 40%;
+            left: 30%;
+            animation-delay: -18s;
+        }
+        
+        @keyframes nebulaFloat {
+            0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+            33% { transform: translate(50px, -40px) scale(1.1) rotate(5deg); }
+            66% { transform: translate(-30px, 50px) scale(0.95) rotate(-3deg); }
+        }
+        
+        /* Stars */
+        .stars {
+            position: absolute;
+            inset: 0;
+        }
+        
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--cream);
+            border-radius: 50%;
+            animation: starTwinkle 4s ease-in-out infinite;
+        }
+        
+        @keyframes starTwinkle {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 0.9; transform: scale(1.5); }
+        }
+        
+        /* Floating Particles */
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--rose);
+            border-radius: 50%;
+            animation: particleRise 20s linear infinite;
+            opacity: 0;
+        }
+        
+        @keyframes particleRise {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-100vh) scale(1); opacity: 0; }
+        }
+        
+        /* Shooting Stars */
+        .shooting-star {
+            position: absolute;
+            width: 150px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--rose), transparent);
+            border-radius: 2px;
+            animation: shootingStar 8s linear infinite;
+            opacity: 0;
+        }
+        
+        @keyframes shootingStar {
+            0% { transform: translateX(-200px) translateY(0); opacity: 0; }
+            5% { opacity: 1; }
+            15% { opacity: 0; }
+            100% { transform: translateX(100vw) translateY(300px); opacity: 0; }
+        }
+        
+        /* ═══════════════════════════════════════════════════════════════════
+           PAGE SYSTEM
+           ═══════════════════════════════════════════════════════════════════ */
+        .pages-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .page {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(100px) scale(0.9);
+            transition: all 1s var(--ease-elegant);
+            z-index: 1;
+        }
+        
+        .page.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+            z-index: 10;
+        }
+        
+        .page.exit-up {
+            transform: translateY(-100vh) scale(0.8);
+            opacity: 0;
+        }
+        
+        .page.exit-down {
+            transform: translateY(100vh) scale(0.8);
+            opacity: 0;
+        }
+        
+        .page__content {
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+        
+        /* ═══════════════════════════════════════════════════════════════════
+           PAGE 1: INTRO / TEASER
+           ═══════════════════════════════════════════════════════════════════ */
+        .page-intro .moon-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 3rem;
+        }
+        
+        .moon-main {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, 
+                var(--cream) 0%, 
+                var(--rose-light) 30%, 
+                var(--rose) 60%, 
+                var(--rose-dark) 100%);
+            box-shadow: 
+                0 0 60px var(--rose-glow),
+                0 0 120px var(--rose-glow),
+                inset -20px -20px 40px rgba(0,0,0,0.3);
+            animation: moonPulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes moonPulse {
+            0%, 100% { 
+                transform: scale(1); 
+                box-shadow: 0 0 60px var(--rose-glow), 0 0 120px var(--rose-glow);
+            }
+            50% { 
+                transform: scale(1.05); 
+                box-shadow: 0 0 80px var(--rose-glow), 0 0 160px var(--rose-glow);
+            }
+        }
+        
+        .moon-ring {
+            position: absolute;
+            inset: -30px;
+            border: 1px solid var(--rose);
+            border-radius: 50%;
+            animation: moonRingSpin 20s linear infinite;
+            opacity: 0.3;
+        }
+        
+        .moon-ring:nth-child(2) {
+            inset: -50px;
+            animation-duration: 30s;
+            animation-direction: reverse;
+            opacity: 0.2;
+        }
+        
+        .moon-ring:nth-child(3) {
+            inset: -70px;
+            animation-duration: 40s;
+            opacity: 0.1;
+        }
+        
+        @keyframes moonRingSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .page-intro h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 300;
+            letter-spacing: 0.15em;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--rose) 50%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: titleShimmer 5s ease-in-out infinite;
+            background-size: 200% auto;
+        }
+        
+        @keyframes titleShimmer {
+            0%, 100% { background-position: 0% center; }
+            50% { background-position: 200% center; }
+        }
+        
+        .page-intro .tagline {
+            font-family: var(--font-ui);
+            font-size: 0.85rem;
+            font-weight: 400;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--rose);
+            margin-bottom: 2rem;
+            animation: taglineFade 2s ease-out 0.5s both;
+        }
+        
+        @keyframes taglineFade {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .page-intro .intro-text {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            animation: introTextFade 2s ease-out 0.8s both;
+        }
+        
+        @keyframes introTextFade {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* ═══════════════════════════════════════════════════════════════════
+           PAGE 2: BENEFITS / WHAT YOU GET
+           ═══════════════════════════════════════════════════════════════════ */
+        .page-benefits h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            font-weight: 300;
+            margin-bottom: 3rem;
+        }
+        
+        .page-benefits h2 span {
+            background: linear-gradient(135deg, var(--rose) 0%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .benefit-card {
+            background: var(--bg-glass);
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
+            padding: 1.5rem;
+            text-align: center;
+            backdrop-filter: blur(20px);
+            transition: all 0.5s var(--ease-elegant);
+            animation: benefitCardIn 0.8s var(--ease-bounce) both;
+        }
+        
+        .benefit-card:nth-child(1) { animation-delay: 0.1s; }
+        .benefit-card:nth-child(2) { animation-delay: 0.2s; }
+        .benefit-card:nth-child(3) { animation-delay: 0.3s; }
+        .benefit-card:nth-child(4) { animation-delay: 0.4s; }
+        
+        @keyframes benefitCardIn {
+            from { 
+                opacity: 0; 
+                transform: translateY(40px) scale(0.8); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0) scale(1); 
+            }
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--rose);
+            box-shadow: 0 20px 50px rgba(201, 163, 150, 0.15);
+        }
+        
+        .benefit-card__icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem;
+            background: linear-gradient(135deg, var(--rose-glow) 0%, var(--gold-glow) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            animation: iconFloat 3s ease-in-out infinite;
+        }
+        
+        .benefit-card:nth-child(1) .benefit-card__icon { animation-delay: 0s; }
+        .benefit-card:nth-child(2) .benefit-card__icon { animation-delay: 0.5s; }
+        .benefit-card:nth-child(3) .benefit-card__icon { animation-delay: 1s; }
+        .benefit-card:nth-child(4) .benefit-card__icon { animation-delay: 1.5s; }
+        
+        @keyframes iconFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        
+        .benefit-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        
+        .benefit-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        
+        /* ═══════════════════════════════════════════════════════════════════
+           PAGE 3: FORM
+           ═══════════════════════════════════════════════════════════════════ */
+        .page-form h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+        }
+        
+        .page-form h2 span {
+            background: linear-gradient(135deg, var(--rose) 0%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .page-form .subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+        
+        .form-group {
+            position: relative;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 1.25rem 1.5rem;
+            background: var(--bg-elevated);
+            border: 2px solid var(--border-subtle);
+            border-radius: 16px;
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            color: var(--cream);
+            transition: all 0.4s var(--ease-elegant);
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--rose);
+            box-shadow: 0 0 30px var(--rose-glow);
+        }
+        
+        .form-group input::placeholder {
+            color: var(--text-muted);
+        }
+        
+        .form-group label {
+            position: absolute;
+            top: 50%;
+            left: 1.5rem;
+            transform: translateY(-50%);
+            font-family: var(--font-ui);
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            pointer-events: none;
+            transition: all 0.3s var(--ease-elegant);
+            background: var(--bg-elevated);
+            padding: 0 0.5rem;
+        }
+        
+        .form-group input:focus + label,
+        .form-group input:not(:placeholder-shown) + label {
+            top: 0;
+            font-size: 0.75rem;
+            color: var(--rose);
+        }
+        
+        .form-group.required label::after {
+            content: ' *';
+            color: var(--rose);
+        }
+        
+        /* Error State */
+        .form-group.error input {
+            border-color: #e74c3c;
+            animation: inputShake 0.5s ease;
+        }
+        
+        .form-group.error .error-message {
+            display: block;
+        }
+        
+        .error-message {
+            display: none;
+            font-family: var(--font-ui);
+            font-size: 0.75rem;
+            color: #e74c3c;
+            margin-top: 0.5rem;
+            padding-left: 1.5rem;
+            animation: errorFadeIn 0.3s ease;
+        }
+        
+        @keyframes inputShake {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-10px); }
+            40% { transform: translateX(10px); }
+            60% { transform: translateX(-10px); }
+            80% { transform: translateX(10px); }
+        }
+        
+        @keyframes errorFadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Checkbox Group */
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--bg-elevated) 0%, var(--bg-secondary) 100%);
+            border: 2px solid var(--border-subtle);
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.4s var(--ease-elegant);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .checkbox-group::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--rose-glow) 0%, var(--gold-glow) 100%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        
+        .checkbox-group:hover {
+            border-color: var(--rose);
+        }
+        
+        .checkbox-group:hover::before {
+            opacity: 1;
+        }
+        
+        .checkbox-group.checked {
+            border-color: var(--rose);
+            box-shadow: 0 0 40px var(--rose-glow);
+        }
+        
+        .checkbox-group.checked::before {
+            opacity: 1;
+        }
+        
+        .custom-checkbox {
+            position: relative;
+            width: 28px;
+            height: 28px;
+            flex-shrink: 0;
+            z-index: 1;
+        }
+        
+        .custom-checkbox input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .checkbox-visual {
+            position: absolute;
+            inset: 0;
+            background: var(--bg-void);
+            border: 2px solid var(--rose);
+            border-radius: 8px;
+            transition: all 0.3s var(--ease-bounce);
+        }
+        
+        .checkbox-visual::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: var(--rose);
+            border-radius: 4px;
+            transform: translate(-50%, -50%);
+            transition: all 0.3s var(--ease-bounce);
+        }
+        
+        .custom-checkbox input:checked + .checkbox-visual {
+            background: var(--rose);
+            transform: scale(1.1);
+        }
+        
+        .custom-checkbox input:checked + .checkbox-visual::after {
+            width: 10px;
+            height: 10px;
+            background: var(--bg-void);
+        }
+        
+        .checkbox-content {
+            flex: 1;
+            z-index: 1;
+        }
+        
+        .checkbox-content h4 {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .checkbox-content h4 .badge {
+            font-family: var(--font-ui);
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            padding: 0.25rem 0.6rem;
+            background: var(--gold);
+            color: var(--bg-void);
+            border-radius: 20px;
+            animation: badgePulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes badgePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .checkbox-content p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-align: left;
+        }
+        
+        /* PDF Preview Animation */
+        .pdf-preview {
+            position: absolute;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 65px;
+            background: linear-gradient(180deg, var(--cream) 0%, #e0d5cc 100%);
+            border-radius: 4px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            opacity: 0.6;
+            transition: all 0.5s var(--ease-bounce);
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .pdf-preview::before {
+            content: 'PDF';
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: var(--font-ui);
+            font-size: 0.5rem;
+            font-weight: 700;
+            color: #c0392b;
+            letter-spacing: 0.05em;
+        }
+        
+        .pdf-preview::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 12px;
+            height: 12px;
+            background: linear-gradient(135deg, transparent 50%, #d0c5bc 50%);
+        }
+        
+        .pdf-preview .lines {
+            position: absolute;
+            top: 15px;
+            left: 6px;
+            right: 6px;
+        }
+        
+        .pdf-preview .line {
+            height: 3px;
+            background: #ccc;
+            margin-bottom: 4px;
+            border-radius: 2px;
+        }
+        
+        .pdf-preview .line:nth-child(2) { width: 80%; }
+        .pdf-preview .line:nth-child(3) { width: 60%; }
+        
+        .checkbox-group.checked .pdf-preview {
+            opacity: 1;
+            transform: translateY(-50%) scale(1.1) rotate(-5deg);
+            animation: pdfBounce 0.5s var(--ease-bounce);
+        }
+        
+        @keyframes pdfBounce {
+            0% { transform: translateY(-50%) scale(0.5) rotate(0deg); }
+            50% { transform: translateY(-50%) scale(1.2) rotate(-8deg); }
+            100% { transform: translateY(-50%) scale(1.1) rotate(-5deg); }
+        }
+        
+        /* ═══════════════════════════════════════════════════════════════════
+           PAGE 4: SUCCESS
+           ═══════════════════════════════════════════════════════════════════ */
+        .page-success .success-icon {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 2rem;
+            position: relative;
+        }
+        
+        .success-circle {
+            position: absolute;
+            inset: 0;
+            border: 3px solid var(--rose);
+            border-radius: 50%;
+            animation: successCircleIn 0.8s var(--ease-bounce) both;
+        }
+        
+        @keyframes successCircleIn {
+            from { 
+                transform: scale(0); 
+                opacity: 0; 
+            }
+            to { 
+                transform: scale(1); 
+                opacity: 1; 
+            }
+        }
+        
+        .success-check {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 60px;
+            height: 40px;
+            transform: translate(-50%, -60%);
+        }
+        
+        .success-check svg {
+            width: 100%;
+            height: 100%;
+            stroke: var(--rose);
+            stroke-width: 4;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-dasharray: 100;
+            stroke-dashoffset: 100;
+            animation: checkDraw 0.6s ease 0.5s forwards;
+        }
+        
+        @keyframes checkDraw {
+            to { stroke-dashoffset: 0; }
+        }
+        
+        .success-glow {
+            position: absolute;
+            inset: -20px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--rose-glow) 0%, transparent 70%);
+            animation: successGlow 2s ease-in-out infinite;
+        }
+        
+        @keyframes successGlow {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.1); }
+        }
+        
+        .page-success h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            font-weight: 300;
+            margin-bottom: 1rem;
+        }
+        
+        .page-success h2 span {
+            background: linear-gradient(135deg, var(--rose) 0%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .page-success .success-text {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        
+        .page-success .user-name {
+            color: var(--rose);
+            font-weight: 500;
+        }
+        
+        /* PDF Download Card */
+        .download-card {
+            background: linear-gradient(135deg, var(--bg-elevated) 0%, var(--bg-secondary) 100%);
+            border: 2px solid var(--rose);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+            animation: downloadCardIn 0.8s var(--ease-bounce) 0.8s both;
+        }
+        
+        @keyframes downloadCardIn {
+            from { 
+                opacity: 0; 
+                transform: translateY(30px) scale(0.9); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0) scale(1); 
+            }
+        }
+        
+        .download-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--rose-glow) 0%, var(--gold-glow) 100%);
+            animation: downloadCardShine 3s linear infinite;
+        }
+        
+        @keyframes downloadCardShine {
+            0% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+            100% { opacity: 0.3; }
+        }
+        
+        .download-card__content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .download-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+        
+        .download-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Confetti */
+        .confetti-container {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 100;
+            overflow: hidden;
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            animation: confettiFall linear forwards;
+        }
+        
+        @keyframes confettiFall {
+            0% { 
+                transform: translateY(-100px) rotate(0deg); 
+                opacity: 1;
+            }
+            100% { 
+                transform: translateY(100vh) rotate(720deg); 
+                opacity: 0;
+            }
+        }
+        
+        /* ═══════════════════════════════════════════════════════════════════
+           BUTTONS
+           ═══════════════════════════════════════════════════════════════════ */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            font-family: var(--font-ui);
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 1.1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s var(--ease-elegant);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn--primary {
+            background: linear-gradient(135deg, var(--rose) 0%, var(--gold) 100%);
+            color: var(--bg-void);
+        }
+        
+        .btn--primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn--primary:hover::before {
+            left: 100%;
+        }
+        
+        .btn--primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px var(--rose-glow);
+        }
+        
+        .btn--secondary {
+            background: transparent;
+            border: 2px solid var(--border-subtle);
+            color: var(--cream);
+        }
+        
+        .btn--secondary:hover {
+            border-color: var(--rose);
+            background: var(--rose-glow);
+        }
+        
+        .btn--download {
+            background: linear-gradient(135deg, #c0392b 0%, #e74c3c 100%);
+            color: white;
+            font-size: 1rem;
+            padding: 1.25rem 3rem;
+        }
+        
+        .btn--download:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(192, 57, 43, 0.3);
+        }
+        
+        .btn--download svg {
+            animation: downloadArrow 1s ease-in-out infinite;
+        }
+        
+        @keyframes downloadArrow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(4px); }
+        }
+        
+        /* ═══════════════════════════════════════════════════════════════════
+           NAVIGATION DOTS
+           ═══════════════════════════════════════════════════════════════════ */
+        .page-nav {
+            position: fixed;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            z-index: 100;
+        }
+        
+        .page-nav__dot {
+            width: 12px;
+            height: 12px;
+            border: 2px solid var(--rose);
+            border-radius: 50%;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.4s var(--ease-bounce);
+            position: relative;
+        }
+        
+        .page-nav__dot::before {
+            content: '';
+            position: absolute;
+            inset: 2px;
+            background: var(--rose);
+            border-radius: 50%;
+            transform: scale(0);
+            transition: transform 0.4s var(--ease-bounce);
+        }
+        
+        .page-nav__dot.active::before {
+            transform: scale(1);
+        }
+        
+        .page-nav__dot:hover {
+            transform: scale(1.3);
+        }
+        
+        /* ═══════════════════════════════════════════════════════════════════
+           RESPONSIVE
+           ═══════════════════════════════════════════════════════════════════ */
+        @media (max-width: 768px) {
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .page-nav {
+                right: 1rem;
+            }
+            
+            .page {
+                padding: 1.5rem;
+            }
+            
+            .pdf-preview {
+                display: none;
+            }
+            
+            .checkbox-group {
+                padding-right: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cosmic Background -->
+    <div class="cosmic-bg">
+        <div class="nebula nebula--1"></div>
+        <div class="nebula nebula--2"></div>
+        <div class="nebula nebula--3"></div>
+        <div class="stars" id="stars"></div>
+    </div>
+    
+    <!-- Confetti Container (for success) -->
+    <div class="confetti-container" id="confettiContainer"></div>
+    
+    <!-- Page Navigation -->
+    <nav class="page-nav">
+        <button class="page-nav__dot active" data-page="0"></button>
+        <button class="page-nav__dot" data-page="1"></button>
+        <button class="page-nav__dot" data-page="2"></button>
+        <button class="page-nav__dot" data-page="3"></button>
+    </nav>
+    
+    <!-- Pages Container -->
+    <div class="pages-container">
+        
+        <!-- PAGE 1: INTRO -->
+        <section class="page page-intro active" data-index="0">
+            <div class="page__content">
+                <div class="moon-container">
+                    <div class="moon-ring"></div>
+                    <div class="moon-ring"></div>
+                    <div class="moon-ring"></div>
+                    <div class="moon-main"></div>
+                </div>
+                
+                <h1>LUNARA</h1>
+                <p class="tagline">Newsletter</p>
+                <p class="intro-text">
+                    Tauche ein in eine Welt exklusiver Dessous, geheimer Previews 
+                    und persönlicher Geschichten. Nur für Newsletter-Abonnenten.
+                </p>
+                
+                <button class="btn btn--primary" onclick="goToPage(1)">
+                    <span>Entdecken</span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </button>
+            </div>
+        </section>
+        
+        <!-- PAGE 2: BENEFITS -->
+        <section class="page page-benefits" data-index="1">
+            <div class="page__content">
+                <h2>Was dich <span>erwartet</span></h2>
+                
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <div class="benefit-card__icon">💌</div>
+                        <h3>Exklusive Previews</h3>
+                        <p>Sieh neue Kollektionen vor allen anderen</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-card__icon">🎁</div>
+                        <h3>Geheime Rabatte</h3>
+                        <p>Spezielle Codes nur für Abonnenten</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-card__icon">📖</div>
+                        <h3>Persönliche Stories</h3>
+                        <p>Einblicke hinter die Kulissen</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-card__icon">🌙</div>
+                        <h3>Monats-Ausgabe</h3>
+                        <p>Digitales Magazin als PDF</p>
+                    </div>
+                </div>
+                
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <button class="btn btn--secondary" onclick="goToPage(0)">Zurück</button>
+                    <button class="btn btn--primary" onclick="goToPage(2)">
+                        <span>Weiter</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- PAGE 3: FORM -->
+        <section class="page page-form" data-index="2">
+            <div class="page__content">
+                <h2>Werde Teil der <span>LUNARA</span> Familie</h2>
+                <p class="subtitle">Melde dich jetzt an und erhalte sofort die aktuelle Ausgabe</p>
+                
+                <form class="newsletter-form" id="newsletterForm">
+                    <div class="form-group required" id="nameGroup">
+                        <input type="text" id="firstName" placeholder=" " autocomplete="given-name">
+                        <label for="firstName">Vorname</label>
+                        <span class="error-message">Bitte gib deinen Vornamen ein</span>
+                    </div>
+                    
+                    <div class="form-group required" id="emailGroup">
+                        <input type="email" id="email" placeholder=" " autocomplete="email">
+                        <label for="email">E-Mail Adresse</label>
+                        <span class="error-message">Bitte gib eine gültige E-Mail ein</span>
+                    </div>
+                    
+                    <div class="checkbox-group" id="privacyGroup" onclick="toggleCheckbox()">
+                        <div class="custom-checkbox">
+                            <input type="checkbox" id="privacyCheck">
+                            <span class="checkbox-visual"></span>
+                        </div>
+                        <div class="checkbox-content">
+                            <h4>
+                                Datenschutz akzeptieren
+                                <span class="badge">+ PDF</span>
+                            </h4>
+                            <p>
+                                Ich stimme der Verarbeitung meiner Daten zu und erhalte 
+                                <strong>sofort die aktuelle Newsletter-Ausgabe als PDF</strong>.
+                            </p>
+                        </div>
+                        <div class="pdf-preview">
+                            <div class="lines">
+                                <div class="line"></div>
+                                <div class="line"></div>
+                                <div class="line"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1rem;">
+                        <button type="button" class="btn btn--secondary" onclick="goToPage(1)">Zurück</button>
+                        <button type="submit" class="btn btn--primary">
+                            <span>Anmelden</span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+        
+        <!-- PAGE 4: SUCCESS -->
+        <section class="page page-success" data-index="3">
+            <div class="page__content">
+                <div class="success-icon">
+                    <div class="success-glow"></div>
+                    <div class="success-circle"></div>
+                    <div class="success-check">
+                        <svg viewBox="0 0 60 40">
+                            <path d="M5 20 L22 37 L55 4"/>
+                        </svg>
+                    </div>
+                </div>
+                
+                <h2>Willkommen, <span id="displayName">Schatz</span>! 💕</h2>
+                <p class="success-text">
+                    Du bist jetzt Teil der LUNARA Familie. 
+                    Deine erste Ausgabe wartet bereits auf dich!
+                </p>
+                
+                <div class="download-card">
+                    <div class="download-card__content">
+                        <h3>🌙 LUNARA Newsletter – Januar 2026</h3>
+                        <p>Deine exklusive Ausgabe mit allen Neuheiten, Geheimtipps und einer besonderen Überraschung.</p>
+                        <button class="btn btn--download" onclick="downloadPDF()">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="7 10 12 15 17 10"/>
+                                <line x1="12" y1="15" x2="12" y2="3"/>
+                            </svg>
+                            <span>PDF Herunterladen</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <button class="btn btn--secondary" onclick="window.location.href='index.html'">
+                    Zurück zur Startseite
+                </button>
+            </div>
+        </section>
+        
+    </div>
+    
+    <script>
+        // ═══════════════════════════════════════════════════════════════════
+        // INITIALIZATION
+        // ═══════════════════════════════════════════════════════════════════
+        
+        let currentPage = 0;
+        const totalPages = 4;
+        
+        // Generate stars
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.top = `${Math.random() * 100}%`;
+            star.style.animationDelay = `${Math.random() * 4}s`;
+            star.style.animationDuration = `${2 + Math.random() * 3}s`;
+            starsContainer.appendChild(star);
+        }
+        
+        // Generate particles
+        const cosmicBg = document.querySelector('.cosmic-bg');
+        for (let i = 0; i < 30; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = `${Math.random() * 100}%`;
+            particle.style.animationDelay = `${Math.random() * 20}s`;
+            particle.style.animationDuration = `${15 + Math.random() * 10}s`;
+            cosmicBg.appendChild(particle);
+        }
+        
+        // Shooting stars
+        for (let i = 0; i < 3; i++) {
+            const shootingStar = document.createElement('div');
+            shootingStar.className = 'shooting-star';
+            shootingStar.style.top = `${10 + Math.random() * 40}%`;
+            shootingStar.style.animationDelay = `${i * 5 + Math.random() * 3}s`;
+            cosmicBg.appendChild(shootingStar);
+        }
+        
+        // ═══════════════════════════════════════════════════════════════════
+        // PAGE NAVIGATION
+        // ═══════════════════════════════════════════════════════════════════
+        
+        function goToPage(index) {
+            if (index === currentPage || index < 0 || index >= totalPages) return;
+            
+            const pages = document.querySelectorAll('.page');
+            const dots = document.querySelectorAll('.page-nav__dot');
+            
+            // Animate current page out
+            const direction = index > currentPage ? 'exit-up' : 'exit-down';
+            pages[currentPage].classList.remove('active');
+            pages[currentPage].classList.add(direction);
+            
+            // Update dots
+            dots[currentPage].classList.remove('active');
+            dots[index].classList.add('active');
+            
+            // Short delay then show new page
+            setTimeout(() => {
+                pages[currentPage].classList.remove(direction);
+                currentPage = index;
+                pages[currentPage].classList.add('active');
+                
+                // Special effects for success page
+                if (index === 3) {
+                    launchConfetti();
+                }
+            }, 300);
+        }
+        
+        // Dot navigation
+        document.querySelectorAll('.page-nav__dot').forEach(dot => {
+            dot.addEventListener('click', () => {
+                const targetPage = parseInt(dot.dataset.page);
+                // Don't allow skipping to success without form
+                if (targetPage === 3 && currentPage !== 3) return;
+                goToPage(targetPage);
+            });
+        });
+        
+        // ═══════════════════════════════════════════════════════════════════
+        // FORM HANDLING
+        // ═══════════════════════════════════════════════════════════════════
+        
+        const form = document.getElementById('newsletterForm');
+        const firstNameInput = document.getElementById('firstName');
+        const emailInput = document.getElementById('email');
+        const privacyCheck = document.getElementById('privacyCheck');
+        const privacyGroup = document.getElementById('privacyGroup');
+        
+        function toggleCheckbox() {
+            privacyCheck.checked = !privacyCheck.checked;
+            privacyGroup.classList.toggle('checked', privacyCheck.checked);
+        }
+        
+        // Prevent checkbox default to use custom toggle
+        privacyCheck.addEventListener('click', (e) => e.stopPropagation());
+        privacyCheck.addEventListener('change', () => {
+            privacyGroup.classList.toggle('checked', privacyCheck.checked);
+        });
+        
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            let isValid = true;
+            
+            // Validate first name (REQUIRED)
+            const nameGroup = document.getElementById('nameGroup');
+            if (!firstNameInput.value.trim()) {
+                nameGroup.classList.add('error');
+                isValid = false;
+            } else {
+                nameGroup.classList.remove('error');
+            }
+            
+            // Validate email
+            const emailGroup = document.getElementById('emailGroup');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(emailInput.value)) {
+                emailGroup.classList.add('error');
+                isValid = false;
+            } else {
+                emailGroup.classList.remove('error');
+            }
+            
+            // Validate privacy checkbox
+            if (!privacyCheck.checked) {
+                privacyGroup.style.animation = 'inputShake 0.5s ease';
+                setTimeout(() => privacyGroup.style.animation = '', 500);
+                isValid = false;
+            }
+            
+            if (isValid) {
+                // Update success page with name
+                document.getElementById('displayName').textContent = firstNameInput.value.trim();
+                
+                // Go to success page
+                goToPage(3);
+                
+                // Auto-trigger PDF download after short delay
+                setTimeout(() => {
+                    downloadPDF();
+                }, 1500);
+            }
+        });
+        
+        // Remove error on input
+        firstNameInput.addEventListener('input', () => {
+            document.getElementById('nameGroup').classList.remove('error');
+        });
+        
+        emailInput.addEventListener('input', () => {
+            document.getElementById('emailGroup').classList.remove('error');
+        });
+        
+        // ═══════════════════════════════════════════════════════════════════
+        // PDF DOWNLOAD
+        // ═══════════════════════════════════════════════════════════════════
+        
+        function downloadPDF() {
+            // Download the real LUNARA Newsletter PDF
+            const link = document.createElement('a');
+            link.href = 'LUNARA-Newsletter-Januar-2026.pdf';
+            link.download = 'LUNARA-Newsletter-Januar-2026.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+        
+        // ═══════════════════════════════════════════════════════════════════
+        // CONFETTI
+        // ═══════════════════════════════════════════════════════════════════
+        
+        function launchConfetti() {
+            const container = document.getElementById('confettiContainer');
+            const colors = ['#C9A396', '#B8956E', '#D4B5A9', '#F5F0EB', '#D4B896'];
+            
+            for (let i = 0; i < 80; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = `${Math.random() * 100}%`;
+                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.animationDuration = `${2 + Math.random() * 2}s`;
+                    confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+                    confetti.style.width = `${6 + Math.random() * 8}px`;
+                    confetti.style.height = `${6 + Math.random() * 8}px`;
+                    
+                    container.appendChild(confetti);
+                    
+                    setTimeout(() => confetti.remove(), 4000);
+                }, i * 30);
+            }
+        }
+        
+        // ═══════════════════════════════════════════════════════════════════
+        // KEYBOARD NAVIGATION
+        // ═══════════════════════════════════════════════════════════════════
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                if (currentPage < totalPages - 1 && currentPage !== 2) {
+                    goToPage(currentPage + 1);
+                }
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                if (currentPage > 0) {
+                    goToPage(currentPage - 1);
+                }
+            }
+        });
+        
+        // ═══════════════════════════════════════════════════════════════════
+        // SCROLL WHEEL NAVIGATION
+        // ═══════════════════════════════════════════════════════════════════
+        
+        let scrollTimeout;
+        let canScroll = true;
+        
+        document.addEventListener('wheel', (e) => {
+            if (!canScroll) return;
+            
+            // Don't scroll if on form page (let user interact)
+            if (currentPage === 2) return;
+            
+            canScroll = false;
+            
+            if (e.deltaY > 0 && currentPage < totalPages - 1) {
+                goToPage(currentPage + 1);
+            } else if (e.deltaY < 0 && currentPage > 0) {
+                goToPage(currentPage - 1);
+            }
+            
+            setTimeout(() => canScroll = true, 1000);
+        });
+    </script>
+</body>
+</html>
