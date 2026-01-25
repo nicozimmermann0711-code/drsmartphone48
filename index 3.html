@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUNARA – Kuratierte Intimwäsche</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Intro Animation -->
+    <div class="intro-overlay" id="intro">
+        <div class="intro-particles" id="particles"></div>
+        <div class="intro-moon">
+            <div class="moon-glow"></div>
+            <svg viewBox="0 0 100 100"><path d="M50 10 A40 40 0 1 1 50 90 A25 25 0 1 0 50 10" stroke-linecap="round" fill="none" stroke="#C9A9A6" stroke-width="1.5"/></svg>
+        </div>
+        <div class="intro-text">LUNARA</div>
+        <div class="intro-tagline">Kuratierte Intimwäsche</div>
+    </div>
+
+    <!-- Cookie Banner -->
+    <div class="cookie-banner" id="cookieBanner">
+        <p class="cookie-text">Wir verwenden Cookies, um dir das beste Erlebnis zu bieten. <a href="datenschutz.html">Mehr erfahren</a></p>
+        <div class="cookie-buttons">
+            <button class="cookie-btn cookie-decline" onclick="declineCookies()">Ablehnen</button>
+            <button class="cookie-btn cookie-accept" onclick="acceptCookies()">Akzeptieren</button>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav-wrapper" id="navbar">
+        <div class="nav-main">
+            <div class="nav-left">
+                <a href="index.html" class="logo">
+                    <div class="logo-moon"><svg viewBox="0 0 100 100"><path d="M50 10 A40 40 0 1 1 50 90 A25 25 0 1 0 50 10" stroke-linecap="round" fill="none" stroke="#C9A9A6" stroke-width="1.5"/></svg></div>
+                    <span class="logo-text">Lunara</span>
+                </a>
+                <a href="#points" class="points-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    <span id="userPoints">0 Punkte</span>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="kollektion.html">Kollektion</a></li>
+                <li><a href="merch.html">Merch</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+            <div class="nav-right">
+                <button class="cart-btn" id="cartBtn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/><path d="M6 6L5 3H2"/></svg>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+                <button class="mobile-toggle" id="mobileToggle"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg">
+            <div class="hero-orb orb-1"></div>
+            <div class="hero-orb orb-2"></div>
+            <div class="hero-orb orb-3"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-badge"><span class="badge-dot"></span><span>Handverlesen & Einzigartig</span></div>
+                <h1 class="hero-title">Kuratierte<br><span class="accent">Intimwäsche</span><br>mit Charakter</h1>
+                <p class="hero-description">Jedes Stück erzählt eine Geschichte. Exklusiv ausgewählt, diskret verpackt und mit persönlicher Note – für alle, die das Besondere suchen.</p>
+                <div class="hero-features">
+                    <div class="hero-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg><span>Diskret</span></div>
+                    <div class="hero-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span>Kuratiert</span></div>
+                    <div class="hero-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>Punkte sammeln</span></div>
+                </div>
+                <div class="hero-ctas">
+                    <a href="kollektion.html" class="btn-primary">Zur Kollektion <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                    <a href="#about" class="btn-secondary">Mehr erfahren</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-image-frame"></div>
+                <img src="images/Über_mich.jpg" alt="LUNARA" class="hero-image-main">
+                <div class="hero-image-dots"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="about-container">
+            <div class="about-image-wrap fade-in-left">
+                <img src="images/Über_mich.jpg" alt="Über mich" class="about-image">
+                <div class="about-image-accent"></div>
+            </div>
+            <div class="about-content fade-in-right">
+                <h2>Über <span>mich</span></h2>
+                <p>Willkommen bei LUNARA – meiner kleinen, handverlesenen Welt der besonderen Intimwäsche. Jedes Stück wird von mir persönlich ausgewählt und mit Liebe zum Detail präsentiert.</p>
+                <p>Was als persönliche Leidenschaft begann, ist heute eine kuratierte Sammlung für Menschen, die das Außergewöhnliche schätzen. Diskretion und Vertrauen stehen dabei immer an erster Stelle.</p>
+                <div class="about-values">
+                    <div class="value-card">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                        <h4>100% Diskret</h4>
+                        <p>Neutrale Verpackung</p>
+                    </div>
+                    <div class="value-card">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        <h4>Handverlesen</h4>
+                        <p>Persönlich ausgewählt</p>
+                    </div>
+                    <div class="value-card">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        <h4>Vertrauensvoll</h4>
+                        <p>Sichere Zahlung</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6-Punkte Rating System -->
+    <section class="rating-system">
+        <div class="section-header fade-in">
+            <div class="section-badge">Transparenz</div>
+            <h2 class="section-title">Das <span>6-Punkte</span> Bewertungssystem</h2>
+            <p class="section-subtitle">Jedes Stück wird nach sechs Kriterien bewertet – für vollständige Transparenz.</p>
+        </div>
+        <div class="rating-grid">
+            <div class="rating-card fade-in"><div class="rating-number">1</div><h3>Zustand</h3><p>Allgemeiner Zustand des Artikels</p><div class="rating-dots"><span class="rating-dot green"></span><span class="rating-dot yellow"></span><span class="rating-dot red"></span></div></div>
+            <div class="rating-card fade-in"><div class="rating-number">2</div><h3>Duft</h3><p>Intensität des persönlichen Dufts</p><div class="rating-dots"><span class="rating-dot green"></span><span class="rating-dot yellow"></span><span class="rating-dot red"></span></div></div>
+            <div class="rating-card fade-in"><div class="rating-number">3</div><h3>Waschstatus</h3><p>Letzter Waschgang des Artikels</p><div class="rating-dots"><span class="rating-dot green"></span><span class="rating-dot yellow"></span><span class="rating-dot red"></span></div></div>
+            <div class="rating-card fade-in"><div class="rating-number">4</div><h3>Materialqualität</h3><p>Qualität und Beschaffenheit</p><div class="rating-dots"><span class="rating-dot green"></span><span class="rating-dot yellow"></span><span class="rating-dot red"></span></div></div>
+            <div class="rating-card fade-in"><div class="rating-number">5</div><h3>Tragedauer</h3><p>Wie lange getragen wurde</p><div class="rating-dots"><span class="rating-dot green"></span><span class="rating-dot yellow"></span><span class="rating-dot red"></span></div></div>
+            <div class="rating-card fade-in"><div class="rating-number">6</div><h3>Extras</h3><p>Zusätzliche Services inklusive</p><div class="rating-dots"><span class="rating-dot green"></span><span class="rating-dot yellow"></span><span class="rating-dot red"></span></div></div>
+        </div>
+    </section>
+
+    <!-- Points Section -->
+    <section class="points-section" id="points">
+        <div class="points-bg-text">PUNKTE</div>
+        <div class="points-container">
+            <div class="points-header fade-in">
+                <div class="section-badge">Belohnungen</div>
+                <h2 class="section-title">Das <span>Punkte</span>-System</h2>
+                <p class="section-subtitle">Sammle bei jedem Einkauf Punkte und löse sie für exklusive Rabatte ein.</p>
+            </div>
+            <div class="points-explanation">
+                <div class="points-text fade-in-left">
+                    <h3>So funktioniert's: <span>1€ = 1 Punkt</span></h3>
+                    <p>Bei jedem Einkauf sammelst du automatisch Punkte – für jeden Euro erhältst du einen Punkt gutgeschrieben.</p>
+                    <p>Die gesammelten Punkte kannst du bei deinem nächsten Einkauf gegen attraktive Rabatte eintauschen!</p>
+                    <div class="points-formula">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                        <span>1€ Einkaufswert = 1 LUNARA Punkt</span>
+                    </div>
+                </div>
+                <div class="points-visual fade-in-right">
+                    <div class="points-circle"><span class="points-circle-number">1:1</span><span class="points-circle-text">Euro zu Punkt</span></div>
+                </div>
+            </div>
+            <div class="rewards-grid">
+                <div class="reward-card fade-in"><div class="reward-points">100</div><h4>5€ Rabatt</h4><p>Dein erster Meilenstein</p></div>
+                <div class="reward-card fade-in"><div class="reward-points">250</div><h4>15€ Rabatt</h4><p>Treue wird belohnt</p></div>
+                <div class="reward-card fade-in"><div class="reward-points">500</div><h4>35€ Rabatt</h4><p>VIP Status erreicht</p></div>
+                <div class="reward-card fade-in"><div class="reward-points">1000</div><h4>Gratis Artikel</h4><p>Das ultimative Ziel</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq">
+        <div class="faq-container">
+            <div class="section-header fade-in">
+                <div class="section-badge">Häufige Fragen</div>
+                <h2 class="section-title">FAQ & <span>Prozess</span></h2>
+                <p class="section-subtitle">Alle wichtigen Informationen auf einen Blick.</p>
+            </div>
+            <div class="faq-item fade-in"><button class="faq-question"><span>Wie funktioniert die Bestellung?</span><div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div></button><div class="faq-answer"><div class="faq-answer-content">Wähle dein gewünschtes Stück aus, füge optional Services hinzu und lege es in den Warenkorb. Nach Zahlungseingang wird deine Bestellung bearbeitet und diskret versendet.</div></div></div>
+            <div class="faq-item fade-in"><button class="faq-question"><span>Wie diskret ist der Versand?</span><div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div></button><div class="faq-answer"><div class="faq-answer-content">100% diskret! Neutrale Verpackung ohne jeden Hinweis auf den Inhalt. Als Absender erscheint ein neutraler Name. Auch auf dem Kontoauszug erscheint kein auffälliger Name.</div></div></div>
+            <div class="faq-item fade-in"><button class="faq-question"><span>Was bedeuten die Ampelfarben?</span><div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div></button><div class="faq-answer"><div class="faq-answer-content">Grün steht für "neuwertig/dezent/kurz", Gelb für "moderat/mittel" und Rot für "intensiv/länger". Jede Kategorie hat ihre eigene Bedeutung.</div></div></div>
+            <div class="faq-item fade-in"><button class="faq-question"><span>Welche Zahlungsmethoden gibt es?</span><div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div></button><div class="faq-answer"><div class="faq-answer-content">PayPal, Kreditkarten (Visa, Mastercard, Amex), SEPA-Überweisung und Revolut. Bei allen Methoden erscheint ein diskreter Verwendungszweck.</div></div></div>
+            <div class="faq-item fade-in"><button class="faq-question"><span>Kann ich Sonderwünsche äußern?</span><div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div></button><div class="faq-answer"><div class="faq-answer-content">Natürlich! Bei jedem Artikel kannst du optionale Services hinzubuchen. Für spezielle Wünsche kontaktiere mich einfach direkt.</div></div></div>
+            <div class="faq-item fade-in"><button class="faq-question"><span>Wie funktioniert das Punktesystem?</span><div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div></button><div class="faq-answer"><div class="faq-answer-content">Für jeden Euro erhältst du einen Punkt. 100 Punkte = 5€, 250 Punkte = 15€, 500 Punkte = 35€. Bei 1000 Punkten gibt's einen Gratis-Artikel!</div></div></div>
+            <div class="faq-item fade-in"><button class="faq-question"><span>Gibt es Rückgabe?</span><div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div></button><div class="faq-answer"><div class="faq-answer-content">Aufgrund der Natur der Produkte ist Rückgabe ausgeschlossen. Sollte etwas nicht der Beschreibung entsprechen, finden wir eine Lösung.</div></div></div>
+            <div class="faq-item fade-in"><button class="faq-question"><span>Wie lange dauert der Versand?</span><div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div></button><div class="faq-answer"><div class="faq-answer-content">Innerhalb Deutschlands 2-4 Werktage. Bei gebuchten Services kann es länger dauern. Du erhältst eine Benachrichtigung, sobald dein Paket unterwegs ist.</div></div></div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="newsletter-container">
+            <div class="newsletter-moon"><svg viewBox="0 0 100 100"><path d="M50 10 A40 40 0 1 1 50 90 A25 25 0 1 0 50 10" stroke-linecap="round" fill="none" stroke="#C9A9A6" stroke-width="1.5"/></svg></div>
+            <h2 class="newsletter-title">Bleib auf dem Laufenden</h2>
+            <p class="newsletter-subtitle">Erhalte exklusive Neuigkeiten und Angebote direkt in dein Postfach.</p>
+            <form class="newsletter-form" id="newsletterForm">
+                <div class="newsletter-input-wrap">
+                    <input type="email" class="newsletter-input" placeholder="Deine E-Mail-Adresse" required id="newsletterEmail">
+                    <button type="submit" class="newsletter-submit">Anmelden</button>
+                </div>
+                <div class="newsletter-checkbox-wrap">
+                    <input type="checkbox" class="newsletter-checkbox" id="agbCheckbox">
+                    <label class="newsletter-checkbox-label" for="agbCheckbox">Ich stimme den <a href="agb.html">AGB</a> und der <a href="datenschutz.html">Datenschutzerklärung</a> zu.</label>
+                </div>
+                <p class="newsletter-error" id="newsletterError">Bitte akzeptiere die AGB.</p>
+            </form>
+            <div class="newsletter-success" id="newsletterSuccess">
+                <div class="success-checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <p class="success-text">Willkommen bei LUNARA!</p>
+                <p class="success-subtext">Du erhältst bald Post von mir ✨</p>
+            </div>
+        </div>
+        <div class="confetti-container" id="confetti"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-main">
+            <div class="footer-brand">
+                <a href="index.html" class="logo"><div class="logo-moon"><svg viewBox="0 0 100 100"><path d="M50 10 A40 40 0 1 1 50 90 A25 25 0 1 0 50 10" stroke-linecap="round" fill="none" stroke="#C9A9A6" stroke-width="1.5"/></svg></div><span class="logo-text">Lunara</span></a>
+                <p>Kuratierte Intimwäsche mit persönlicher Note. Diskret, einzigartig und mit Liebe zum Detail.</p>
+                <div class="footer-social">
+                    <a href="#" class="social-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+                    <a href="#" class="social-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
+                </div>
+            </div>
+            <div class="footer-column"><h4>Shop</h4><ul class="footer-links"><li><a href="kollektion.html">Kollektion</a></li><li><a href="merch.html">Merchandise</a></li><li><a href="#points">Punktesystem</a></li><li><a href="feedback.html">Feedback</a></li></ul></div>
+            <div class="footer-column"><h4>Information</h4><ul class="footer-links"><li><a href="#about">Über mich</a></li><li><a href="#faq">FAQ</a></li><li><a href="impressum.html">Impressum</a></li><li><a href="datenschutz.html">Datenschutz</a></li></ul></div>
+            <div class="footer-column"><h4>Rechtliches</h4><ul class="footer-links"><li><a href="agb.html">AGB</a></li><li><a href="widerruf.html">Widerrufsbelehrung</a></li></ul></div>
+        </div>
+        <div class="footer-payments">
+            <h4>Sichere Zahlungsmethoden</h4>
+            <div class="payment-icons">
+                <svg class="payment-icon" viewBox="0 0 50 35" height="28"><rect width="50" height="35" rx="5" fill="#003087"/><text x="25" y="22" text-anchor="middle" fill="#FAF8F5" font-size="10" font-weight="bold">PayPal</text></svg>
+                <svg class="payment-icon" viewBox="0 0 50 35" height="28"><rect width="50" height="35" rx="5" fill="#1A1F71"/><text x="25" y="22" text-anchor="middle" fill="#FAF8F5" font-size="12" font-weight="bold">VISA</text></svg>
+                <svg class="payment-icon" viewBox="0 0 50 35" height="28"><rect width="50" height="35" rx="5" fill="#EB001B"/><circle cx="20" cy="17.5" r="10" fill="#EB001B"/><circle cx="30" cy="17.5" r="10" fill="#F79E1B"/></svg>
+                <svg class="payment-icon" viewBox="0 0 50 35" height="28"><rect width="50" height="35" rx="5" fill="#006FCF"/><text x="25" y="22" text-anchor="middle" fill="#FAF8F5" font-size="8" font-weight="bold">AMEX</text></svg>
+                <svg class="payment-icon" viewBox="0 0 50 35" height="28"><rect width="50" height="35" rx="5" fill="#FAF8F5" stroke="#D4C8BC"/><text x="25" y="22" text-anchor="middle" fill="#2D2926" font-size="10" font-weight="bold">SEPA</text></svg>
+                <svg class="payment-icon" viewBox="0 0 60 35" height="28"><rect width="60" height="35" rx="5" fill="#FAF8F5" stroke="#D4C8BC"/><text x="30" y="22" text-anchor="middle" fill="#2D2926" font-size="9" font-weight="bold">Revolut</text></svg>
+            </div>
+        </div>
+        <div class="footer-tip">
+            <h5>💝 Trinkgeld für LUNARA</h5>
+            <p>Dir gefällt meine Arbeit? Über ein kleines Trinkgeld freue ich mich – ich werde mich persönlich bei dir bedanken!</p>
+            <div class="tip-buttons">
+                <button class="tip-btn" onclick="sendTip(5)">5€</button>
+                <button class="tip-btn" onclick="sendTip(10)">10€</button>
+                <button class="tip-btn" onclick="sendTip(20)">20€</button>
+                <button class="tip-btn" onclick="sendTip(0)">Anderer Betrag</button>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 LUNARA. Alle Rechte vorbehalten.</p>
+            <div class="footer-legal"><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a><a href="agb.html">AGB</a><a href="widerruf.html">Widerruf</a></div>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header"><h3>Warenkorb</h3><button class="cart-close" id="cartClose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
+        <div class="cart-items" id="cartItems"><div class="cart-empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/><path d="M6 6L5 3H2"/></svg><p>Dein Warenkorb ist leer</p></div></div>
+        <div class="cart-footer">
+            <div class="cart-total"><span>Gesamt:</span><span class="cart-total-final" id="cartTotal">0,00 €</span></div>
+            <div class="cart-points-preview" id="cartPointsPreview">Du erhältst <strong>0 Punkte</strong> mit dieser Bestellung</div>
+            <button class="cart-checkout" id="checkoutBtn">Zur Kasse</button>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="checkout-modal" id="checkoutModal">
+        <div class="checkout-content">
+            <div class="checkout-header"><h3>Zahlungsart wählen</h3><button class="checkout-close" id="checkoutClose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
+            <div class="checkout-body">
+                <div class="checkout-summary"><h4>Bestellübersicht</h4><div class="checkout-total"><span>Gesamtbetrag:</span><span id="checkoutTotal">0,00 €</span></div></div>
+                <div class="payment-methods">
+                    <h4>Zahlungsmethode</h4>
+                    <div class="payment-options">
+                        <div class="payment-option" onclick="processPayment('paypal')"><span>💳 PayPal</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+                        <div class="payment-option" onclick="processPayment('card')"><span>💳 Kreditkarte (Visa, MC, Amex)</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+                        <div class="payment-option" onclick="processPayment('sepa')"><span>🏦 SEPA-Überweisung</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+                        <div class="payment-option" onclick="processPayment('revolut')"><span>📱 Revolut</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast">Hinzugefügt!</div>
+    <script src="main.js"></script>
+</body>
+</html>
