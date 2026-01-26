@@ -3,3190 +3,666 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LUNARA – Curated Intimacy</title>
-    <!-- Favicon & App Icons -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
-    <meta name="theme-color" content="#0a0a0a">
-
-    <meta name="description" content="Exklusive Dessous & Lingerie. Diskretion garantiert.">
     
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <style>
-        /* ═══════════════════════════════════════════════════════════════
-           LUNARA – CURATED INTIMACY | ULTIMATE PREMIUM EXPERIENCE
-           ═══════════════════════════════════════════════════════════════ */
-        
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        /* ═══ THEME VARIABLES ═══ */
-        :root {
-            --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        [data-theme="dark"] {
-            --bg-primary: #0a0a0a;
-            --bg-secondary: #111111;
-            --bg-tertiary: #1a1a1a;
-            --bg-card: #151515;
-            --bg-glass: rgba(20, 20, 20, 0.8);
-            --rose: #D4A5A5;
-            --rose-light: #E8C4C4;
-            --rose-dark: #B88A8A;
-            --rose-glow: rgba(212, 165, 165, 0.3);
-            --gold: #C9A962;
-            --gold-light: #E8D5A3;
-            --gold-glow: rgba(201, 169, 98, 0.3);
-            --text-primary: #F5F5F5;
-            --text-secondary: #A0A0A0;
-            --text-muted: #606060;
-            --border-subtle: rgba(212, 165, 165, 0.15);
-            --shadow-glow: 0 0 60px rgba(212, 165, 165, 0.15);
-            --gradient-luxury: linear-gradient(135deg, #D4A5A5 0%, #C9A962 50%, #D4A5A5 100%);
-        }
-        
-        [data-theme="light"] {
-            --bg-primary: #FAF7F5;
-            --bg-secondary: #F5F0ED;
-            --bg-tertiary: #EDE5E0;
-            --bg-card: #FFFFFF;
-            --bg-glass: rgba(255, 255, 255, 0.85);
-            --rose: #B88A8A;
-            --rose-light: #D4A5A5;
-            --rose-dark: #9A7070;
-            --rose-glow: rgba(184, 138, 138, 0.2);
-            --gold: #A08040;
-            --gold-light: #C9A962;
-            --gold-glow: rgba(160, 128, 64, 0.2);
-            --text-primary: #2D2D2D;
-            --text-secondary: #5A5A5A;
-            --text-muted: #8A8A8A;
-            --border-subtle: rgba(184, 138, 138, 0.2);
-            --shadow-glow: 0 0 60px rgba(184, 138, 138, 0.1);
-            --gradient-luxury: linear-gradient(135deg, #B88A8A 0%, #A08040 50%, #B88A8A 100%);
-        }
-        
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            overflow-x: hidden;
-            line-height: 1.7;
-            transition: var(--transition-smooth);
-        }
-        
-        /* ═══════════════════════════════════════════════════════════════
-           EPIC BOOT ANIMATION WITH ASTEROIDS
-           ═══════════════════════════════════════════════════════════════ */
-        
-        .boot-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 100000;
-            background: #000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            pointer-events: all;
-            overflow: hidden;
-        }
-        
-        .boot-screen.finished {
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        /* Starfield Background */
-        .starfield {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(ellipse at center, #0a0a15 0%, #000 100%);
-        }
-        
-        .star {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: #fff;
-            border-radius: 50%;
-            animation: starTwinkle 3s ease-in-out infinite;
-        }
-        
-        @keyframes starTwinkle {
-            0%, 100% { opacity: 0.3; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.5); }
-        }
-        
-        /* Asteroids */
-        .asteroid-field {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            perspective: 1000px;
-        }
-        
-        .asteroid {
-            position: absolute;
-            background: linear-gradient(135deg, #3a3a3a 0%, #1a1a1a 50%, #2a2a2a 100%);
-            border-radius: 30% 70% 50% 50% / 50% 50% 70% 30%;
-            box-shadow: 
-                inset -5px -5px 15px rgba(0,0,0,0.8),
-                inset 5px 5px 15px rgba(80,80,80,0.3),
-                0 0 20px rgba(0,0,0,0.5);
-            animation: asteroidFloat linear infinite;
-            opacity: 0;
-        }
-        
-        .asteroid::before {
-            content: '';
-            position: absolute;
-            width: 30%;
-            height: 30%;
-            background: rgba(60,60,60,0.5);
-            border-radius: 50%;
-            top: 20%;
-            left: 20%;
-        }
-        
-        .asteroid::after {
-            content: '';
-            position: absolute;
-            width: 15%;
-            height: 15%;
-            background: rgba(40,40,40,0.8);
-            border-radius: 50%;
-            bottom: 25%;
-            right: 30%;
-        }
-        
-        @keyframes asteroidFloat {
-            0% { 
-                transform: translateZ(500px) translateX(100vw) translateY(-50vh) rotate(0deg);
-                opacity: 0;
-            }
-            10% { opacity: 0.8; }
-            90% { opacity: 0.8; }
-            100% { 
-                transform: translateZ(-500px) translateX(-100vw) translateY(50vh) rotate(360deg);
-                opacity: 0;
-            }
-        }
-        
-        /* Moon Logo */
-        .boot-moon {
-            position: relative;
-            z-index: 10;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 30px;
-        }
-        
-        .moon-container {
-            position: relative;
-            width: 200px;
-            height: 200px;
-            animation: moonPulse 4s ease-in-out infinite;
-        }
-        
-        @keyframes moonPulse {
-            0%, 100% { filter: drop-shadow(0 0 30px rgba(212, 165, 165, 0.5)); }
-            50% { filter: drop-shadow(0 0 80px rgba(212, 165, 165, 0.8)); }
-        }
-        
-        .moon-svg {
-            width: 100%;
-            height: 100%;
-        }
-        
-        .moon-phase {
-            fill: none;
-            stroke: var(--rose);
-            stroke-width: 2;
-            stroke-dasharray: 600;
-            stroke-dashoffset: 600;
-            animation: moonDraw 3s ease-out forwards;
-        }
-        
-        @keyframes moonDraw {
-            to { stroke-dashoffset: 0; }
-        }
-        
-        .moon-glow {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 250px;
-            height: 250px;
-            background: radial-gradient(circle, rgba(212, 165, 165, 0.3) 0%, transparent 70%);
-            animation: glowPulse 3s ease-in-out infinite;
-        }
-        
-        @keyframes glowPulse {
-            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
-            50% { transform: translate(-50%, -50%) scale(1.3); opacity: 0.8; }
-        }
-        
-        .boot-text {
-            font-family: 'Playfair Display', serif;
-            font-size: 4rem;
-            font-weight: 300;
-            letter-spacing: 25px;
-            color: #fff;
-            text-shadow: 0 0 30px rgba(212, 165, 165, 0.5);
-            opacity: 0;
-            animation: textReveal 1.5s ease-out 1.5s forwards;
-        }
-        
-        @keyframes textReveal {
-            0% { opacity: 0; transform: translateY(20px); letter-spacing: 50px; }
-            100% { opacity: 1; transform: translateY(0); letter-spacing: 25px; }
-        }
-        
-        .boot-tagline {
-            font-size: 0.9rem;
-            letter-spacing: 8px;
-            text-transform: uppercase;
-            color: var(--rose);
-            opacity: 0;
-            animation: textReveal 1.5s ease-out 2s forwards;
-        }
-        
-        .boot-progress {
-            position: absolute;
-            bottom: 100px;
-            width: 200px;
-            height: 2px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 2px;
-            overflow: hidden;
-        }
-        
-        .boot-progress-bar {
-            height: 100%;
-            width: 0;
-            background: var(--gradient-luxury);
-            animation: progressLoad 3.5s ease-out forwards;
-        }
-        
-        @keyframes progressLoad {
-            0% { width: 0; }
-            100% { width: 100%; }
-        }
-        
-        /* ═══════════════════════════════════════════════════════════════
-           COSMIC BACKGROUND EFFECTS
-           ═══════════════════════════════════════════════════════════════ */
-        
-        .cosmic-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            overflow: hidden;
-        }
-        
-        .nebula {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(100px);
-            mix-blend-mode: screen;
-            animation: nebulaFloat 30s ease-in-out infinite;
-        }
-        
-        .nebula-1 {
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(212, 165, 165, 0.15) 0%, transparent 70%);
-            top: -200px;
-            right: -200px;
-            animation-delay: 0s;
-        }
-        
-        .nebula-2 {
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(201, 169, 98, 0.1) 0%, transparent 70%);
-            bottom: -100px;
-            left: -100px;
-            animation-delay: -10s;
-        }
-        
-        .nebula-3 {
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(184, 138, 138, 0.12) 0%, transparent 70%);
-            top: 40%;
-            left: 30%;
-            animation-delay: -20s;
-        }
-        
-        @keyframes nebulaFloat {
-            0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
-            25% { transform: translate(50px, -30px) scale(1.1) rotate(5deg); }
-            50% { transform: translate(-30px, 50px) scale(0.9) rotate(-5deg); }
-            75% { transform: translate(30px, 30px) scale(1.05) rotate(3deg); }
-        }
-        
-        /* Floating particles */
-        .particle-container {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-        }
-        
-        .cosmic-particle {
-            position: absolute;
-            width: 3px;
-            height: 3px;
-            background: var(--rose);
-            border-radius: 50%;
-            box-shadow: 0 0 10px var(--rose-glow);
-            animation: particleDrift 20s linear infinite;
-        }
-        
-        @keyframes particleDrift {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.8; }
-            90% { opacity: 0.8; }
-            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
-        }
-        
-        /* Shooting stars */
-        .shooting-star {
-            position: absolute;
-            width: 100px;
-            height: 1px;
-            background: linear-gradient(90deg, var(--rose), transparent);
-            animation: shootingStar 8s linear infinite;
-            opacity: 0;
-        }
-        
-        @keyframes shootingStar {
-            0% { transform: translateX(-100px) translateY(0); opacity: 0; }
-            5% { opacity: 1; }
-            15% { opacity: 0; transform: translateX(calc(100vw + 100px)) translateY(200px); }
-            100% { opacity: 0; transform: translateX(calc(100vw + 100px)) translateY(200px); }
-        }
-        
-        /* ═══════════════════════════════════════════════════════════════
-           NAVIGATION WITH EROTIC BURGER ANIMATION
-           ═══════════════════════════════════════════════════════════════ */
-        
-        .nav-wrapper {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            padding: 20px 0;
-            transition: var(--transition-smooth);
-        }
-        
-        .nav-wrapper.scrolled {
-            background: var(--bg-glass);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            box-shadow: 0 5px 30px rgba(0,0,0,0.2);
-            padding: 15px 0;
-        }
-        
-        .nav-main {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 60px;
-            max-width: 1600px;
-            margin: 0 auto;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            text-decoration: none;
-            z-index: 1001;
-        }
-        
-        .logo-icon {
-            width: 50px;
-            height: 50px;
-            animation: logoFloat 6s ease-in-out infinite;
-        }
-        
-        @keyframes logoFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
-        }
-        
-        .logo-text {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            font-weight: 400;
-            letter-spacing: 8px;
-            color: var(--text-primary);
-            background: var(--gradient-luxury);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        /* Theme & Language Controls */
-        .nav-controls {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-        
-        .theme-toggle {
-            position: relative;
-            width: 70px;
-            height: 35px;
-            background: var(--bg-tertiary);
-            border-radius: 20px;
-            border: 1px solid var(--border-subtle);
-            cursor: pointer;
-            transition: var(--transition-smooth);
-            overflow: hidden;
-        }
-        
-        .theme-toggle::before {
-            content: '☀️';
-            position: absolute;
-            left: 8px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 14px;
-            transition: var(--transition-smooth);
-        }
-        
-        .theme-toggle::after {
-            content: '🌙';
-            position: absolute;
-            right: 8px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 14px;
-            transition: var(--transition-smooth);
-        }
-        
-        .theme-toggle-slider {
-            position: absolute;
-            width: 27px;
-            height: 27px;
-            background: var(--gradient-luxury);
-            border-radius: 50%;
-            top: 3px;
-            left: 3px;
-            transition: var(--transition-smooth);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-        }
-        
-        [data-theme="light"] .theme-toggle-slider {
-            left: calc(100% - 30px);
-        }
-        
-        /* Language Selector */
-        .lang-selector {
-            position: relative;
-        }
-        
-        .lang-current {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 15px;
-            background: var(--bg-tertiary);
-            border: 1px solid var(--border-subtle);
-            border-radius: 25px;
-            cursor: pointer;
-            transition: var(--transition-smooth);
-            font-size: 0.85rem;
-            color: var(--text-primary);
-        }
-        
-        .lang-current:hover {
-            border-color: var(--rose);
-        }
-        
-        .lang-flag {
-            font-size: 1.2rem;
-        }
-        
-        .lang-dropdown {
-            position: absolute;
-            top: 100%;
-            right: 0;
-            margin-top: 10px;
-            background: var(--bg-card);
-            border: 1px solid var(--border-subtle);
-            border-radius: 15px;
-            overflow: hidden;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: var(--transition-smooth);
-            min-width: 150px;
-            box-shadow: var(--shadow-glow);
-        }
-        
-        .lang-selector:hover .lang-dropdown {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-        
-        .lang-option {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 20px;
-            cursor: pointer;
-            transition: var(--transition-smooth);
-            color: var(--text-secondary);
-        }
-        
-        .lang-option:hover {
-            background: var(--rose-glow);
-            color: var(--text-primary);
-        }
-        
-        /* Erotic Burger Menu */
-        .burger-menu {
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            width: 50px;
-            height: 50px;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            z-index: 1001;
-            position: relative;
-        }
-        
-        .burger-line {
-            position: absolute;
-            width: 30px;
-            height: 2px;
-            background: var(--rose);
-            border-radius: 2px;
-            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-        }
-        
-        .burger-line:nth-child(1) {
-            top: 15px;
-        }
-        
-        .burger-line:nth-child(2) {
-            top: 24px;
-            width: 20px;
-        }
-        
-        .burger-line:nth-child(3) {
-            top: 33px;
-        }
-        
-        .burger-menu:hover .burger-line:nth-child(1) {
-            transform: translateX(5px);
-        }
-        
-        .burger-menu:hover .burger-line:nth-child(2) {
-            width: 30px;
-        }
-        
-        .burger-menu:hover .burger-line:nth-child(3) {
-            transform: translateX(-5px);
-        }
-        
-        .burger-menu.active .burger-line:nth-child(1) {
-            top: 24px;
-            transform: rotate(45deg);
-        }
-        
-        .burger-menu.active .burger-line:nth-child(2) {
-            opacity: 0;
-            transform: scaleX(0);
-        }
-        
-        .burger-menu.active .burger-line:nth-child(3) {
-            top: 24px;
-            transform: rotate(-45deg);
-        }
-        
-        /* Mobile Menu */
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: var(--bg-primary);
-            z-index: 999;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 0;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-        }
-        
-        .mobile-menu.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .mobile-menu-bg {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-        
-        .mobile-menu-bg::before {
-            content: '';
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            top: -50%;
-            left: -50%;
-            background: 
-                radial-gradient(circle at 20% 30%, rgba(212, 165, 165, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(201, 169, 98, 0.08) 0%, transparent 50%);
-            animation: menuBgRotate 30s linear infinite;
-        }
-        
-        @keyframes menuBgRotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .mobile-nav-link {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            color: var(--text-primary);
-            text-decoration: none;
-            padding: 15px 40px;
-            position: relative;
-            overflow: hidden;
-            transform: translateY(50px);
-            opacity: 0;
-            transition: all 0.5s ease;
-        }
-        
-        .mobile-menu.active .mobile-nav-link {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        
-        .mobile-nav-link:nth-child(1) { transition-delay: 0.1s; }
-        .mobile-nav-link:nth-child(2) { transition-delay: 0.15s; }
-        .mobile-nav-link:nth-child(3) { transition-delay: 0.2s; }
-        .mobile-nav-link:nth-child(4) { transition-delay: 0.25s; }
-        .mobile-nav-link:nth-child(5) { transition-delay: 0.3s; }
-        .mobile-nav-link:nth-child(6) { transition-delay: 0.35s; }
-        .mobile-nav-link:nth-child(7) { transition-delay: 0.4s; }
-        
-        .mobile-nav-link::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: var(--gradient-luxury);
-            transition: all 0.4s ease;
-            transform: translateX(-50%);
-        }
-        
-        .mobile-nav-link:hover::before {
-            width: 80%;
-        }
-        
-        .mobile-nav-link:hover {
-            color: var(--rose);
-        }
-        
-        /* Desktop Nav Links */
-        .nav-links {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-        }
-        
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 500;
-            letter-spacing: 1px;
-            position: relative;
-            padding: 5px 0;
-            transition: var(--transition-smooth);
-        }
-        
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background: var(--gradient-luxury);
-            transition: width 0.4s ease;
-        }
-        
-        .nav-links a:hover {
-            color: var(--rose);
-        }
-        
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-        
-        /* Login Button */
-        .nav-login {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 25px;
-            background: transparent;
-            border: 1px solid var(--rose);
-            color: var(--rose);
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 500;
-            letter-spacing: 1px;
-            border-radius: 30px;
-            transition: var(--transition-smooth);
-        }
-        
-        .nav-login:hover {
-            background: var(--rose);
-            color: var(--bg-primary);
-            box-shadow: 0 5px 30px var(--rose-glow);
-        }
-        
-        /* ═══════════════════════════════════════════════════════════════
-           SECTION BASE STYLES
-           ═══════════════════════════════════════════════════════════════ */
-        
-        section {
-            position: relative;
-            padding: 150px 60px;
-            z-index: 1;
-        }
-        
-        .section-container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 80px;
-        }
-        
-        .section-tag {
-            display: inline-block;
-            font-size: 0.75rem;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            color: var(--rose);
-            margin-bottom: 20px;
-            padding: 8px 20px;
-            border: 1px solid var(--rose);
-            border-radius: 30px;
-        }
-        
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            font-weight: 300;
-            line-height: 1.2;
-            margin-bottom: 20px;
-        }
-        
-        .section-title span {
-            background: var(--gradient-luxury);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        /* ═══════════════════════════════════════════════════════════════
-           HERO SECTION
-           ═══════════════════════════════════════════════════════════════ */
-        
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding-top: 100px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 900px;
-        }
-        
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 25px;
-            background: var(--bg-glass);
-            border: 1px solid var(--border-subtle);
-            border-radius: 50px;
-            margin-bottom: 40px;
-            backdrop-filter: blur(10px);
-        }
-        
-        .hero-badge-dot {
-            width: 8px;
-            height: 8px;
-            background: var(--rose);
-            border-radius: 50%;
-            animation: badgePulse 2s ease-in-out infinite;
-        }
-        
-        @keyframes badgePulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(1.2); }
-        }
-        
-        .hero-badge span {
-            font-size: 0.8rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: var(--text-secondary);
-        }
-        
-        .hero-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 5rem;
-            font-weight: 300;
-            line-height: 1.1;
-            margin-bottom: 30px;
-        }
-        
-        .hero-title span {
-            display: block;
-            background: var(--gradient-luxury);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .hero-subtitle {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto 50px;
-            line-height: 1.8;
-        }
-        
-        .hero-cta-group {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        .btn-primary {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 18px 40px;
-            background: var(--gradient-luxury);
-            color: #000;
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            border-radius: 50px;
-            transition: var(--transition-smooth);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .btn-primary::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.5s ease;
-        }
-        
-        .btn-primary:hover::before {
-            left: 100%;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 40px var(--rose-glow);
-        }
-        
-        .btn-secondary {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 18px 40px;
-            background: transparent;
-            border: 1px solid var(--border-subtle);
-            color: var(--text-primary);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            border-radius: 50px;
-            transition: var(--transition-smooth);
-        }
-        
-        .btn-secondary:hover {
-            border-color: var(--rose);
-            background: var(--rose-glow);
-        }
-        
-        /* Hero Moon Phases Animation */
-        .hero-moon-phases {
-            position: absolute;
-            width: 100%;
-            bottom: 50px;
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            opacity: 0.3;
-        }
-        
-        .moon-phase-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--rose);
-            position: relative;
-            animation: moonPhaseFloat 5s ease-in-out infinite;
-        }
-        
-        .moon-phase-icon::before {
-            content: '';
-            position: absolute;
-            border-radius: 50%;
-            background: var(--bg-primary);
-        }
-        
-        .moon-phase-icon:nth-child(1)::before { width: 0; height: 0; }
-        .moon-phase-icon:nth-child(2)::before { width: 30px; height: 40px; right: 0; }
-        .moon-phase-icon:nth-child(3)::before { width: 20px; height: 40px; right: 0; }
-        .moon-phase-icon:nth-child(4)::before { width: 10px; height: 40px; right: 0; }
-        .moon-phase-icon:nth-child(5)::before { width: 0; height: 0; }
-        .moon-phase-icon:nth-child(6)::before { width: 10px; height: 40px; left: 0; }
-        .moon-phase-icon:nth-child(7)::before { width: 20px; height: 40px; left: 0; }
-        .moon-phase-icon:nth-child(8)::before { width: 30px; height: 40px; left: 0; }
-        
-        @keyframes moonPhaseFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        .moon-phase-icon:nth-child(1) { animation-delay: 0s; }
-        .moon-phase-icon:nth-child(2) { animation-delay: 0.2s; }
-        .moon-phase-icon:nth-child(3) { animation-delay: 0.4s; }
-        .moon-phase-icon:nth-child(4) { animation-delay: 0.6s; }
-        .moon-phase-icon:nth-child(5) { animation-delay: 0.8s; }
-        .moon-phase-icon:nth-child(6) { animation-delay: 1s; }
-        .moon-phase-icon:nth-child(7) { animation-delay: 1.2s; }
-        .moon-phase-icon:nth-child(8) { animation-delay: 1.4s; }
-        
-        /* ═══════════════════════════════════════════════════════════════
-           ABOUT ME SECTION (MEGA ANIMATED)
-           ═══════════════════════════════════════════════════════════════ */
-        
-        .about-section {
-            position: relative;
-            overflow: hidden;
-            background: var(--bg-secondary);
-        }
-        
-        .about-bg-effects {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-        }
-        
-        /* Floating orbs */
-        .about-orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(60px);
-            animation: orbFloat 15s ease-in-out infinite;
-        }
-        
-        .about-orb-1 {
-            width: 400px;
-            height: 400px;
-            background: var(--rose-glow);
-            top: 10%;
-            left: -10%;
-            animation-delay: 0s;
-        }
-        
-        .about-orb-2 {
-            width: 300px;
-            height: 300px;
-            background: var(--gold-glow);
-            top: 50%;
-            right: -5%;
-            animation-delay: -5s;
-        }
-        
-        .about-orb-3 {
-            width: 250px;
-            height: 250px;
-            background: rgba(212, 165, 165, 0.15);
-            bottom: 10%;
-            left: 30%;
-            animation-delay: -10s;
-        }
-        
-        @keyframes orbFloat {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(50px, -50px) scale(1.1); }
-            66% { transform: translate(-30px, 30px) scale(0.9); }
-        }
-        
-        /* Sparkles */
-        .sparkle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: var(--rose);
-            border-radius: 50%;
-            animation: sparkleAnim 4s ease-in-out infinite;
-        }
-        
-        @keyframes sparkleAnim {
-            0%, 100% { opacity: 0; transform: scale(0); }
-            50% { opacity: 1; transform: scale(1); }
-        }
-        
-        /* Flowing lines */
-        .flow-line {
-            position: absolute;
-            width: 200px;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--rose), transparent);
-            animation: flowLine 8s linear infinite;
-        }
-        
-        @keyframes flowLine {
-            0% { transform: translateX(-200px) rotate(30deg); opacity: 0; }
-            50% { opacity: 0.5; }
-            100% { transform: translateX(calc(100vw + 200px)) rotate(30deg); opacity: 0; }
-        }
-        
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 100px;
-            align-items: center;
-        }
-        
-        .about-image-container {
-            position: relative;
-        }
-        
-        .about-image {
-            width: 100%;
-            max-width: 450px;
-            aspect-ratio: 3/4;
-            border-radius: 200px 200px 20px 20px;
-            overflow: hidden;
-            position: relative;
-            background: var(--bg-tertiary);
-            box-shadow: var(--shadow-glow);
-        }
-        
-        .about-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: blur(15px) grayscale(30%);
-            transform: scale(1.1);
-        }
-        
-        .about-image::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--rose-glow) 0%, transparent 50%);
-            pointer-events: none;
-        }
-        
-        .about-image-frame {
-            position: absolute;
-            top: -20px;
-            left: -20px;
-            width: calc(100% + 40px);
-            height: calc(100% + 40px);
-            border: 1px solid var(--border-subtle);
-            border-radius: 220px 220px 30px 30px;
-            animation: frameRotate 20s linear infinite;
-        }
-        
-        @keyframes frameRotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .about-content h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            font-weight: 300;
-            margin-bottom: 30px;
-        }
-        
-        .about-content h2 span {
-            background: var(--gradient-luxury);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .about-content p {
-            color: var(--text-secondary);
-            margin-bottom: 20px;
-            font-size: 1.05rem;
-            line-height: 1.9;
-        }
-        
-        .about-signature {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            font-style: italic;
-            color: var(--rose);
-            margin-top: 30px;
-        }
-        
-        /* ═══════════════════════════════════════════════════════════════
-           COLLECTION SECTION
-           ═══════════════════════════════════════════════════════════════ */
-        
-        .collection-section {
-            background: var(--bg-primary);
-        }
-        
-        .collection-categories {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 60px;
-            flex-wrap: wrap;
-        }
-        
-        .category-btn {
-            padding: 12px 30px;
-            background: var(--bg-tertiary);
-            border: 1px solid var(--border-subtle);
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            font-weight: 500;
-            letter-spacing: 1px;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: var(--transition-smooth);
-        }
-        
-        .category-btn:hover,
-        .category-btn.active {
-            background: var(--rose);
-            border-color: var(--rose);
-            color: #000;
-        }
-        
-        .collection-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-        
-        .collection-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-subtle);
-            border-radius: 20px;
-            padding: 30px;
-            text-align: center;
-            transition: var(--transition-smooth);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .collection-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-luxury);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-        
-        .collection-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-glow);
-        }
-        
-        .collection-card:hover::before {
-            opacity: 0.05;
-        }
-        
-        .collection-icon {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 25px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .collection-icon svg {
-            width: 100%;
-            height: 100%;
-            stroke: var(--rose);
-            stroke-width: 1;
-            fill: none;
-        }
-        
-        .collection-card h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-weight: 400;
-            margin-bottom: 10px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .collection-card p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 20px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .collection-price {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--gold);
-            position: relative;
-            z-index: 1;
-        }
-        
-        .collection-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 20px;
-            color: var(--rose);
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 500;
-            position: relative;
-            z-index: 1;
-            transition: var(--transition-smooth);
-        }
-        
-        .collection-link:hover {
-            gap: 15px;
-        }
-        
-        /* ═══════════════════════════════════════════════════════════════
-           6-POINT RATING SYSTEM
-           ═══════════════════════════════════════════════════════════════ */
-        
-        .rating-section {
-            background: var(--bg-secondary);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .rating-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-        
-        .rating-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-subtle);
-            border-radius: 25px;
-            padding: 40px 30px;
-            text-align: center;
-            transition: var(--transition-smooth);
-            position: relative;
-        }
-        
-        .rating-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-glow);
-        }
-        
-        .rating-number {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            font-weight: 300;
-            color: var(--rose);
-            opacity: 0.3;
-        }
-        
-        .rating-icon {
-            width: 70px;
-            height: 70px;
-            margin: 0 auto 25px;
-            background: var(--rose-glow);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-        }
-        
-        .rating-card h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
-            font-weight: 500;
-            margin-bottom: 15px;
-        }
-        
-        .rating-card p {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            line-height: 1.7;
-        }
-        
-        /* ═══════════════════════════════════════════════════════════════
-           REWARDS SYSTEM
-           ═══════════════════════════════════════════════════════════════ */
-        
-        .rewards-section {
-            background: var(--bg-primary);
-        }
-        
-        .rewards-container {
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 80px;
-            align-items: center;
-        }
-        
-        .rewards-info h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            font-weight: 300;
-            margin-bottom: 30px;
-        }
-        
-        .rewards-info h2 span {
-            background: var(--gradient-luxury);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .rewards-tiers {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        
-        .tier-card {
-            display: flex;
-            align-items: center;
-            gap: 25px;
-            padding: 25px 30px;
-            background: var(--bg-card);
-            border: 1px solid var(--border-subtle);
-            border-radius: 20px;
-            transition: var(--transition-smooth);
-        }
-        
-        .tier-card:hover {
-            border-color: var(--rose);
-            transform: translateX(10px);
-        }
-        
-        .tier-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--bg-tertiary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            flex-shrink: 0;
-        }
-        
-        .tier-content h4 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.2rem;
-            font-weight: 500;
-            margin-bottom: 5px;
-        }
-        
-        .tier-content p {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-        
-        .tier-badge {
-            margin-left: auto;
-            padding: 6px 15px;
-            background: var(--rose-glow);
-            border-radius: 20px;
-            font-size: 0.8rem;
-            color: var(--rose);
-            font-weight: 500;
-        }
-        
-        /* ═══════════════════════════════════════════════════════════════
-           MERCH SECTION
-           ═══════════════════════════════════════════════════════════════ */
-        
-        .merch-section {
-            background: var(--bg-secondary);
-        }
-        
-        .merch-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 50px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        
-        .merch-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-subtle);
-            border-radius: 30px;
-            overflow: hidden;
-            transition: var(--transition-smooth);
-        }
-        
-        .merch-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-glow);
-        }
-        
-        .merch-image {
-            width: 100%;
-            aspect-ratio: 1;
-            background: var(--bg-tertiary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 30px;
-        }
-        
-        .merch-image img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
-        
-        .merch-details {
-            padding: 30px;
-            text-align: center;
-        }
-        
-        .merch-details h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-weight: 400;
-            margin-bottom: 10px;
-        }
-        
-        .merch-details p {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-bottom: 20px;
-        }
-        
-        .merch-price {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: var(--gold);
-            margin-bottom: 20px;
-        }
-        
-        /* ═══════════════════════════════════════════════════════════════
-           FEEDBACK SECTION (STRONGLY ANIMATED)
-           ═══════════════════════════════════════════════════════════════ */
-        
-        .feedback-section {
-            background: var(--bg-primary);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .feedback-bg {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-        }
-        
-        .feedback-wave {
-            position: absolute;
-            width: 200%;
-            height: 200px;
-            bottom: 0;
-            left: -50%;
-            background: var(--rose-glow);
-            border-radius: 50%;
-            animation: feedbackWave 15s ease-in-out infinite;
-        }
-        
-        @keyframes feedbackWave {
-            0%, 100% { transform: translateY(50%) rotate(0deg); }
-            50% { transform: translateY(30%) rotate(180deg); }
-        }
-        
-        .feedback-slider {
-            display: flex;
-            gap: 30px;
-            animation: feedbackScroll 30s linear infinite;
-        }
-        
-        @keyframes feedbackScroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-        
-        .feedback-card {
-            min-width: 400px;
-            background: var(--bg-card);
-            border: 1px solid var(--border-subtle);
-            border-radius: 25px;
-            padding: 40px;
-            position: relative;
-            animation: feedbackFloat 8s ease-in-out infinite;
-        }
-        
-        @keyframes feedbackFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        .feedback-card:nth-child(odd) {
-            animation-delay: -4s;
-        }
-        
-        .feedback-quote {
-            font-size: 3rem;
-            color: var(--rose);
-            opacity: 0.3;
-            position: absolute;
-            top: 20px;
-            left: 30px;
-            font-family: serif;
-        }
-        
-        .feedback-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--text-secondary);
-            margin-bottom: 25px;
-            font-style: italic;
-        }
-        
-        .feedback-author {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        
-        .feedback-avatar {
-            width: 50px;
-            height: 50px;
-            background: var(--bg-tertiary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            filter: blur(3px);
-        }
-        
-        .feedback-name {
-            font-weight: 600;
-            filter: blur(5px);
-            user-select: none;
-        }
-        
-        .feedback-stars {
-            display: flex;
-            gap: 3px;
-            margin-top: 5px;
-        }
-        
-        .feedback-stars span {
-            color: var(--gold);
-        }
-        
-        /* ═══════════════════════════════════════════════════════════════
-           FAQ SECTION
-           ═══════════════════════════════════════════════════════════════ */
-        
-        .faq-section {
-            background: var(--bg-secondary);
-        }
-        
-        .faq-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .faq-item {
-            background: var(--bg-card);
-            border: 1px solid var(--border-subtle);
-            border-radius: 15px;
-            margin-bottom: 15px;
-            overflow: hidden;
-            transition: var(--transition-smooth);
-        }
-        
-        .faq-item:hover {
-            border-color: var(--rose);
-        }
-        
-        .faq-question {
-            width: 100%;
-            padding: 25px 30px;
-            background: transparent;
-            border: none;
-            text-align: left;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1rem;
-            font-weight: 500;
-            color: var(--text-primary);
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: var(--transition-smooth);
-        }
-        
-        .faq-question:hover {
-            color: var(--rose);
-        }
-        
-        .faq-icon {
-            font-size: 1.5rem;
-            color: var(--rose);
-            transition: transform 0.4s ease;
-        }
-        
-        .faq-item.active .faq-icon {
-            transform: rotate(45deg);
-        }
-        
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease;
-        }
-        
-        .faq-item.active .faq-answer {
-            max-height: 200px;
-        }
-        
-        .faq-answer p {
-            padding: 0 30px 25px;
-            color: var(--text-secondary);
-            line-height: 1.8;
-        }
-        
-        /* ═══════════════════════════════════════════════════════════════
-           NEWSLETTER SECTION
-           ═══════════════════════════════════════════════════════════════ */
-        
-        .newsletter-section {
-            background: var(--bg-primary);
-            text-align: center;
-        }
-        
-        .newsletter-content {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .newsletter-form {
-            display: flex;
-            gap: 15px;
-            margin-top: 40px;
-        }
-        
-        .newsletter-input {
-            flex: 1;
-            padding: 18px 25px;
-            background: var(--bg-tertiary);
-            border: 1px solid var(--border-subtle);
-            border-radius: 50px;
-            color: var(--text-primary);
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1rem;
-            transition: var(--transition-smooth);
-        }
-        
-        .newsletter-input:focus {
-            outline: none;
-            border-color: var(--rose);
-        }
-        
-        .newsletter-input::placeholder {
-            color: var(--text-muted);
-        }
-        
-        /* ═══════════════════════════════════════════════════════════════
-           LOGIN MODAL
-           ═══════════════════════════════════════════════════════════════ */
-        
-        .login-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            z-index: 10000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition-smooth);
-        }
-        
-        .login-modal.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .login-box {
-            background: var(--bg-card);
-            border: 1px solid var(--border-subtle);
-            border-radius: 30px;
-            padding: 50px;
-            max-width: 450px;
-            width: 90%;
-            transform: translateY(50px);
-            transition: var(--transition-smooth);
-        }
-        
-        .login-modal.active .login-box {
-            transform: translateY(0);
-        }
-        
-        .login-close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: var(--bg-tertiary);
-            border: none;
-            border-radius: 50%;
-            color: var(--text-primary);
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: var(--transition-smooth);
-        }
-        
-        .login-close:hover {
-            background: var(--rose);
-            color: #000;
-        }
-        
-        .login-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        
-        .login-header h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            font-weight: 400;
-            margin-bottom: 10px;
-        }
-        
-        .login-form {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        
-        .form-group {
-            position: relative;
-        }
-        
-        .form-group input {
-            width: 100%;
-            padding: 15px 20px;
-            background: var(--bg-tertiary);
-            border: 1px solid var(--border-subtle);
-            border-radius: 10px;
-            color: var(--text-primary);
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1rem;
-            transition: var(--transition-smooth);
-        }
-        
-        .form-group input:focus {
-            outline: none;
-            border-color: var(--rose);
-        }
-        
-        .form-group label {
-            position: absolute;
-            top: 50%;
-            left: 20px;
-            transform: translateY(-50%);
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            pointer-events: none;
-            transition: var(--transition-smooth);
-        }
-        
-        .form-group input:focus + label,
-        .form-group input:not(:placeholder-shown) + label {
-            top: -10px;
-            left: 15px;
-            font-size: 0.75rem;
-            background: var(--bg-card);
-            padding: 0 5px;
-            color: var(--rose);
-        }
-        
-        /* ═══════════════════════════════════════════════════════════════
-           FOOTER
-           ═══════════════════════════════════════════════════════════════ */
-        
-        footer {
-            background: var(--bg-secondary);
-            padding: 80px 60px 30px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .footer-marquee {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 200%;
-            padding: 15px 0;
-            background: var(--rose);
-            color: #000;
-            font-family: 'Playfair Display', serif;
-            font-size: 1.2rem;
-            letter-spacing: 10px;
-            text-transform: uppercase;
-            animation: marqueeScroll 20s linear infinite;
-            white-space: nowrap;
-        }
-        
-        @keyframes marqueeScroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-        
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 50px;
-            max-width: 1400px;
-            margin: 60px auto 0;
-        }
-        
-        .footer-brand p {
-            color: var(--text-secondary);
-            margin-top: 20px;
-            line-height: 1.8;
-        }
-        
-        .footer-section h4 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.1rem;
-            font-weight: 500;
-            margin-bottom: 25px;
-            color: var(--rose);
-        }
-        
-        .footer-links {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-        
-        .footer-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: var(--transition-smooth);
-        }
-        
-        .footer-links a:hover {
-            color: var(--rose);
-            transform: translateX(5px);
-        }
-        
-        .footer-bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 40px;
-            margin-top: 60px;
-            border-top: 1px solid var(--border-subtle);
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
-        
-        /* ═══════════════════════════════════════════════════════════════
-           RESPONSIVE DESIGN
-           ═══════════════════════════════════════════════════════════════ */
-        
-        @media (max-width: 1200px) {
-            .nav-links { display: none; }
-            .burger-menu { display: flex; }
-            .nav-login { display: none; }
-            
-            section { padding: 100px 30px; }
-            
-            .hero-title { font-size: 3.5rem; }
-            .section-title { font-size: 2.5rem; }
-            
-            .about-grid { grid-template-columns: 1fr; gap: 50px; }
-            .rewards-container { grid-template-columns: 1fr; gap: 50px; }
-            .rating-grid { grid-template-columns: repeat(2, 1fr); }
-            .footer-grid { grid-template-columns: 1fr 1fr; }
-        }
-        
-        @media (max-width: 768px) {
-            .nav-main { padding: 0 20px; }
-            
-            .hero-title { font-size: 2.5rem; }
-            .hero-subtitle { font-size: 1rem; }
-            
-            .hero-cta-group { flex-direction: column; align-items: center; }
-            .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
-            
-            .section-title { font-size: 2rem; }
-            
-            .rating-grid { grid-template-columns: 1fr; }
-            .merch-grid { grid-template-columns: 1fr; }
-            .collection-grid { grid-template-columns: 1fr; }
-            
-            .feedback-card { min-width: 300px; }
-            
-            .newsletter-form { flex-direction: column; }
-            
-            .footer-grid { grid-template-columns: 1fr; text-align: center; }
-            .footer-links { align-items: center; }
-            .footer-bottom { flex-direction: column; gap: 10px; }
-            
-            .mobile-nav-link { font-size: 1.8rem; }
-        }
-        
-        /* ═══════════════════════════════════════════════════════════════
-           UTILITY CLASSES
-           ═══════════════════════════════════════════════════════════════ */
-        
-        .text-gradient {
-            background: var(--gradient-luxury);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .visually-hidden {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
-    </style>
+    <!-- Primary Meta Tags -->
+    <title>LUNARA – Curated Intimacy | Exklusive Dessous & Lingerie</title>
+    <meta name="title" content="LUNARA – Curated Intimacy | Exklusive Dessous & Lingerie">
+    <meta name="description" content="Handverlesene Dessous & Lingerie, persönlich kuratiert. 100% Diskretion garantiert. Premium Qualität, individueller Service.">
+    <meta name="keywords" content="Dessous, Lingerie, Premium, Diskret, Curated, Exklusiv">
+    <meta name="author" content="LUNARA">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://lunara.de/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lunara.de/">
+    <meta property="og:title" content="LUNARA – Curated Intimacy">
+    <meta property="og:description" content="Handverlesene Dessous & Lingerie, persönlich kuratiert. 100% Diskretion garantiert.">
+    <meta property="og:image" content="https://lunara.de/assets/img/og-image.png">
+    <meta property="og:locale" content="de_DE">
+    <meta property="og:site_name" content="LUNARA">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://lunara.de/">
+    <meta name="twitter:title" content="LUNARA – Curated Intimacy">
+    <meta name="twitter:description" content="Handverlesene Dessous & Lingerie, persönlich kuratiert. 100% Diskretion garantiert.">
+    <meta name="twitter:image" content="https://lunara.de/assets/img/og-image.png">
+    
+    <!-- Security Headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; form-action 'self';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#F0C0C0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="LUNARA">
+    <link rel="apple-touch-icon" href="assets/img/icon-192.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='none' stroke='%23F0C0C0' stroke-width='2'/%3E%3Cpath d='M16 4 Q26 16 16 28' fill='none' stroke='%23F0C0C0' stroke-width='1.5'/%3E%3C/svg%3E">
+    
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Config (before main.js) -->
+    <script src="js/config.js"></script>
 </head>
 <body>
-    <!-- ═══════════════════════════════════════════════════════════════
-         BOOT SCREEN WITH ASTEROIDS
-         ═══════════════════════════════════════════════════════════════ -->
-    <div class="boot-screen" id="bootScreen">
-        <div class="starfield">
-            <!-- Stars will be generated by JS -->
-        </div>
-        <div class="asteroid-field" id="asteroidField">
-            <!-- Asteroids will be generated by JS -->
-        </div>
-        
-        <div class="boot-moon">
-            <div class="moon-glow"></div>
-            <div class="moon-container">
-                <svg class="moon-svg" viewBox="0 0 100 100">
-                    <circle class="moon-phase" cx="50" cy="50" r="45"/>
-                    <path class="moon-phase" d="M50 5 Q75 50 50 95" style="animation-delay: 0.5s"/>
+    <!-- Skip Link for A11y -->
+    <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
+    
+    <!-- BOOT SCREEN -->
+    <div class="boot-screen" id="bootScreen" role="status" aria-label="Seite lädt">
+        <div class="boot-starfield" id="bootStarfield" aria-hidden="true"></div>
+        <div class="boot-asteroid-field" id="bootAsteroidField" aria-hidden="true"></div>
+        <div class="boot-content">
+            <div class="boot-moon-glow" aria-hidden="true"></div>
+            <div class="boot-moon-container" aria-hidden="true">
+                <svg class="boot-moon-svg" viewBox="0 0 100 100" aria-hidden="true">
+                    <circle class="boot-moon-circle" cx="50" cy="50" r="45"/>
+                    <path class="boot-moon-phase" d="M50 5 Q80 50 50 95"/>
                 </svg>
+                <div class="boot-moon-rings">
+                    <div class="boot-ring"></div>
+                    <div class="boot-ring"></div>
+                    <div class="boot-ring"></div>
+                </div>
             </div>
-            <div class="boot-text">LUNARA</div>
-            <div class="boot-tagline">Curated Intimacy</div>
+            <h1 class="boot-title">LUNARA</h1>
+            <p class="boot-tagline">Curated Intimacy</p>
         </div>
-        
-        <div class="boot-progress">
+        <div class="boot-progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
             <div class="boot-progress-bar"></div>
         </div>
     </div>
-    
-    <!-- ═══════════════════════════════════════════════════════════════
-         COSMIC BACKGROUND
-         ═══════════════════════════════════════════════════════════════ -->
-    <div class="cosmic-bg">
+
+    <!-- COSMIC BACKGROUND (decorative) -->
+    <div class="cosmic-bg" aria-hidden="true">
         <div class="nebula nebula-1"></div>
         <div class="nebula nebula-2"></div>
         <div class="nebula nebula-3"></div>
-        <div class="particle-container" id="particleContainer"></div>
+        <div class="particle-layer" id="particleLayer"></div>
+        <div class="shooting-stars" id="shootingStars"></div>
     </div>
-    
-    <!-- ═══════════════════════════════════════════════════════════════
-         NAVIGATION
-         ═══════════════════════════════════════════════════════════════ -->
-    <nav class="nav-wrapper" id="navWrapper">
-        <div class="nav-main">
-            <a href="#" class="logo">
-                <svg class="logo-icon" viewBox="0 0 50 50">
-                    <circle cx="25" cy="25" r="22" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--rose)"/>
-                    <path d="M25 5 Q40 25 25 45" fill="none" stroke="currentColor" stroke-width="1" style="color: var(--rose)"/>
+    <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+    <!-- NAVIGATION -->
+    <nav class="nav" id="nav" role="navigation" aria-label="Hauptnavigation">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo" aria-label="LUNARA - Zur Startseite">
+                <svg class="nav-logo-icon" viewBox="0 0 50 50" aria-hidden="true">
+                    <circle cx="25" cy="25" r="22" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                    <path d="M25 5 Q40 25 25 45" fill="none" stroke="currentColor" stroke-width="1"/>
                 </svg>
-                <span class="logo-text">LUNARA</span>
+                <span class="nav-logo-text">LUNARA</span>
             </a>
             
-            <ul class="nav-links">
-                <li><a href="#about" data-lang-key="nav_about">Über mich</a></li>
-                <li><a href="#collection" data-lang-key="nav_collection">Kollektion</a></li>
-                <li><a href="#rating" data-lang-key="nav_rating">6-Punkte System</a></li>
-                <li><a href="#rewards" data-lang-key="nav_rewards">Belohnungen</a></li>
-                <li><a href="#merch" data-lang-key="nav_merch">Merch</a></li>
-                <li><a href="#feedback" data-lang-key="nav_feedback">Feedback</a></li>
-                <li><a href="#faq" data-lang-key="nav_faq">FAQ</a></li>
+            <ul class="nav-links" id="navLinks" role="menubar">
+                <li role="none"><a href="#about" class="nav-link" role="menuitem" data-text="Über mich">Über mich</a></li>
+                <li role="none"><a href="#collection" class="nav-link" role="menuitem" data-text="Kollektion">Kollektion</a></li>
+                <li role="none"><a href="#rating" class="nav-link" role="menuitem" data-text="6-Punkte">6-Punkte</a></li>
+                <li role="none"><a href="#rewards" class="nav-link" role="menuitem" data-text="Rewards">Rewards</a></li>
+                <li role="none"><a href="#merch" class="nav-link" role="menuitem" data-text="Merch">Merch</a></li>
+                <li role="none"><a href="#faq" class="nav-link" role="menuitem" data-text="FAQ">FAQ</a></li>
             </ul>
             
-            <div class="nav-controls">
-                <div class="theme-toggle" id="themeToggle" title="Theme wechseln">
-                    <div class="theme-toggle-slider"></div>
-                </div>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Theme wechseln" aria-pressed="false">
+                    <div class="theme-toggle-track">
+                        <span class="theme-icon theme-icon--sun" aria-hidden="true">☀️</span>
+                        <span class="theme-icon theme-icon--moon" aria-hidden="true">🌙</span>
+                        <div class="theme-toggle-thumb"></div>
+                    </div>
+                </button>
                 
-                <div class="lang-selector">
-                    <div class="lang-current">
-                        <span class="lang-flag">🇩🇪</span>
+                <div class="lang-selector" id="langSelector">
+                    <button class="lang-current" aria-haspopup="listbox" aria-expanded="false" aria-label="Sprache wählen: Deutsch">
+                        <span class="lang-flag" aria-hidden="true">🇩🇪</span>
                         <span class="lang-code">DE</span>
-                    </div>
-                    <div class="lang-dropdown">
-                        <div class="lang-option" data-lang="de">
-                            <span class="lang-flag">🇩🇪</span>
-                            <span>Deutsch</span>
-                        </div>
-                        <div class="lang-option" data-lang="en">
-                            <span class="lang-flag">🇬🇧</span>
-                            <span>English</span>
-                        </div>
-                        <div class="lang-option" data-lang="pl">
-                            <span class="lang-flag">🇵🇱</span>
-                            <span>Polski</span>
-                        </div>
-                        <div class="lang-option" data-lang="es">
-                            <span class="lang-flag">🇪🇸</span>
-                            <span>Español</span>
-                        </div>
+                        <svg class="lang-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="lang-dropdown" role="listbox" aria-label="Verfügbare Sprachen">
+                        <button class="lang-option active" data-lang="de" role="option" aria-selected="true"><span aria-hidden="true">🇩🇪</span> Deutsch</button>
+                        <button class="lang-option" data-lang="en" role="option" aria-selected="false"><span aria-hidden="true">🇬🇧</span> English</button>
+                        <button class="lang-option" data-lang="pl" role="option" aria-selected="false"><span aria-hidden="true">🇵🇱</span> Polski</button>
                     </div>
                 </div>
                 
-                <a href="#" class="nav-login" id="loginBtn">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                        <circle cx="12" cy="7" r="4"/>
+                <button class="btn-login" id="loginBtn" aria-haspopup="dialog">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
                     </svg>
-                    <span data-lang-key="nav_login">Login</span>
-                </a>
+                    <span>Login</span>
+                </button>
             </div>
             
-            <button class="burger-menu" id="burgerMenu">
-                <span class="burger-line"></span>
-                <span class="burger-line"></span>
-                <span class="burger-line"></span>
+            <button class="burger" id="burgerMenu" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobileMenu">
+                <span class="burger-line" aria-hidden="true"></span>
+                <span class="burger-line" aria-hidden="true"></span>
+                <span class="burger-line" aria-hidden="true"></span>
             </button>
         </div>
     </nav>
-    
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <div class="mobile-menu-bg"></div>
-        <a href="#about" class="mobile-nav-link" data-lang-key="nav_about">Über mich</a>
-        <a href="#collection" class="mobile-nav-link" data-lang-key="nav_collection">Kollektion</a>
-        <a href="#rating" class="mobile-nav-link" data-lang-key="nav_rating">6-Punkte System</a>
-        <a href="#rewards" class="mobile-nav-link" data-lang-key="nav_rewards">Belohnungen</a>
-        <a href="#merch" class="mobile-nav-link" data-lang-key="nav_merch">Merch</a>
-        <a href="#feedback" class="mobile-nav-link" data-lang-key="nav_feedback">Feedback</a>
-        <a href="#faq" class="mobile-nav-link" data-lang-key="nav_faq">FAQ</a>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Mobile Navigation" hidden>
+        <div class="mobile-menu-bg" aria-hidden="true"></div>
+        <div class="mobile-menu-content">
+            <a href="#about" class="mobile-link">Über mich</a>
+            <a href="#collection" class="mobile-link">Kollektion</a>
+            <a href="#rating" class="mobile-link">6-Punkte</a>
+            <a href="#rewards" class="mobile-link">Rewards</a>
+            <a href="#merch" class="mobile-link">Merch</a>
+            <a href="#faq" class="mobile-link">FAQ</a>
+            <button class="btn-primary mobile-login">Login / Registrieren</button>
+        </div>
     </div>
-    
-    <!-- ═══════════════════════════════════════════════════════════════
-         HERO SECTION
-         ═══════════════════════════════════════════════════════════════ -->
-    <section class="hero" id="hero">
-        <div class="hero-content">
-            <div class="hero-badge">
-                <span class="hero-badge-dot"></span>
-                <span data-lang-key="hero_badge">Exklusiv & Diskret</span>
-            </div>
-            
-            <h1 class="hero-title">
-                <span data-lang-key="hero_title_1">Curated</span>
-                <span data-lang-key="hero_title_2">Intimacy</span>
-            </h1>
-            
-            <p class="hero-subtitle" data-lang-key="hero_subtitle">
-                Handverlesene Dessous & Lingerie, persönlich für dich kuratiert. 
-                Erlebe Luxus, der nur dir gehört.
-            </p>
-            
-            <div class="hero-cta-group">
-                <a href="#collection" class="btn-primary">
-                    <span data-lang-key="hero_cta_1">Kollektion entdecken</span>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
-                </a>
-                <a href="#about" class="btn-secondary">
-                    <span data-lang-key="hero_cta_2">Mehr erfahren</span>
-                </a>
-            </div>
-        </div>
-        
-        <div class="hero-moon-phases">
-            <div class="moon-phase-icon"></div>
-            <div class="moon-phase-icon"></div>
-            <div class="moon-phase-icon"></div>
-            <div class="moon-phase-icon"></div>
-            <div class="moon-phase-icon"></div>
-            <div class="moon-phase-icon"></div>
-            <div class="moon-phase-icon"></div>
-            <div class="moon-phase-icon"></div>
-        </div>
-    </section>
-    
-    <!-- ═══════════════════════════════════════════════════════════════
-         ABOUT SECTION (MEGA ANIMATED)
-         ═══════════════════════════════════════════════════════════════ -->
-    <section class="about-section" id="about">
-        <div class="about-bg-effects">
-            <div class="about-orb about-orb-1"></div>
-            <div class="about-orb about-orb-2"></div>
-            <div class="about-orb about-orb-3"></div>
-            <!-- Sparkles generated by JS -->
-            <div class="flow-line" style="top: 20%; animation-delay: 0s;"></div>
-            <div class="flow-line" style="top: 40%; animation-delay: -2s;"></div>
-            <div class="flow-line" style="top: 60%; animation-delay: -4s;"></div>
-            <div class="flow-line" style="top: 80%; animation-delay: -6s;"></div>
-        </div>
-        
-        <div class="section-container">
-            <div class="about-grid">
-                <div class="about-image-container">
-                    <div class="about-image">
-                        <!-- Image will be blurred for privacy -->
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400'%3E%3Crect fill='%231a1a1a' width='300' height='400'/%3E%3Cellipse cx='150' cy='150' rx='80' ry='100' fill='%23D4A5A5' opacity='0.3'/%3E%3C/svg%3E" alt="About">
-                    </div>
-                    <div class="about-image-frame"></div>
+
+    <!-- MAIN CONTENT -->
+    <main id="main-content">
+        <!-- HERO -->
+        <section class="hero" id="hero" aria-labelledby="hero-title">
+            <div class="hero-content">
+                <div class="hero-badge reveal">
+                    <span class="hero-badge-pulse" aria-hidden="true"></span>
+                    <span class="hero-badge-text">Exklusiv & 100% Diskret</span>
                 </div>
-                
-                <div class="about-content">
-                    <span class="section-tag" data-lang-key="about_tag">Über mich</span>
-                    <h2>
-                        <span data-lang-key="about_title_1">Deine persönliche</span><br>
-                        <span class="text-gradient" data-lang-key="about_title_2">Kuratorin</span>
-                    </h2>
-                    <p data-lang-key="about_text_1">
-                        Willkommen bei LUNARA. Ich kuratiere exklusive Dessous & Lingerie, 
-                        die nicht nur deinen Körper, sondern auch deine Seele berühren.
-                    </p>
-                    <p data-lang-key="about_text_2">
-                        Jedes Stück wird von mir persönlich ausgewählt – mit höchster Sorgfalt 
-                        für Qualität, Ästhetik und das gewisse Etwas, das dich besonders macht.
-                    </p>
-                    <p data-lang-key="about_text_3">
-                        Diskretion ist dabei mein höchstes Gebot. Deine Geheimnisse bleiben 
-                        bei mir.
-                    </p>
-                    <div class="about-signature">— Jaqueline</div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- ═══════════════════════════════════════════════════════════════
-         COLLECTION SECTION
-         ═══════════════════════════════════════════════════════════════ -->
-    <section class="collection-section" id="collection">
-        <div class="section-container">
-            <div class="section-header">
-                <span class="section-tag" data-lang-key="collection_tag">Kollektion</span>
-                <h2 class="section-title">
-                    <span data-lang-key="collection_title_1">Entdecke</span> 
-                    <span class="text-gradient" data-lang-key="collection_title_2">deine Wünsche</span>
-                </h2>
-            </div>
-            
-            <div class="collection-categories">
-                <button class="category-btn active" data-category="all" data-lang-key="cat_all">Alle</button>
-                <button class="category-btn" data-category="panties" data-lang-key="cat_panties">Panties</button>
-                <button class="category-btn" data-category="bras" data-lang-key="cat_bras">BHs</button>
-                <button class="category-btn" data-category="sets" data-lang-key="cat_sets">Sets</button>
-                <button class="category-btn" data-category="bodys" data-lang-key="cat_bodys">Bodys</button>
-                <button class="category-btn" data-category="socks" data-lang-key="cat_socks">Socken</button>
-            </div>
-            
-            <div class="collection-grid">
-                <!-- Panties -->
-                <div class="collection-card" data-category="panties">
-                    <div class="collection-icon">
-                        <svg viewBox="0 0 100 100">
-                            <path d="M20 30 L50 20 L80 30 L75 70 Q50 85 25 70 Z" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M35 40 Q50 50 65 40" stroke-linecap="round"/>
-                        </svg>
-                    </div>
-                    <h3 data-lang-key="prod_classic_panty">Klassische Panties</h3>
-                    <p data-lang-key="prod_classic_panty_desc">Zeitlos elegant, perfekter Tragekomfort</p>
-                    <div class="collection-price" data-lang-key="price_from">ab 29€</div>
-                    <a href="#" class="collection-link">
-                        <span data-lang-key="view_more">Mehr ansehen</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
+                <h1 class="hero-title reveal" id="hero-title">
+                    <span class="hero-title-line">Curated</span>
+                    <span class="hero-title-line hero-title-gradient">Intimacy</span>
+                </h1>
+                <p class="hero-subtitle reveal">Handverlesene Dessous & Lingerie, persönlich für dich kuratiert.<br>Erlebe Luxus, der nur dir gehört.</p>
+                <div class="hero-cta reveal">
+                    <a href="#collection" class="btn-primary btn-glow">
+                        <span>Kollektion entdecken</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
-                </div>
-                
-                <!-- BHs -->
-                <div class="collection-card" data-category="bras">
-                    <div class="collection-icon">
-                        <svg viewBox="0 0 100 100">
-                            <path d="M15 50 Q25 30 40 35 Q50 25 60 35 Q75 30 85 50" stroke-linecap="round"/>
-                            <ellipse cx="35" cy="50" rx="18" ry="20"/>
-                            <ellipse cx="65" cy="50" rx="18" ry="20"/>
-                            <path d="M50 35 L50 70" stroke-linecap="round"/>
-                        </svg>
-                    </div>
-                    <h3 data-lang-key="prod_bra">Dessous BHs</h3>
-                    <p data-lang-key="prod_bra_desc">Luxuriöser Halt, verführerisches Design</p>
-                    <div class="collection-price" data-lang-key="price_from_45">ab 45€</div>
-                    <a href="#" class="collection-link">
-                        <span data-lang-key="view_more">Mehr ansehen</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </a>
-                </div>
-                
-                <!-- Sets -->
-                <div class="collection-card" data-category="sets">
-                    <div class="collection-icon">
-                        <svg viewBox="0 0 100 100">
-                            <ellipse cx="35" cy="35" rx="15" ry="15"/>
-                            <ellipse cx="65" cy="35" rx="15" ry="15"/>
-                            <path d="M25 60 L50 55 L75 60 L70 85 Q50 95 30 85 Z" stroke-linecap="round"/>
-                        </svg>
-                    </div>
-                    <h3 data-lang-key="prod_sets">Exklusive Sets</h3>
-                    <p data-lang-key="prod_sets_desc">Perfekt aufeinander abgestimmt</p>
-                    <div class="collection-price" data-lang-key="price_from_69">ab 69€</div>
-                    <a href="#" class="collection-link">
-                        <span data-lang-key="view_more">Mehr ansehen</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </a>
-                </div>
-                
-                <!-- Bodys -->
-                <div class="collection-card" data-category="bodys">
-                    <div class="collection-icon">
-                        <svg viewBox="0 0 100 100">
-                            <path d="M30 15 Q50 10 70 15 L75 40 Q50 45 25 40 Z" stroke-linecap="round"/>
-                            <path d="M25 40 L20 90 Q50 100 80 90 L75 40" stroke-linecap="round"/>
-                            <path d="M35 55 Q50 60 65 55" stroke-linecap="round"/>
-                        </svg>
-                    </div>
-                    <h3 data-lang-key="prod_bodys">Verführerische Bodys</h3>
-                    <p data-lang-key="prod_bodys_desc">Figurbetont, sinnlich, unvergesslich</p>
-                    <div class="collection-price" data-lang-key="price_from_55">ab 55€</div>
-                    <a href="#" class="collection-link">
-                        <span data-lang-key="view_more">Mehr ansehen</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </a>
-                </div>
-                
-                <!-- Socken -->
-                <div class="collection-card" data-category="socks">
-                    <div class="collection-icon">
-                        <svg viewBox="0 0 100 100">
-                            <path d="M30 10 L30 50 Q30 70 45 80 L65 80 Q80 70 80 50 L80 30" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M30 25 L80 25" stroke-linecap="round"/>
-                            <circle cx="55" cy="20" r="5"/>
-                        </svg>
-                    </div>
-                    <h3 data-lang-key="prod_socks">Premium Socken</h3>
-                    <p data-lang-key="prod_socks_desc">LUNARA Branding, höchster Komfort</p>
-                    <div class="collection-price" data-lang-key="price_from_15">ab 15€</div>
-                    <a href="#" class="collection-link">
-                        <span data-lang-key="view_more">Mehr ansehen</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </a>
-                </div>
-                
-                <!-- Custom -->
-                <div class="collection-card" data-category="all">
-                    <div class="collection-icon">
-                        <svg viewBox="0 0 100 100">
-                            <circle cx="50" cy="50" r="35" stroke-dasharray="10 5"/>
-                            <path d="M50 30 L50 70 M30 50 L70 50" stroke-linecap="round" stroke-width="3"/>
-                        </svg>
-                    </div>
-                    <h3 data-lang-key="prod_custom">Wunsch-Bestellung</h3>
-                    <p data-lang-key="prod_custom_desc">Dein Wunsch wird wahr – auf Anfrage</p>
-                    <div class="collection-price" data-lang-key="price_request">Auf Anfrage</div>
-                    <a href="#" class="collection-link">
-                        <span data-lang-key="contact_me">Kontaktiere mich</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </a>
+                    <a href="#about" class="btn-secondary"><span>Mehr erfahren</span></a>
                 </div>
             </div>
-        </div>
-    </section>
-    
-    <!-- ═══════════════════════════════════════════════════════════════
-         6-POINT RATING SYSTEM
-         ═══════════════════════════════════════════════════════════════ -->
-    <section class="rating-section" id="rating">
-        <div class="section-container">
-            <div class="section-header">
-                <span class="section-tag" data-lang-key="rating_tag">Special</span>
-                <h2 class="section-title">
-                    <span data-lang-key="rating_title_1">Das 6-Punkte</span> 
-                    <span class="text-gradient" data-lang-key="rating_title_2">Bewertungssystem</span>
-                </h2>
+            <div class="hero-moon-phases" aria-hidden="true">
+                <div class="moon-phase"></div><div class="moon-phase"></div><div class="moon-phase"></div><div class="moon-phase"></div>
+                <div class="moon-phase"></div><div class="moon-phase"></div><div class="moon-phase"></div><div class="moon-phase"></div>
             </div>
-            
-            <div class="rating-grid">
-                <div class="rating-card">
-                    <span class="rating-number">01</span>
-                    <div class="rating-icon">💎</div>
-                    <h3 data-lang-key="rating_1_title">Qualität</h3>
-                    <p data-lang-key="rating_1_desc">Premium-Materialien, die sich wie eine zweite Haut anfühlen.</p>
-                </div>
-                
-                <div class="rating-card">
-                    <span class="rating-number">02</span>
-                    <div class="rating-icon">🎨</div>
-                    <h3 data-lang-key="rating_2_title">Design</h3>
-                    <p data-lang-key="rating_2_desc">Ästhetik, die verführt und Selbstbewusstsein stärkt.</p>
-                </div>
-                
-                <div class="rating-card">
-                    <span class="rating-number">03</span>
-                    <div class="rating-icon">✨</div>
-                    <h3 data-lang-key="rating_3_title">Komfort</h3>
-                    <p data-lang-key="rating_3_desc">Ganztägiger Tragekomfort ohne Kompromisse.</p>
-                </div>
-                
-                <div class="rating-card">
-                    <span class="rating-number">04</span>
-                    <div class="rating-icon">🔐</div>
-                    <h3 data-lang-key="rating_4_title">Diskretion</h3>
-                    <p data-lang-key="rating_4_desc">100% diskrete Verpackung und Lieferung.</p>
-                </div>
-                
-                <div class="rating-card">
-                    <span class="rating-number">05</span>
-                    <div class="rating-icon">⚡</div>
-                    <h3 data-lang-key="rating_5_title">Schnelligkeit</h3>
-                    <p data-lang-key="rating_5_desc">Expressversand für dringende Wünsche verfügbar.</p>
-                </div>
-                
-                <div class="rating-card">
-                    <span class="rating-number">06</span>
-                    <div class="rating-icon">💝</div>
-                    <h3 data-lang-key="rating_6_title">Persönlicher Service</h3>
-                    <p data-lang-key="rating_6_desc">Individuelle Beratung für deine perfekte Auswahl.</p>
-                </div>
+            <div class="scroll-indicator" aria-hidden="true">
+                <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+                <span>Scroll</span>
             </div>
-        </div>
-    </section>
-    
-    <!-- ═══════════════════════════════════════════════════════════════
-         REWARDS SYSTEM
-         ═══════════════════════════════════════════════════════════════ -->
-    <section class="rewards-section" id="rewards">
-        <div class="section-container">
-            <div class="rewards-container">
-                <div class="rewards-info">
-                    <span class="section-tag" data-lang-key="rewards_tag">Exklusiv</span>
-                    <h2>
-                        <span data-lang-key="rewards_title_1">Dein</span><br>
-                        <span class="text-gradient" data-lang-key="rewards_title_2">Belohnungssystem</span>
-                    </h2>
-                    <p style="color: var(--text-secondary); margin-top: 20px; line-height: 1.8;" data-lang-key="rewards_desc">
-                        Je mehr du bestellst, desto mehr Vorteile genießt du. 
-                        Sammle Punkte bei jeder Bestellung und tausche sie im 
-                        exklusiven Bonus-Shop ein.
-                    </p>
-                </div>
-                
-                <div class="rewards-tiers">
-                    <div class="tier-card">
-                        <div class="tier-icon">🌙</div>
-                        <div class="tier-content">
-                            <h4 data-lang-key="tier_1_name">Mondlicht</h4>
-                            <p data-lang-key="tier_1_desc">0 - 100 Punkte • 5% Rabatt auf alles</p>
+        </section>
+
+        <!-- ABOUT -->
+        <section class="section section--about" id="about" aria-labelledby="about-title">
+            <div class="section-bg-orbs" aria-hidden="true">
+                <div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div>
+            </div>
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-image reveal" aria-hidden="true">
+                        <div class="about-image-wrapper">
+                            <div class="about-image-placeholder">
+                                <svg viewBox="0 0 100 100">
+                                    <circle cx="50" cy="35" r="20" fill="var(--rose)" opacity="0.3"/>
+                                    <path d="M50 55 Q30 70 35 100 L65 100 Q70 70 50 55" fill="var(--rose)" opacity="0.2"/>
+                                </svg>
+                            </div>
+                            <div class="about-image-overlay"></div>
                         </div>
-                        <span class="tier-badge" data-lang-key="tier_start">Start</span>
+                        <div class="about-image-frame"></div>
+                        <div class="about-image-glow"></div>
                     </div>
-                    
-                    <div class="tier-card">
-                        <div class="tier-icon">⭐</div>
-                        <div class="tier-content">
-                            <h4 data-lang-key="tier_2_name">Sternenlicht</h4>
-                            <p data-lang-key="tier_2_desc">100 - 300 Punkte • 10% Rabatt + Gratis Versand</p>
+                    <div class="about-content">
+                        <span class="section-tag reveal">Über mich</span>
+                        <h2 class="section-title reveal" id="about-title">Deine persönliche<br><span class="text-gradient">Kuratorin</span></h2>
+                        <p class="reveal">Willkommen bei LUNARA. Ich kuratiere exklusive Dessous & Lingerie, die nicht nur deinen Körper, sondern auch deine Seele berühren.</p>
+                        <p class="reveal">Jedes Stück wird persönlich ausgewählt – mit höchster Sorgfalt für Qualität, Ästhetik und das gewisse Etwas, das dich besonders macht.</p>
+                        <p class="reveal">Diskretion ist dabei mein höchstes Gebot. Deine Geheimnisse bleiben bei mir – versprochen.</p>
+                        <div class="about-signature reveal">— L.</div>
+                        <div class="about-stats reveal" role="list" aria-label="Statistiken">
+                            <div class="stat" role="listitem">
+                                <span class="stat-number" data-count="500">0</span>
+                                <span class="stat-label">Happy Clients</span>
+                            </div>
+                            <div class="stat" role="listitem">
+                                <span class="stat-number" data-count="100">0</span><span class="stat-suffix">%</span>
+                                <span class="stat-label">Diskret</span>
+                            </div>
+                            <div class="stat" role="listitem">
+                                <span class="stat-number" data-count="24">0</span><span class="stat-suffix">/7</span>
+                                <span class="stat-label">Support</span>
+                            </div>
                         </div>
-                        <span class="tier-badge" data-lang-key="tier_silver">Silber</span>
-                    </div>
-                    
-                    <div class="tier-card">
-                        <div class="tier-icon">💫</div>
-                        <div class="tier-content">
-                            <h4 data-lang-key="tier_3_name">Galaxie</h4>
-                            <p data-lang-key="tier_3_desc">300 - 500 Punkte • 15% Rabatt + Exklusive Previews</p>
-                        </div>
-                        <span class="tier-badge" data-lang-key="tier_gold">Gold</span>
-                    </div>
-                    
-                    <div class="tier-card">
-                        <div class="tier-icon">👑</div>
-                        <div class="tier-content">
-                            <h4 data-lang-key="tier_4_name">Supernova</h4>
-                            <p data-lang-key="tier_4_desc">500+ Punkte • 20% Rabatt + VIP Bonus-Shop Zugang</p>
-                        </div>
-                        <span class="tier-badge" data-lang-key="tier_vip">VIP</span>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    
-    <!-- ═══════════════════════════════════════════════════════════════
-         MERCH SECTION
-         ═══════════════════════════════════════════════════════════════ -->
-    <section class="merch-section" id="merch">
-        <div class="section-container">
-            <div class="section-header">
-                <span class="section-tag" data-lang-key="merch_tag">Merch</span>
-                <h2 class="section-title">
-                    <span data-lang-key="merch_title_1">LUNARA</span> 
-                    <span class="text-gradient" data-lang-key="merch_title_2">Lifestyle</span>
-                </h2>
+        </section>
+
+        <!-- COLLECTION -->
+        <section class="section section--collection" id="collection" aria-labelledby="collection-title">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag reveal">Kollektion</span>
+                    <h2 class="section-title reveal" id="collection-title">Entdecke <span class="text-gradient">deine Wünsche</span></h2>
+                </div>
+                <div class="collection-filter reveal" role="group" aria-label="Kollektion filtern">
+                    <button class="filter-btn active" data-filter="all" aria-pressed="true">Alle</button>
+                    <button class="filter-btn" data-filter="panties" aria-pressed="false">Panties</button>
+                    <button class="filter-btn" data-filter="bras" aria-pressed="false">BHs</button>
+                    <button class="filter-btn" data-filter="sets" aria-pressed="false">Sets</button>
+                    <button class="filter-btn" data-filter="bodys" aria-pressed="false">Bodys</button>
+                    <button class="filter-btn" data-filter="socks" aria-pressed="false">Socken</button>
+                </div>
+                <div class="collection-grid" role="list" aria-live="polite">
+                    <article class="collection-card reveal" data-category="panties" role="listitem">
+                        <div class="collection-card-inner">
+                            <div class="collection-icon" aria-hidden="true"><svg viewBox="0 0 100 100"><path d="M20 30 L50 20 L80 30 L75 70 Q50 85 25 70 Z" stroke="var(--rose)" stroke-width="2" fill="none"/><path d="M35 40 Q50 50 65 40" stroke="var(--rose)" stroke-width="1.5" fill="none"/></svg></div>
+                            <h3>Klassische Panties</h3>
+                            <p>Zeitlos elegant, perfekter Tragekomfort</p>
+                            <div class="collection-price">ab 29€</div>
+                            <a href="#contact" class="collection-link"><span>Mehr ansehen</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                        </div>
+                        <div class="collection-card-glow" aria-hidden="true"></div>
+                    </article>
+                    <article class="collection-card reveal" data-category="bras" role="listitem">
+                        <div class="collection-card-inner">
+                            <div class="collection-icon" aria-hidden="true"><svg viewBox="0 0 100 100"><path d="M15 50 Q25 30 40 35 Q50 25 60 35 Q75 30 85 50" stroke="var(--rose)" stroke-width="2" fill="none"/><ellipse cx="35" cy="50" rx="18" ry="20" stroke="var(--rose)" stroke-width="2" fill="none"/><ellipse cx="65" cy="50" rx="18" ry="20" stroke="var(--rose)" stroke-width="2" fill="none"/></svg></div>
+                            <h3>Dessous BHs</h3>
+                            <p>Luxuriöser Halt, verführerisches Design</p>
+                            <div class="collection-price">ab 45€</div>
+                            <a href="#contact" class="collection-link"><span>Mehr ansehen</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                        </div>
+                        <div class="collection-card-glow" aria-hidden="true"></div>
+                    </article>
+                    <article class="collection-card reveal" data-category="sets" role="listitem">
+                        <div class="collection-card-inner">
+                            <div class="collection-icon" aria-hidden="true"><svg viewBox="0 0 100 100"><ellipse cx="35" cy="30" rx="15" ry="15" stroke="var(--rose)" stroke-width="2" fill="none"/><ellipse cx="65" cy="30" rx="15" ry="15" stroke="var(--rose)" stroke-width="2" fill="none"/><path d="M25 60 L50 55 L75 60 L70 85 Q50 95 30 85 Z" stroke="var(--rose)" stroke-width="2" fill="none"/></svg></div>
+                            <h3>Exklusive Sets</h3>
+                            <p>Perfekt aufeinander abgestimmt</p>
+                            <div class="collection-price">ab 69€</div>
+                            <a href="#contact" class="collection-link"><span>Mehr ansehen</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                        </div>
+                        <div class="collection-card-glow" aria-hidden="true"></div>
+                    </article>
+                    <article class="collection-card reveal" data-category="bodys" role="listitem">
+                        <div class="collection-card-inner">
+                            <div class="collection-icon" aria-hidden="true"><svg viewBox="0 0 100 100"><path d="M30 15 Q50 10 70 15 L75 40 Q50 45 25 40 Z" stroke="var(--rose)" stroke-width="2" fill="none"/><path d="M25 40 L20 90 Q50 100 80 90 L75 40" stroke="var(--rose)" stroke-width="2" fill="none"/></svg></div>
+                            <h3>Verführerische Bodys</h3>
+                            <p>Figurbetont, sinnlich, unvergesslich</p>
+                            <div class="collection-price">ab 55€</div>
+                            <a href="#contact" class="collection-link"><span>Mehr ansehen</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                        </div>
+                        <div class="collection-card-glow" aria-hidden="true"></div>
+                    </article>
+                    <article class="collection-card reveal" data-category="socks" role="listitem">
+                        <div class="collection-card-inner">
+                            <div class="collection-icon" aria-hidden="true"><svg viewBox="0 0 100 100"><path d="M30 10 L30 50 Q30 70 45 80 L65 80 Q80 70 80 50 L80 30" stroke="var(--rose)" stroke-width="2" fill="none"/><path d="M30 25 L80 25" stroke="var(--rose)" stroke-width="1.5" fill="none"/><circle cx="55" cy="18" r="5" stroke="var(--rose)" stroke-width="1.5" fill="none"/></svg></div>
+                            <h3>Premium Socken</h3>
+                            <p>LUNARA Branding, höchster Komfort</p>
+                            <div class="collection-price">ab 15€</div>
+                            <a href="#contact" class="collection-link"><span>Mehr ansehen</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                        </div>
+                        <div class="collection-card-glow" aria-hidden="true"></div>
+                    </article>
+                    <article class="collection-card reveal" data-category="custom" role="listitem">
+                        <div class="collection-card-inner">
+                            <div class="collection-icon" aria-hidden="true"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="35" stroke="var(--rose)" stroke-width="2" stroke-dasharray="10 5" fill="none"/><path d="M50 30 L50 70 M30 50 L70 50" stroke="var(--rose)" stroke-width="3" fill="none"/></svg></div>
+                            <h3>Wunsch-Bestellung</h3>
+                            <p>Dein Wunsch wird wahr – auf Anfrage</p>
+                            <div class="collection-price">Auf Anfrage</div>
+                            <a href="#contact" class="collection-link"><span>Kontaktiere mich</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                        </div>
+                        <div class="collection-card-glow" aria-hidden="true"></div>
+                    </article>
+                </div>
             </div>
-            
-            <div class="merch-grid">
-                <div class="merch-card">
-                    <div class="merch-image">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect fill='%23FAF7F5' width='200' height='200'/%3E%3Cpath d='M60 60 L100 50 L140 60 L140 150 L60 150 Z' fill='%23F5F0ED' stroke='%23D4A5A5' stroke-width='2'/%3E%3Cpath d='M80 50 L100 40 L120 50' fill='none' stroke='%23D4A5A5' stroke-width='2'/%3E%3Ctext x='100' y='105' text-anchor='middle' font-family='serif' font-size='14' fill='%23B88A8A'%3ELUNARA%3C/text%3E%3C/svg%3E" alt="LUNARA T-Shirt">
+        </section>
+
+        <!-- RATING -->
+        <section class="section section--rating" id="rating" aria-labelledby="rating-title">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag reveal">Special</span>
+                    <h2 class="section-title reveal" id="rating-title">Das 6-Punkte <span class="text-gradient">Bewertungssystem</span></h2>
+                </div>
+                <div class="rating-grid" role="list">
+                    <article class="rating-card reveal" role="listitem">
+                        <span class="rating-number" aria-hidden="true">01</span>
+                        <div class="rating-icon" aria-hidden="true">💎</div>
+                        <h3>Qualität</h3>
+                        <p>Premium-Materialien, die sich wie eine zweite Haut anfühlen.</p>
+                        <div class="rating-bar" role="progressbar" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100" aria-label="Qualität: 98%"><div class="rating-bar-fill" data-width="98"></div></div>
+                    </article>
+                    <article class="rating-card reveal" role="listitem">
+                        <span class="rating-number" aria-hidden="true">02</span>
+                        <div class="rating-icon" aria-hidden="true">🎨</div>
+                        <h3>Design</h3>
+                        <p>Ästhetik, die verführt und Selbstbewusstsein stärkt.</p>
+                        <div class="rating-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" aria-label="Design: 95%"><div class="rating-bar-fill" data-width="95"></div></div>
+                    </article>
+                    <article class="rating-card reveal" role="listitem">
+                        <span class="rating-number" aria-hidden="true">03</span>
+                        <div class="rating-icon" aria-hidden="true">✨</div>
+                        <h3>Komfort</h3>
+                        <p>Ganztägiger Tragekomfort ohne Kompromisse.</p>
+                        <div class="rating-bar" role="progressbar" aria-valuenow="97" aria-valuemin="0" aria-valuemax="100" aria-label="Komfort: 97%"><div class="rating-bar-fill" data-width="97"></div></div>
+                    </article>
+                    <article class="rating-card reveal" role="listitem">
+                        <span class="rating-number" aria-hidden="true">04</span>
+                        <div class="rating-icon" aria-hidden="true">🔐</div>
+                        <h3>Diskretion</h3>
+                        <p>100% diskrete Verpackung und Lieferung garantiert.</p>
+                        <div class="rating-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" aria-label="Diskretion: 100%"><div class="rating-bar-fill" data-width="100"></div></div>
+                    </article>
+                    <article class="rating-card reveal" role="listitem">
+                        <span class="rating-number" aria-hidden="true">05</span>
+                        <div class="rating-icon" aria-hidden="true">⚡</div>
+                        <h3>Schnelligkeit</h3>
+                        <p>Expressversand für dringende Wünsche verfügbar.</p>
+                        <div class="rating-bar" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100" aria-label="Schnelligkeit: 92%"><div class="rating-bar-fill" data-width="92"></div></div>
+                    </article>
+                    <article class="rating-card reveal" role="listitem">
+                        <span class="rating-number" aria-hidden="true">06</span>
+                        <div class="rating-icon" aria-hidden="true">💝</div>
+                        <h3>Persönlicher Service</h3>
+                        <p>Individuelle Beratung für deine perfekte Auswahl.</p>
+                        <div class="rating-bar" role="progressbar" aria-valuenow="99" aria-valuemin="0" aria-valuemax="100" aria-label="Service: 99%"><div class="rating-bar-fill" data-width="99"></div></div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- REWARDS -->
+        <section class="section section--rewards" id="rewards" aria-labelledby="rewards-title">
+            <div class="container">
+                <div class="rewards-grid">
+                    <div class="rewards-info">
+                        <span class="section-tag reveal">Exklusiv</span>
+                        <h2 class="section-title reveal" id="rewards-title">Dein<br><span class="text-gradient">Belohnungssystem</span></h2>
+                        <p class="reveal">Je mehr du bestellst, desto mehr Vorteile genießt du. Sammle Punkte bei jeder Bestellung und tausche sie im exklusiven Bonus-Shop ein.</p>
+                        <a href="#contact" class="btn-primary btn-glow reveal"><span>Jetzt starten</span></a>
                     </div>
-                    <div class="merch-details">
-                        <h3 data-lang-key="merch_tshirt">LUNARA Premium T-Shirt</h3>
-                        <p data-lang-key="merch_tshirt_desc">100% Bio-Baumwolle, Cream mit Rose-Gold Branding</p>
-                        <div class="merch-price">39€</div>
-                        <a href="#" class="btn-primary" style="font-size: 0.8rem; padding: 12px 25px;">
-                            <span data-lang-key="add_to_cart">In den Warenkorb</span>
+                    <div class="rewards-tiers" role="list">
+                        <article class="tier-card reveal" role="listitem">
+                            <div class="tier-icon" aria-hidden="true">🌙</div>
+                            <div class="tier-info"><h3>Mondlicht</h3><p>0 - 100 Punkte • 5% Rabatt auf alles</p></div>
+                            <span class="tier-badge">Start</span>
+                        </article>
+                        <article class="tier-card reveal" role="listitem">
+                            <div class="tier-icon" aria-hidden="true">⭐</div>
+                            <div class="tier-info"><h3>Sternenlicht</h3><p>100 - 300 Punkte • 10% Rabatt + Gratis Versand</p></div>
+                            <span class="tier-badge tier-badge--silver">Silber</span>
+                        </article>
+                        <article class="tier-card reveal" role="listitem">
+                            <div class="tier-icon" aria-hidden="true">💫</div>
+                            <div class="tier-info"><h3>Galaxie</h3><p>300 - 500 Punkte • 15% Rabatt + Exklusive Previews</p></div>
+                            <span class="tier-badge tier-badge--gold">Gold</span>
+                        </article>
+                        <article class="tier-card reveal" role="listitem">
+                            <div class="tier-icon" aria-hidden="true">👑</div>
+                            <div class="tier-info"><h3>Supernova</h3><p>500+ Punkte • 20% Rabatt + VIP Bonus-Shop Zugang</p></div>
+                            <span class="tier-badge tier-badge--vip">VIP</span>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MERCH -->
+        <section class="section section--merch" id="merch" aria-labelledby="merch-title">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag reveal">Merch</span>
+                    <h2 class="section-title reveal" id="merch-title">LUNARA <span class="text-gradient">Lifestyle</span></h2>
+                </div>
+                <div class="merch-grid" role="list">
+                    <article class="merch-card reveal" role="listitem">
+                        <div class="merch-image">
+                            <div class="merch-placeholder" aria-hidden="true"><svg viewBox="0 0 100 100"><rect x="30" y="25" width="40" height="55" rx="5" fill="none" stroke="var(--rose)" stroke-width="2"/><path d="M40 25 L50 15 L60 25" fill="none" stroke="var(--rose)" stroke-width="2"/><text x="50" y="58" text-anchor="middle" font-family="serif" font-size="8" fill="var(--rose)">LUNARA</text></svg></div>
+                            <span class="merch-badge">NEU</span>
+                        </div>
+                        <div class="merch-details">
+                            <h3>LUNARA Premium T-Shirt</h3>
+                            <p>100% Bio-Baumwolle, Cream mit Rose-Gold Branding</p>
+                            <div class="merch-price">39€</div>
+                            <button class="btn-primary btn-small" type="button">In den Warenkorb</button>
+                        </div>
+                    </article>
+                    <article class="merch-card reveal" role="listitem">
+                        <div class="merch-image">
+                            <div class="merch-placeholder" aria-hidden="true"><svg viewBox="0 0 100 100"><path d="M35 20 L35 60 Q35 75 50 80 L50 80 Q65 75 65 60 L65 40" fill="none" stroke="var(--rose)" stroke-width="2"/><path d="M35 35 L65 35" stroke="var(--rose)" stroke-width="2"/><circle cx="50" cy="28" r="4" fill="var(--rose)"/></svg></div>
+                            <span class="merch-badge merch-badge--hot">BESTSELLER</span>
+                        </div>
+                        <div class="merch-details">
+                            <h3>LUNARA Signature Socken</h3>
+                            <p>Premium Baumwolle, dezentes Moon-Logo</p>
+                            <div class="merch-price">19€</div>
+                            <button class="btn-primary btn-small" type="button">In den Warenkorb</button>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- FEEDBACK -->
+        <section class="section section--feedback" id="feedback" aria-labelledby="feedback-title">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag reveal">Kundenstimmen</span>
+                    <h2 class="section-title reveal" id="feedback-title">Was andere <span class="text-gradient">sagen</span></h2>
+                </div>
+                <div class="feedback-slider-wrapper">
+                    <div class="feedback-slider" id="feedbackSlider" aria-label="Kundenbewertungen">
+                        <article class="feedback-card">
+                            <span class="feedback-quote" aria-hidden="true">"</span>
+                            <p class="feedback-text">Absolut diskret und die Qualität ist unglaublich! Ich bin so froh, LUNARA gefunden zu haben.</p>
+                            <div class="feedback-author">
+                                <div class="feedback-avatar" aria-hidden="true">👤</div>
+                                <div><div class="feedback-name" aria-hidden="true">M****a S.</div><div class="feedback-stars" aria-label="5 von 5 Sternen">★★★★★</div></div>
+                            </div>
+                        </article>
+                        <article class="feedback-card">
+                            <span class="feedback-quote" aria-hidden="true">"</span>
+                            <p class="feedback-text">Die persönliche Beratung war so hilfreich. Es wurde genau verstanden, was ich wollte.</p>
+                            <div class="feedback-author">
+                                <div class="feedback-avatar" aria-hidden="true">👤</div>
+                                <div><div class="feedback-name" aria-hidden="true">L***a K.</div><div class="feedback-stars" aria-label="5 von 5 Sternen">★★★★★</div></div>
+                            </div>
+                        </article>
+                        <article class="feedback-card">
+                            <span class="feedback-quote" aria-hidden="true">"</span>
+                            <p class="feedback-text">Schnelle Lieferung, wunderschöne Verpackung. Fühlt sich wirklich wie ein Geschenk an sich selbst an!</p>
+                            <div class="feedback-author">
+                                <div class="feedback-avatar" aria-hidden="true">👤</div>
+                                <div><div class="feedback-name" aria-hidden="true">A**a M.</div><div class="feedback-stars" aria-label="5 von 5 Sternen">★★★★★</div></div>
+                            </div>
+                        </article>
+                        <article class="feedback-card">
+                            <span class="feedback-quote" aria-hidden="true">"</span>
+                            <p class="feedback-text">Das Belohnungssystem ist genial! Nach drei Bestellungen schon auf Gold-Status.</p>
+                            <div class="feedback-author">
+                                <div class="feedback-avatar" aria-hidden="true">👤</div>
+                                <div><div class="feedback-name" aria-hidden="true">S***e R.</div><div class="feedback-stars" aria-label="5 von 5 Sternen">★★★★★</div></div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="section section--faq" id="faq" aria-labelledby="faq-title">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag reveal">FAQ</span>
+                    <h2 class="section-title reveal" id="faq-title">Häufig gestellte <span class="text-gradient">Fragen</span></h2>
+                </div>
+                <div class="faq-container" role="list">
+                    <div class="faq-item reveal" role="listitem">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-1"><span>Wie läuft die Bestellung ab?</span><span class="faq-icon" aria-hidden="true">+</span></button>
+                        <div class="faq-answer" id="faq-answer-1" role="region"><p>Kontaktiere mich über das Formular oder direkt per E-Mail. Wir besprechen deine Wünsche und ich sende dir eine personalisierte Auswahl. Nach deiner Bestätigung erfolgt diskrete Zahlung und Versand.</p></div>
+                    </div>
+                    <div class="faq-item reveal" role="listitem">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-2"><span>Wie diskret ist der Versand?</span><span class="faq-icon" aria-hidden="true">+</span></button>
+                        <div class="faq-answer" id="faq-answer-2" role="region"><p>100% diskret. Neutrale Verpackung ohne Hinweis auf den Inhalt, anonymer Absender. Niemand wird wissen, was in deinem Paket ist.</p></div>
+                    </div>
+                    <div class="faq-item reveal" role="listitem">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-3"><span>Kann ich individuelle Wünsche äußern?</span><span class="faq-icon" aria-hidden="true">+</span></button>
+                        <div class="faq-answer" id="faq-answer-3" role="region"><p>Absolut! Individuelle Wünsche werden nach Absprache und Genehmigung schnell umgesetzt. Ich freue mich auf deine Ideen.</p></div>
+                    </div>
+                    <div class="faq-item reveal" role="listitem">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-4"><span>Welche Zahlungsmethoden gibt es?</span><span class="faq-icon" aria-hidden="true">+</span></button>
+                        <div class="faq-answer" id="faq-answer-4" role="region"><p>PayPal, Überweisung und diskrete Kryptowährungen. Alle Zahlungen erscheinen neutral auf deinem Kontoauszug.</p></div>
+                    </div>
+                    <div class="faq-item reveal" role="listitem">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-5"><span>Wie funktioniert das Punkte-System?</span><span class="faq-icon" aria-hidden="true">+</span></button>
+                        <div class="faq-answer" id="faq-answer-5" role="region"><p>Pro 10€ Bestellwert erhältst du 1 Punkt. Punkte können im Bonus-Shop gegen exklusive Artikel, Rabatte und VIP-Vorteile eingetauscht werden.</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEWSLETTER -->
+        <section class="section section--newsletter" id="contact" aria-labelledby="newsletter-title">
+            <div class="container">
+                <div class="newsletter-content">
+                    <span class="section-tag reveal">Newsletter</span>
+                    <h2 class="section-title reveal" id="newsletter-title">Bleib auf dem <span class="text-gradient">Laufenden</span></h2>
+                    <p class="reveal">Exklusive Previews, Rabattcodes und News direkt in dein Postfach. Diskret und unverbindlich.</p>
+                    <form class="newsletter-form reveal" id="newsletterForm" novalidate>
+                        <!-- Honeypot -->
+                        <div style="position:absolute;left:-9999px;"><input type="text" name="website" tabindex="-1" autocomplete="off"></div>
+                        <div class="form-group">
+                            <input type="email" id="emailInput" name="email" placeholder="deine@email.de" required aria-describedby="email-error" autocomplete="email">
+                            <label for="emailInput">E-Mail Adresse</label>
+                            <span id="email-error" class="form-error" role="alert" aria-live="polite"></span>
+                        </div>
+                        <button type="submit" class="btn-primary btn-glow">
+                            <span>Anmelden</span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+                        </button>
+                    </form>
+                    <div class="newsletter-success" id="newsletterSuccess" role="status" aria-live="polite" hidden>
+                        <div class="success-icon" aria-hidden="true">✓</div>
+                        <p>Willkommen bei LUNARA! Check deine E-Mails.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer-marquee" aria-hidden="true"><span>LUNARA • CURATED INTIMACY • LUNARA • CURATED INTIMACY • LUNARA • CURATED INTIMACY • LUNARA • CURATED INTIMACY • </span></div>
+        <div class="footer-content">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-brand">
+                        <a href="#hero" class="footer-logo" aria-label="LUNARA - Zur Startseite">
+                            <svg class="footer-logo-icon" viewBox="0 0 50 50" aria-hidden="true"><circle cx="25" cy="25" r="22" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M25 5 Q40 25 25 45" fill="none" stroke="currentColor" stroke-width="1"/></svg>
+                            <span>LUNARA</span>
                         </a>
-                    </div>
-                </div>
-                
-                <div class="merch-card">
-                    <div class="merch-image">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect fill='%23FAF7F5' width='200' height='200'/%3E%3Cpath d='M70 50 L70 130 Q70 150 90 160 L110 160 Q130 150 130 130 L130 80' fill='%23F5F0ED' stroke='%23D4A5A5' stroke-width='2'/%3E%3Cpath d='M70 70 L130 70' stroke='%23D4A5A5' stroke-width='2'/%3E%3Cpath d='M80 60 Q100 55 120 60' fill='none' stroke='%23D4A5A5' stroke-width='1'/%3E%3Ccircle cx='100' cy='60' r='5' fill='%23D4A5A5'/%3E%3Ctext x='100' y='60' text-anchor='middle' font-family='serif' font-size='6' fill='%23FFF'%3E☽%3C/text%3E%3C/svg%3E" alt="LUNARA Socken">
-                    </div>
-                    <div class="merch-details">
-                        <h3 data-lang-key="merch_socks">LUNARA Signature Socken</h3>
-                        <p data-lang-key="merch_socks_desc">Premium Baumwolle, dezentes Moon-Logo</p>
-                        <div class="merch-price">19€</div>
-                        <a href="#" class="btn-primary" style="font-size: 0.8rem; padding: 12px 25px;">
-                            <span data-lang-key="add_to_cart">In den Warenkorb</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- ═══════════════════════════════════════════════════════════════
-         FEEDBACK SECTION (ANIMATED)
-         ═══════════════════════════════════════════════════════════════ -->
-    <section class="feedback-section" id="feedback">
-        <div class="feedback-bg">
-            <div class="feedback-wave"></div>
-        </div>
-        
-        <div class="section-container">
-            <div class="section-header">
-                <span class="section-tag" data-lang-key="feedback_tag">Kundenstimmen</span>
-                <h2 class="section-title">
-                    <span data-lang-key="feedback_title_1">Was andere</span> 
-                    <span class="text-gradient" data-lang-key="feedback_title_2">sagen</span>
-                </h2>
-            </div>
-            
-            <div style="overflow: hidden;">
-                <div class="feedback-slider">
-                    <div class="feedback-card">
-                        <span class="feedback-quote">"</span>
-                        <p class="feedback-text" data-lang-key="feedback_1_text">
-                            Absolut diskret und die Qualität ist unglaublich! 
-                            Ich bin so froh, LUNARA gefunden zu haben.
-                        </p>
-                        <div class="feedback-author">
-                            <div class="feedback-avatar">👤</div>
-                            <div>
-                                <div class="feedback-name">M****a S.</div>
-                                <div class="feedback-stars">
-                                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                                </div>
-                            </div>
+                        <p>Curated Intimacy. Exklusive Dessous & Lingerie, handverlesen und diskret zu dir geliefert.</p>
+                        <div class="footer-social">
+                            <a href="#" class="social-link" aria-label="Instagram (folgt bald)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="18" cy="6" r="1.5"/></svg></a>
+                            <a href="mailto:contact@lunara.de" class="social-link" aria-label="E-Mail senden"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
                         </div>
                     </div>
-                    
-                    <div class="feedback-card">
-                        <span class="feedback-quote">"</span>
-                        <p class="feedback-text" data-lang-key="feedback_2_text">
-                            Die persönliche Beratung war so hilfreich. 
-                            Jaqueline hat genau verstanden, was ich wollte.
-                        </p>
-                        <div class="feedback-author">
-                            <div class="feedback-avatar">👤</div>
-                            <div>
-                                <div class="feedback-name">L***a K.</div>
-                                <div class="feedback-stars">
-                                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="footer-links-group">
+                        <h4>Navigation</h4>
+                        <nav class="footer-links" aria-label="Footer Navigation">
+                            <a href="#about">Über mich</a>
+                            <a href="#collection">Kollektion</a>
+                            <a href="#rewards">Belohnungen</a>
+                            <a href="#merch">Merch</a>
+                        </nav>
                     </div>
-                    
-                    <div class="feedback-card">
-                        <span class="feedback-quote">"</span>
-                        <p class="feedback-text" data-lang-key="feedback_3_text">
-                            Schnelle Lieferung, wunderschöne Verpackung. 
-                            Fühlt sich wirklich wie ein Geschenk an sich selbst an!
-                        </p>
-                        <div class="feedback-author">
-                            <div class="feedback-avatar">👤</div>
-                            <div>
-                                <div class="feedback-name">A**a M.</div>
-                                <div class="feedback-stars">
-                                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="footer-links-group">
+                        <h4>Rechtliches</h4>
+                        <nav class="footer-links" aria-label="Rechtliche Links">
+                            <a href="#faq">FAQ</a>
+                            <a href="impressum.html">Impressum</a>
+                            <a href="datenschutz.html">Datenschutz</a>
+                            <a href="agb.html">AGB</a>
+                        </nav>
                     </div>
-                    
-                    <div class="feedback-card">
-                        <span class="feedback-quote">"</span>
-                        <p class="feedback-text" data-lang-key="feedback_4_text">
-                            Das Belohnungssystem ist genial! 
-                            Nach drei Bestellungen schon auf Gold-Status.
-                        </p>
-                        <div class="feedback-author">
-                            <div class="feedback-avatar">👤</div>
-                            <div>
-                                <div class="feedback-name">S***e R.</div>
-                                <div class="feedback-stars">
-                                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Duplicate for infinite scroll -->
-                    <div class="feedback-card">
-                        <span class="feedback-quote">"</span>
-                        <p class="feedback-text">
-                            Absolut diskret und die Qualität ist unglaublich! 
-                            Ich bin so froh, LUNARA gefunden zu haben.
-                        </p>
-                        <div class="feedback-author">
-                            <div class="feedback-avatar">👤</div>
-                            <div>
-                                <div class="feedback-name">M****a S.</div>
-                                <div class="feedback-stars">
-                                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="feedback-card">
-                        <span class="feedback-quote">"</span>
-                        <p class="feedback-text">
-                            Die persönliche Beratung war so hilfreich. 
-                            Jaqueline hat genau verstanden, was ich wollte.
-                        </p>
-                        <div class="feedback-author">
-                            <div class="feedback-avatar">👤</div>
-                            <div>
-                                <div class="feedback-name">L***a K.</div>
-                                <div class="feedback-stars">
-                                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                                </div>
-                            </div>
+                    <div class="footer-links-group">
+                        <h4>Kontakt</h4>
+                        <div class="footer-links">
+                            <a href="mailto:contact@lunara.de">contact@lunara.de</a>
+                            <p>Emsdetten, Deutschland</p>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- ═══════════════════════════════════════════════════════════════
-         FAQ SECTION
-         ═══════════════════════════════════════════════════════════════ -->
-    <section class="faq-section" id="faq">
-        <div class="section-container">
-            <div class="section-header">
-                <span class="section-tag" data-lang-key="faq_tag">FAQ</span>
-                <h2 class="section-title">
-                    <span data-lang-key="faq_title_1">Häufig gestellte</span> 
-                    <span class="text-gradient" data-lang-key="faq_title_2">Fragen</span>
-                </h2>
-            </div>
-            
-            <div class="faq-container">
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span data-lang-key="faq_1_q">Wie läuft die Bestellung ab?</span>
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p data-lang-key="faq_1_a">Kontaktiere mich über das Formular oder direkt per E-Mail. Wir besprechen deine Wünsche und ich sende dir eine personalisierte Auswahl. Nach deiner Bestätigung erfolgt diskrete Zahlung und Versand.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span data-lang-key="faq_2_q">Wie diskret ist der Versand?</span>
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p data-lang-key="faq_2_a">100% diskret. Neutrale Verpackung ohne Hinweis auf den Inhalt, anonymer Absender. Niemand wird wissen, was in deinem Paket ist.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span data-lang-key="faq_3_q">Kann ich individuelle Wünsche äußern?</span>
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p data-lang-key="faq_3_a">Absolut! Individuelle Wünsche werden nach Absprache und Genehmigung schnell umgesetzt. Ich freue mich auf deine Ideen.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span data-lang-key="faq_4_q">Welche Zahlungsmethoden gibt es?</span>
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p data-lang-key="faq_4_a">PayPal, Überweisung und diskrete Kryptowährungen. Alle Zahlungen erscheinen neutral auf deinem Kontoauszug.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span data-lang-key="faq_5_q">Wie funktioniert das Punkte-System?</span>
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p data-lang-key="faq_5_a">Pro 10€ Bestellwert erhältst du 1 Punkt. Punkte können im Bonus-Shop gegen exklusive Artikel, Rabatte und VIP-Vorteile eingetauscht werden.</p>
-                    </div>
+                <div class="footer-bottom">
+                    <p>© 2026 LUNARA. Alle Rechte vorbehalten.</p>
+                    <p>Made with ♡ für diskrete Eleganz</p>
                 </div>
             </div>
-        </div>
-    </section>
-    
-    <!-- ═══════════════════════════════════════════════════════════════
-         NEWSLETTER SECTION
-         ═══════════════════════════════════════════════════════════════ -->
-    <section class="newsletter-section" id="newsletter">
-        <div class="section-container">
-            <div class="newsletter-content">
-                <span class="section-tag" data-lang-key="newsletter_tag">Newsletter</span>
-                <h2 class="section-title">
-                    <span data-lang-key="newsletter_title_1">Bleib auf dem</span> 
-                    <span class="text-gradient" data-lang-key="newsletter_title_2">Laufenden</span>
-                </h2>
-                <p style="color: var(--text-secondary);" data-lang-key="newsletter_desc">
-                    Exklusive Previews, Rabattcodes und News direkt in dein Postfach. 
-                    Diskret und unverbindlich.
-                </p>
-                
-                <form class="newsletter-form">
-                    <input type="email" class="newsletter-input" placeholder="deine@email.de" required>
-                    <button type="submit" class="btn-primary">
-                        <span data-lang-key="newsletter_btn">Anmelden</span>
-                    </button>
-                </form>
-            </div>
-        </div>
-    </section>
-    
-    <!-- ═══════════════════════════════════════════════════════════════
-         FOOTER
-         ═══════════════════════════════════════════════════════════════ -->
-    <footer>
-        <div class="footer-marquee">
-            LUNARA • CURATED INTIMACY • LUNARA • CURATED INTIMACY • LUNARA • CURATED INTIMACY • LUNARA • CURATED INTIMACY • 
-        </div>
-        
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <a href="#" class="logo" style="margin-bottom: 15px; display: inline-flex;">
-                    <svg class="logo-icon" viewBox="0 0 50 50" style="width: 40px; height: 40px;">
-                        <circle cx="25" cy="25" r="22" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--rose)"/>
-                        <path d="M25 5 Q40 25 25 45" fill="none" stroke="currentColor" stroke-width="1" style="color: var(--rose)"/>
-                    </svg>
-                    <span class="logo-text" style="font-size: 1.5rem;">LUNARA</span>
-                </a>
-                <p data-lang-key="footer_desc">Curated Intimacy. Exklusive Dessous & Lingerie, handverlesen und diskret zu dir geliefert.</p>
-            </div>
-            
-            <div class="footer-section">
-                <h4 data-lang-key="footer_nav">Navigation</h4>
-                <div class="footer-links">
-                    <a href="#about" data-lang-key="nav_about">Über mich</a>
-                    <a href="#collection" data-lang-key="nav_collection">Kollektion</a>
-                    <a href="#rewards" data-lang-key="nav_rewards">Belohnungen</a>
-                    <a href="#merch" data-lang-key="nav_merch">Merch</a>
-                </div>
-            </div>
-            
-            <div class="footer-section">
-                <h4 data-lang-key="footer_info">Info</h4>
-                <div class="footer-links">
-                    <a href="#faq" data-lang-key="nav_faq">FAQ</a>
-                    <a href="#" data-lang-key="footer_imprint">Impressum</a>
-                    <a href="#" data-lang-key="footer_privacy">Datenschutz</a>
-                    <a href="#" data-lang-key="footer_terms">AGB</a>
-                </div>
-            </div>
-            
-            <div class="footer-section">
-                <h4 data-lang-key="footer_contact">Kontakt</h4>
-                <div class="footer-links">
-                    <a href="mailto:contact@lunara.de">contact@lunara.de</a>
-                    <p style="color: var(--text-muted); font-size: 0.9rem;">Emsdetten, Deutschland</p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <p>© 2026 LUNARA. <span data-lang-key="footer_rights">Alle Rechte vorbehalten.</span></p>
-            <p data-lang-key="footer_made">Made with ♡ für diskrete Eleganz</p>
         </div>
     </footer>
-    
-    <!-- ═══════════════════════════════════════════════════════════════
-         LOGIN MODAL
-         ═══════════════════════════════════════════════════════════════ -->
-    <div class="login-modal" id="loginModal">
-        <div class="login-box">
-            <button class="login-close" id="loginClose">×</button>
-            <div class="login-header">
-                <h2 data-lang-key="login_title">Willkommen zurück</h2>
-                <p style="color: var(--text-secondary);" data-lang-key="login_subtitle">Melde dich an um auf dein Konto zuzugreifen</p>
+
+    <!-- LOGIN MODAL -->
+    <div class="modal" id="loginModal" role="dialog" aria-modal="true" aria-labelledby="login-title" hidden>
+        <div class="modal-overlay" tabindex="-1"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose" aria-label="Schließen"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+            <div class="modal-header">
+                <div class="modal-logo" aria-hidden="true"><svg viewBox="0 0 50 50"><circle cx="25" cy="25" r="22" fill="none" stroke="var(--rose)" stroke-width="1.5"/><path d="M25 5 Q40 25 25 45" fill="none" stroke="var(--rose)" stroke-width="1"/></svg></div>
+                <h2 id="login-title">Willkommen zurück</h2>
+                <p>Melde dich an, um auf dein Konto zuzugreifen</p>
             </div>
-            <form class="login-form">
+            <form class="login-form" id="loginForm" novalidate>
                 <div class="form-group">
-                    <input type="email" id="loginEmail" placeholder=" " required>
-                    <label for="loginEmail" data-lang-key="login_email">E-Mail</label>
+                    <input type="email" id="loginEmail" name="email" placeholder=" " required autocomplete="email" aria-describedby="login-email-error">
+                    <label for="loginEmail">E-Mail</label>
+                    <span id="login-email-error" class="form-error" role="alert" aria-live="polite"></span>
                 </div>
                 <div class="form-group">
-                    <input type="password" id="loginPassword" placeholder=" " required>
-                    <label for="loginPassword" data-lang-key="login_password">Passwort</label>
+                    <input type="password" id="loginPassword" name="password" placeholder=" " required autocomplete="current-password" aria-describedby="login-password-error">
+                    <label for="loginPassword">Passwort</label>
+                    <button type="button" class="password-toggle" aria-label="Passwort anzeigen" aria-pressed="false"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+                    <span id="login-password-error" class="form-error" role="alert" aria-live="polite"></span>
                 </div>
-                <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">
-                    <span data-lang-key="login_btn">Anmelden</span>
-                </button>
-                <p style="text-align: center; margin-top: 20px; color: var(--text-secondary); font-size: 0.9rem;">
-                    <span data-lang-key="login_no_account">Noch kein Konto?</span> 
-                    <a href="#" style="color: var(--rose);" data-lang-key="login_register">Registrieren</a>
-                </p>
+                <div class="form-options">
+                    <label class="checkbox-wrapper">
+                        <input type="checkbox" id="rememberMe" name="remember">
+                        <span class="checkbox-custom" aria-hidden="true"></span>
+                        <span>Angemeldet bleiben</span>
+                    </label>
+                    <a href="#" class="forgot-link">Passwort vergessen?</a>
+                </div>
+                <button type="submit" class="btn-primary btn-full"><span>Anmelden</span></button>
+                <p class="register-text">Noch kein Konto? <a href="#" class="register-link">Registrieren</a></p>
             </form>
         </div>
     </div>
+
+    <!-- TOAST CONTAINER -->
+    <div class="toast-container" id="toastContainer" role="region" aria-live="polite" aria-label="Benachrichtigungen"></div>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
     
-    <!-- ═══════════════════════════════════════════════════════════════
-         JAVASCRIPT
-         ═══════════════════════════════════════════════════════════════ -->
+    <!-- Service Worker Registration -->
     <script>
-        // ═══ BOOT ANIMATION ═══
-        document.addEventListener('DOMContentLoaded', () => {
-            const bootScreen = document.getElementById('bootScreen');
-            const starfield = document.querySelector('.starfield');
-            const asteroidField = document.getElementById('asteroidField');
-            
-            // Generate stars
-            for (let i = 0; i < 100; i++) {
-                const star = document.createElement('div');
-                star.className = 'star';
-                star.style.cssText = `
-                    left: ${Math.random() * 100}%;
-                    top: ${Math.random() * 100}%;
-                    animation-delay: ${Math.random() * 3}s;
-                    opacity: ${0.3 + Math.random() * 0.7};
-                `;
-                starfield.appendChild(star);
-            }
-            
-            // Generate asteroids (web version only)
-            if (window.innerWidth > 768) {
-                for (let i = 0; i < 8; i++) {
-                    const asteroid = document.createElement('div');
-                    asteroid.className = 'asteroid';
-                    const size = 30 + Math.random() * 60;
-                    asteroid.style.cssText = `
-                        width: ${size}px;
-                        height: ${size}px;
-                        top: ${Math.random() * 100}%;
-                        animation-duration: ${8 + Math.random() * 10}s;
-                        animation-delay: ${i * 0.5}s;
-                    `;
-                    asteroidField.appendChild(asteroid);
-                }
-            }
-            
-            // End boot animation
-            setTimeout(() => {
-                bootScreen.classList.add('finished');
-                setTimeout(() => {
-                    bootScreen.style.display = 'none';
-                }, 1500);
-            }, 4000);
-        });
-        
-        // ═══ COSMIC PARTICLES ═══
-        const particleContainer = document.getElementById('particleContainer');
-        if (particleContainer) {
-            for (let i = 0; i < 30; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'cosmic-particle';
-                particle.style.cssText = `
-                    left: ${Math.random() * 100}%;
-                    animation-delay: ${Math.random() * 20}s;
-                    animation-duration: ${15 + Math.random() * 10}s;
-                `;
-                particleContainer.appendChild(particle);
-            }
-            
-            // Add shooting stars
-            for (let i = 0; i < 3; i++) {
-                const shootingStar = document.createElement('div');
-                shootingStar.className = 'shooting-star';
-                shootingStar.style.cssText = `
-                    top: ${Math.random() * 50}%;
-                    animation-delay: ${i * 15 + Math.random() * 5}s;
-                `;
-                particleContainer.appendChild(shootingStar);
-            }
-        }
-        
-        // ═══ NAVIGATION ═══
-        const navWrapper = document.getElementById('navWrapper');
-        window.addEventListener('scroll', () => {
-            navWrapper.classList.toggle('scrolled', window.scrollY > 50);
-        });
-        
-        // ═══ BURGER MENU ═══
-        const burgerMenu = document.getElementById('burgerMenu');
-        const mobileMenu = document.getElementById('mobileMenu');
-        
-        burgerMenu.addEventListener('click', () => {
-            burgerMenu.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-        });
-        
-        // Close mobile menu on link click
-        document.querySelectorAll('.mobile-nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                burgerMenu.classList.remove('active');
-                mobileMenu.classList.remove('active');
-                document.body.style.overflow = '';
+        if ('serviceWorker' in navigator && LUNARA_CONFIG.FEATURES.serviceWorker) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(reg => console.log('🌙 Service Worker registered:', reg.scope))
+                    .catch(err => console.warn('Service Worker registration failed:', err));
             });
-        });
-        
-        // ═══ THEME TOGGLE ═══
-        const themeToggle = document.getElementById('themeToggle');
-        const html = document.documentElement;
-        
-        // Check saved theme
-        const savedTheme = localStorage.getItem('lunara-theme') || 'dark';
-        html.setAttribute('data-theme', savedTheme);
-        
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = html.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            html.setAttribute('data-theme', newTheme);
-            localStorage.setItem('lunara-theme', newTheme);
-        });
-        
-        // ═══ LANGUAGE SYSTEM ═══
-        const translations = {
-            de: {
-                nav_about: 'Über mich',
-                nav_collection: 'Kollektion',
-                nav_rating: '6-Punkte System',
-                nav_rewards: 'Belohnungen',
-                nav_merch: 'Merch',
-                nav_feedback: 'Feedback',
-                nav_faq: 'FAQ',
-                nav_login: 'Login',
-                hero_badge: 'Exklusiv & Diskret',
-                hero_title_1: 'Curated',
-                hero_title_2: 'Intimacy',
-                hero_subtitle: 'Handverlesene Dessous & Lingerie, persönlich für dich kuratiert. Erlebe Luxus, der nur dir gehört.',
-                hero_cta_1: 'Kollektion entdecken',
-                hero_cta_2: 'Mehr erfahren',
-                // Add more translations as needed
-            },
-            en: {
-                nav_about: 'About me',
-                nav_collection: 'Collection',
-                nav_rating: '6-Point System',
-                nav_rewards: 'Rewards',
-                nav_merch: 'Merch',
-                nav_feedback: 'Feedback',
-                nav_faq: 'FAQ',
-                nav_login: 'Login',
-                hero_badge: 'Exclusive & Discreet',
-                hero_title_1: 'Curated',
-                hero_title_2: 'Intimacy',
-                hero_subtitle: 'Hand-picked lingerie, personally curated for you. Experience luxury that belongs only to you.',
-                hero_cta_1: 'Discover Collection',
-                hero_cta_2: 'Learn more',
-            },
-            pl: {
-                nav_about: 'O mnie',
-                nav_collection: 'Kolekcja',
-                nav_rating: 'System 6 punktów',
-                nav_rewards: 'Nagrody',
-                nav_merch: 'Merch',
-                nav_feedback: 'Opinie',
-                nav_faq: 'FAQ',
-                nav_login: 'Zaloguj się',
-                hero_badge: 'Ekskluzywne i dyskretne',
-                hero_title_1: 'Kuratowana',
-                hero_title_2: 'Intymność',
-                hero_subtitle: 'Ręcznie wybrana bielizna, specjalnie dla Ciebie. Doświadcz luksusu, który należy tylko do Ciebie.',
-                hero_cta_1: 'Odkryj kolekcję',
-                hero_cta_2: 'Dowiedz się więcej',
-            },
-            es: {
-                nav_about: 'Sobre mí',
-                nav_collection: 'Colección',
-                nav_rating: 'Sistema 6 puntos',
-                nav_rewards: 'Recompensas',
-                nav_merch: 'Merch',
-                nav_feedback: 'Opiniones',
-                nav_faq: 'FAQ',
-                nav_login: 'Iniciar sesión',
-                hero_badge: 'Exclusivo y discreto',
-                hero_title_1: 'Intimidad',
-                hero_title_2: 'Curada',
-                hero_subtitle: 'Lencería seleccionada a mano, curada personalmente para ti. Experimenta el lujo que solo te pertenece.',
-                hero_cta_1: 'Descubrir colección',
-                hero_cta_2: 'Saber más',
-            }
-        };
-        
-        const langOptions = document.querySelectorAll('.lang-option');
-        const langCurrent = document.querySelector('.lang-current');
-        
-        langOptions.forEach(option => {
-            option.addEventListener('click', () => {
-                const lang = option.getAttribute('data-lang');
-                const flag = option.querySelector('.lang-flag').textContent;
-                
-                // Update current display
-                langCurrent.querySelector('.lang-flag').textContent = flag;
-                langCurrent.querySelector('.lang-code').textContent = lang.toUpperCase();
-                
-                // Update all translatable elements
-                document.querySelectorAll('[data-lang-key]').forEach(el => {
-                    const key = el.getAttribute('data-lang-key');
-                    if (translations[lang] && translations[lang][key]) {
-                        el.textContent = translations[lang][key];
-                    }
-                });
-                
-                localStorage.setItem('lunara-lang', lang);
-            });
-        });
-        
-        // ═══ FAQ ACCORDION ═══
-        document.querySelectorAll('.faq-question').forEach(button => {
-            button.addEventListener('click', () => {
-                const item = button.parentElement;
-                const isActive = item.classList.contains('active');
-                
-                // Close all
-                document.querySelectorAll('.faq-item').forEach(faq => {
-                    faq.classList.remove('active');
-                });
-                
-                // Open clicked if wasn't active
-                if (!isActive) {
-                    item.classList.add('active');
-                }
-            });
-        });
-        
-        // ═══ COLLECTION FILTER ═══
-        document.querySelectorAll('.category-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const category = btn.getAttribute('data-category');
-                
-                // Update active button
-                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                
-                // Filter cards
-                document.querySelectorAll('.collection-card').forEach(card => {
-                    const cardCategory = card.getAttribute('data-category');
-                    if (category === 'all' || cardCategory === category || cardCategory === 'all') {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            });
-        });
-        
-        // ═══ LOGIN MODAL ═══
-        const loginBtn = document.getElementById('loginBtn');
-        const loginModal = document.getElementById('loginModal');
-        const loginClose = document.getElementById('loginClose');
-        
-        loginBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            loginModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        });
-        
-        loginClose.addEventListener('click', () => {
-            loginModal.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-        
-        loginModal.addEventListener('click', (e) => {
-            if (e.target === loginModal) {
-                loginModal.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        });
-        
-        // ═══ SMOOTH SCROLL ═══
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const href = this.getAttribute('href');
-                if (href !== '#') {
-                    e.preventDefault();
-                    const target = document.querySelector(href);
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                }
-            });
-        });
-        
-        // ═══ ADD SPARKLES TO ABOUT SECTION ═══
-        const aboutBgEffects = document.querySelector('.about-bg-effects');
-        if (aboutBgEffects) {
-            for (let i = 0; i < 30; i++) {
-                const sparkle = document.createElement('div');
-                sparkle.className = 'sparkle';
-                sparkle.style.cssText = `
-                    left: ${Math.random() * 100}%;
-                    top: ${Math.random() * 100}%;
-                    animation-delay: ${Math.random() * 4}s;
-                `;
-                aboutBgEffects.appendChild(sparkle);
-            }
         }
     </script>
 </body>
