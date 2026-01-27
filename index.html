@@ -1,595 +1,216 @@
 <!DOCTYPE html>
-<html lang="de" data-theme="dark">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LUNARA – Curated Intimacy | Exklusive Dessous & Lingerie</title>
-    <meta name="description" content="Handverlesene Dessous & Lingerie, persönlich kuratiert. 100% Diskretion garantiert.">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='none' stroke='%23E8B4B4' stroke-width='2'/%3E%3Cpath d='M16 4 Q26 16 16 28' fill='none' stroke='%23E8B4B4' stroke-width='1.5'/%3E%3C/svg%3E">
+    <title>LUNARA – Curated Intimacy</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <!-- BOOT SCREEN -->
-    <div class="boot-screen" id="bootScreen">
-        <div class="boot-starfield" id="bootStarfield"></div>
-        <div class="boot-asteroid-field" id="bootAsteroidField"></div>
-        <div class="boot-content">
-            <div class="boot-moon-glow"></div>
-            <div class="boot-moon-container">
-                <svg class="boot-moon-svg" viewBox="0 0 100 100">
-                    <circle class="boot-moon-circle" cx="50" cy="50" r="45"/>
-                    <path class="boot-moon-phase" d="M50 5 Q80 50 50 95"/>
-                </svg>
-                <div class="boot-moon-rings">
-                    <div class="boot-ring"></div>
-                    <div class="boot-ring"></div>
-                    <div class="boot-ring"></div>
-                </div>
-            </div>
-            <h1 class="boot-title">LUNARA</h1>
-            <p class="boot-tagline">Curated Intimacy</p>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo"><a href="#">LUNARA</a></div>
+        <div class="nav-toggle" id="nav-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
-        <div class="boot-progress"><div class="boot-progress-bar"></div></div>
-    </div>
-
-    <!-- COSMIC BACKGROUND -->
-    <div class="cosmic-bg">
-        <div class="nebula nebula-1"></div>
-        <div class="nebula nebula-2"></div>
-        <div class="nebula nebula-3"></div>
-        <div class="particle-layer" id="particleLayer"></div>
-        <div class="shooting-stars" id="shootingStars"></div>
-    </div>
-    <div class="cursor-glow" id="cursorGlow"></div>
-
-    <!-- NAVIGATION -->
-    <nav class="nav" id="nav">
-        <div class="nav-container">
-            <a href="#hero" class="nav-logo">
-                <svg class="nav-logo-icon" viewBox="0 0 50 50">
-                    <circle cx="25" cy="25" r="22" fill="none" stroke="currentColor" stroke-width="1.5"/>
-                    <path d="M25 5 Q40 25 25 45" fill="none" stroke="currentColor" stroke-width="1"/>
-                </svg>
-                <span class="nav-logo-text">LUNARA</span>
-            </a>
-            
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#about" class="nav-link" data-text="Über mich">Über mich</a></li>
-                <li><a href="#collection" class="nav-link" data-text="Kollektion">Kollektion</a></li>
-                <li><a href="#rating" class="nav-link" data-text="6-Punkte">6-Punkte</a></li>
-                <li><a href="#rewards" class="nav-link" data-text="Rewards">Rewards</a></li>
-                <li><a href="#merch" class="nav-link" data-text="Merch">Merch</a></li>
-                <li><a href="#faq" class="nav-link" data-text="FAQ">FAQ</a></li>
-            </ul>
-            
-            <div class="nav-actions">
-                <button class="theme-toggle" id="themeToggle" aria-label="Theme wechseln">
-                    <div class="theme-toggle-track">
-                        <span class="theme-icon theme-icon--sun">☀️</span>
-                        <span class="theme-icon theme-icon--moon">🌙</span>
-                        <div class="theme-toggle-thumb"></div>
-                    </div>
+        <ul id="nav-menu">
+            <li><a href="#hero" class="active">Home</a></li>
+            <li><a href="#kollektion">Kollektion</a></li>
+            <li><a href="#qualität">Qualität</a></li>
+            <li><a href="#rewards">Rewards</a></li>
+            <li><a href="#newsletter">Newsletter</a></li>
+            <li><a href="account.html" class="account-link" style="display:none;">Konto</a></li>
+            <li><button class="btn-secondary login-btn">Login</button></li>
+            <li>
+                <button class="btn-secondary" id="cart-button">
+                    🛒 <span class="cart-count">0</span>
                 </button>
-                
-                <div class="lang-selector" id="langSelector">
-                    <button class="lang-current">
-                        <span class="lang-flag">🇩🇪</span>
-                        <span class="lang-code">DE</span>
-                        <svg class="lang-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-                    </button>
-                    <div class="lang-dropdown">
-                        <button class="lang-option active" data-lang="de"><span>🇩🇪</span> Deutsch</button>
-                        <button class="lang-option" data-lang="en"><span>🇬🇧</span> English</button>
-                        <button class="lang-option" data-lang="pl"><span>🇵🇱</span> Polski</button>
-                    </div>
-                </div>
-                
-                <button class="btn-login" id="loginBtn">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
-                    </svg>
-                    <span>Login</span>
-                </button>
-            </div>
-            
-            <button class="burger" id="burgerMenu" aria-label="Menü öffnen">
-                <span class="burger-line"></span>
-                <span class="burger-line"></span>
-                <span class="burger-line"></span>
-            </button>
-        </div>
+            </li>
+        </ul>
     </nav>
 
-    <!-- MOBILE MENU -->
-    <div class="mobile-menu" id="mobileMenu">
-        <div class="mobile-menu-bg"></div>
-        <div class="mobile-menu-content">
-            <a href="#about" class="mobile-link">Über mich</a>
-            <a href="#collection" class="mobile-link">Kollektion</a>
-            <a href="#rating" class="mobile-link">6-Punkte</a>
-            <a href="#rewards" class="mobile-link">Rewards</a>
-            <a href="#merch" class="mobile-link">Merch</a>
-            <a href="#faq" class="mobile-link">FAQ</a>
-            <button class="btn-primary mobile-login">Login / Registrieren</button>
-        </div>
-    </div>
-
-    <!-- HERO -->
+    <!-- Hero Section -->
     <section class="hero" id="hero">
-        <div class="hero-content">
-            <div class="hero-badge reveal">
-                <span class="hero-badge-pulse"></span>
-                <span class="hero-badge-text">Exklusiv & 100% Diskret</span>
+        <div>
+            <h1>Curated Intimacy</h1>
+            <p>Exklusive Dessous, sorgfältig kuratiert für deine sinnlichsten Momente. Entdecke unseren Kosmos aus Luxus und Leidenschaft.</p>
+            <div class="cta">
+                <a href="#kollektion" class="btn">Jetzt entdecken</a>
+                <a href="#newsletter" class="btn-secondary">Bleib informiert</a>
             </div>
-            <h1 class="hero-title reveal">
-                <span class="hero-title-line">Curated</span>
-                <span class="hero-title-line hero-title-gradient">Intimacy</span>
-            </h1>
-            <p class="hero-subtitle reveal">Handverlesene Dessous & Lingerie, persönlich für dich kuratiert.<br>Erlebe Luxus, der nur dir gehört.</p>
-            <div class="hero-cta reveal">
-                <a href="#collection" class="btn-primary btn-glow">
-                    <span>Kollektion entdecken</span>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </a>
-                <a href="#about" class="btn-secondary"><span>Mehr erfahren</span></a>
-            </div>
-        </div>
-        <div class="hero-moon-phases">
-            <div class="moon-phase"></div><div class="moon-phase"></div><div class="moon-phase"></div><div class="moon-phase"></div>
-            <div class="moon-phase"></div><div class="moon-phase"></div><div class="moon-phase"></div><div class="moon-phase"></div>
-        </div>
-        <div class="scroll-indicator">
-            <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
-            <span>Scroll</span>
         </div>
     </section>
 
-    <!-- ABOUT -->
-    <section class="section section--about" id="about">
-        <div class="section-bg-orbs">
-            <div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div>
-        </div>
+    <!-- Kollektion Section -->
+    <section id="kollektion" class="section">
         <div class="container">
-            <div class="about-grid">
-                <div class="about-image reveal">
-                    <div class="about-image-wrapper">
-                        <div class="about-image-placeholder">
-                            <svg viewBox="0 0 100 100">
-                                <circle cx="50" cy="35" r="20" fill="var(--rose)" opacity="0.3"/>
-                                <path d="M50 55 Q30 70 35 100 L65 100 Q70 70 50 55" fill="var(--rose)" opacity="0.2"/>
-                            </svg>
-                        </div>
-                        <div class="about-image-overlay"></div>
-                    </div>
-                    <div class="about-image-frame"></div>
-                    <div class="about-image-glow"></div>
-                </div>
-                <div class="about-content">
-                    <span class="section-tag reveal">Über mich</span>
-                    <h2 class="section-title reveal">Deine persönliche<br><span class="text-gradient">Kuratorin</span></h2>
-                    <p class="reveal">Willkommen bei LUNARA. Ich kuratiere exklusive Dessous & Lingerie, die nicht nur deinen Körper, sondern auch deine Seele berühren.</p>
-                    <p class="reveal">Jedes Stück wird persönlich ausgewählt – mit höchster Sorgfalt für Qualität, Ästhetik und das gewisse Etwas, das dich besonders macht.</p>
-                    <p class="reveal">Diskretion ist dabei mein höchstes Gebot. Deine Geheimnisse bleiben bei mir – versprochen.</p>
-                    <div class="about-signature reveal">— L.</div>
-                    <div class="about-stats reveal">
-                        <div class="stat">
-                            <span class="stat-number" data-count="500">0</span>
-                            <span class="stat-label">Happy Clients</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number" data-count="100">0</span><span class="stat-suffix">%</span>
-                            <span class="stat-label">Diskret</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number" data-count="24">0</span><span class="stat-suffix">/7</span>
-                            <span class="stat-label">Support</span>
-                        </div>
-                    </div>
-                </div>
+            <h2>Kollektion</h2>
+            <p>Wähle deine Kategorie und lass dich verzaubern.</p>
+            <div class="filters" style="margin-bottom:1.5rem;">
+                <button class="btn-secondary active" data-filter="All">Alle</button>
+                <button class="btn-secondary" data-filter="Bras">BHs</button>
+                <button class="btn-secondary" data-filter="Panties">Panties</button>
+                <button class="btn-secondary" data-filter="Sets">Sets</button>
+                <button class="btn-secondary" data-filter="Accessories">Accessoires</button>
             </div>
+            <div id="products-container" class="grid grid-3"></div>
         </div>
     </section>
 
-    <!-- COLLECTION -->
-    <section class="section section--collection" id="collection">
+    <!-- Qualität Section -->
+    <section id="qualität" class="section section-alt">
         <div class="container">
-            <div class="section-header">
-                <span class="section-tag reveal">Kollektion</span>
-                <h2 class="section-title reveal">Entdecke <span class="text-gradient">deine Wünsche</span></h2>
-            </div>
-            <div class="collection-filter reveal">
-                <button class="filter-btn active" data-filter="all">Alle</button>
-                <button class="filter-btn" data-filter="panties">Panties</button>
-                <button class="filter-btn" data-filter="bras">BHs</button>
-                <button class="filter-btn" data-filter="sets">Sets</button>
-                <button class="filter-btn" data-filter="bodys">Bodys</button>
-                <button class="filter-btn" data-filter="socks">Socken</button>
-            </div>
-            <div class="collection-grid">
-                <div class="collection-card reveal" data-category="panties">
-                    <div class="collection-card-inner">
-                        <div class="collection-icon"><svg viewBox="0 0 100 100"><path d="M20 30 L50 20 L80 30 L75 70 Q50 85 25 70 Z" stroke="var(--rose)" stroke-width="2" fill="none"/><path d="M35 40 Q50 50 65 40" stroke="var(--rose)" stroke-width="1.5" fill="none"/></svg></div>
-                        <h3>Klassische Panties</h3>
-                        <p>Zeitlos elegant, perfekter Tragekomfort</p>
-                        <div class="collection-price">ab 29€</div>
-                        <a href="#contact" class="collection-link"><span>Mehr ansehen</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-                    </div>
-                    <div class="collection-card-glow"></div>
+            <h2>Unser 6‑Punkte‑Qualitätssystem</h2>
+            <p>Wir bewerten jedes Produkt anhand von sechs Kriterien, damit du genau weißt, was dich erwartet.</p>
+            <div class="grid grid-2">
+                <div class="reveal">
+                    <h3>Zustand</h3>
+                    <p>Neuwertig oder getragen – wir kennzeichnen jeden Zustand transparent und ehrlich.</p>
                 </div>
-                <div class="collection-card reveal" data-category="bras">
-                    <div class="collection-card-inner">
-                        <div class="collection-icon"><svg viewBox="0 0 100 100"><path d="M15 50 Q25 30 40 35 Q50 25 60 35 Q75 30 85 50" stroke="var(--rose)" stroke-width="2" fill="none"/><ellipse cx="35" cy="50" rx="18" ry="20" stroke="var(--rose)" stroke-width="2" fill="none"/><ellipse cx="65" cy="50" rx="18" ry="20" stroke="var(--rose)" stroke-width="2" fill="none"/></svg></div>
-                        <h3>Dessous BHs</h3>
-                        <p>Luxuriöser Halt, verführerisches Design</p>
-                        <div class="collection-price">ab 45€</div>
-                        <a href="#contact" class="collection-link"><span>Mehr ansehen</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-                    </div>
-                    <div class="collection-card-glow"></div>
+                <div class="reveal">
+                    <h3>Duft</h3>
+                    <p>Von neutral bis intensiv – du wählst dein olfaktorisches Erlebnis.</p>
                 </div>
-                <div class="collection-card reveal" data-category="sets">
-                    <div class="collection-card-inner">
-                        <div class="collection-icon"><svg viewBox="0 0 100 100"><ellipse cx="35" cy="30" rx="15" ry="15" stroke="var(--rose)" stroke-width="2" fill="none"/><ellipse cx="65" cy="30" rx="15" ry="15" stroke="var(--rose)" stroke-width="2" fill="none"/><path d="M25 60 L50 55 L75 60 L70 85 Q50 95 30 85 Z" stroke="var(--rose)" stroke-width="2" fill="none"/></svg></div>
-                        <h3>Exklusive Sets</h3>
-                        <p>Perfekt aufeinander abgestimmt</p>
-                        <div class="collection-price">ab 69€</div>
-                        <a href="#contact" class="collection-link"><span>Mehr ansehen</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-                    </div>
-                    <div class="collection-card-glow"></div>
+                <div class="reveal">
+                    <h3>Waschzustand</h3>
+                    <p>Frisch gereinigt oder mit authentischem Tragegefühl – wir listen den Waschstatus.</p>
                 </div>
-                <div class="collection-card reveal" data-category="bodys">
-                    <div class="collection-card-inner">
-                        <div class="collection-icon"><svg viewBox="0 0 100 100"><path d="M30 15 Q50 10 70 15 L75 40 Q50 45 25 40 Z" stroke="var(--rose)" stroke-width="2" fill="none"/><path d="M25 40 L20 90 Q50 100 80 90 L75 40" stroke="var(--rose)" stroke-width="2" fill="none"/></svg></div>
-                        <h3>Verführerische Bodys</h3>
-                        <p>Figurbetont, sinnlich, unvergesslich</p>
-                        <div class="collection-price">ab 55€</div>
-                        <a href="#contact" class="collection-link"><span>Mehr ansehen</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-                    </div>
-                    <div class="collection-card-glow"></div>
+                <div class="reveal">
+                    <h3>Materialqualität</h3>
+                    <p>Nur hochwertigste Stoffe – vom zarten Tüll bis zur edlen Spitze.</p>
                 </div>
-                <div class="collection-card reveal" data-category="socks">
-                    <div class="collection-card-inner">
-                        <div class="collection-icon"><svg viewBox="0 0 100 100"><path d="M30 10 L30 50 Q30 70 45 80 L65 80 Q80 70 80 50 L80 30" stroke="var(--rose)" stroke-width="2" fill="none"/><path d="M30 25 L80 25" stroke="var(--rose)" stroke-width="1.5" fill="none"/><circle cx="55" cy="18" r="5" stroke="var(--rose)" stroke-width="1.5" fill="none"/></svg></div>
-                        <h3>Premium Socken</h3>
-                        <p>LUNARA Branding, höchster Komfort</p>
-                        <div class="collection-price">ab 15€</div>
-                        <a href="#contact" class="collection-link"><span>Mehr ansehen</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-                    </div>
-                    <div class="collection-card-glow"></div>
+                <div class="reveal">
+                    <h3>Tragedauer</h3>
+                    <p>Wie lange das Kleidungsstück getragen wurde, erfährst du transparent.</p>
                 </div>
-                <div class="collection-card reveal" data-category="all">
-                    <div class="collection-card-inner">
-                        <div class="collection-icon"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="35" stroke="var(--rose)" stroke-width="2" stroke-dasharray="10 5" fill="none"/><path d="M50 30 L50 70 M30 50 L70 50" stroke="var(--rose)" stroke-width="3" fill="none"/></svg></div>
-                        <h3>Wunsch-Bestellung</h3>
-                        <p>Dein Wunsch wird wahr – auf Anfrage</p>
-                        <div class="collection-price">Auf Anfrage</div>
-                        <a href="#contact" class="collection-link"><span>Kontaktiere mich</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-                    </div>
-                    <div class="collection-card-glow"></div>
+                <div class="reveal">
+                    <h3>Extras</h3>
+                    <p>Kleine Geheimnisse, die jedes Teil einzigartig machen – erfahre mehr im Detail.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- RATING -->
-    <section class="section section--rating" id="rating">
+    <!-- Rewards Section -->
+    <section id="rewards" class="section">
         <div class="container">
-            <div class="section-header">
-                <span class="section-tag reveal">Special</span>
-                <h2 class="section-title reveal">Das 6-Punkte <span class="text-gradient">Bewertungssystem</span></h2>
-            </div>
-            <div class="rating-grid">
-                <div class="rating-card reveal">
-                    <span class="rating-number">01</span>
-                    <div class="rating-icon">💎</div>
-                    <h3>Qualität</h3>
-                    <p>Premium-Materialien, die sich wie eine zweite Haut anfühlen.</p>
-                    <div class="rating-bar"><div class="rating-bar-fill" data-width="98"></div></div>
+            <h2>Rewards & Loyalty</h2>
+            <p>Sammle Punkte bei jedem Einkauf und steige im Status – von Mondlicht bis Supernova. Schalte exklusive Vorteile frei.</p>
+            <div class="grid grid-2">
+                <div class="reveal">
+                    <h3>Mondlicht</h3>
+                    <p>Beginne deine Reise mit ersten Belohnungen und exklusiven Einblicken.</p>
                 </div>
-                <div class="rating-card reveal">
-                    <span class="rating-number">02</span>
-                    <div class="rating-icon">🎨</div>
-                    <h3>Design</h3>
-                    <p>Ästhetik, die verführt und Selbstbewusstsein stärkt.</p>
-                    <div class="rating-bar"><div class="rating-bar-fill" data-width="95"></div></div>
+                <div class="reveal">
+                    <h3>Sternenlicht</h3>
+                    <p>Steige auf und genieße attraktive Rabatte und Überraschungen.</p>
                 </div>
-                <div class="rating-card reveal">
-                    <span class="rating-number">03</span>
-                    <div class="rating-icon">✨</div>
-                    <h3>Komfort</h3>
-                    <p>Ganztägiger Tragekomfort ohne Kompromisse.</p>
-                    <div class="rating-bar"><div class="rating-bar-fill" data-width="97"></div></div>
+                <div class="reveal">
+                    <h3>Galaxie</h3>
+                    <p>Werde Teil unseres inneren Kreises mit besonderen Geschenken.</p>
                 </div>
-                <div class="rating-card reveal">
-                    <span class="rating-number">04</span>
-                    <div class="rating-icon">🔐</div>
-                    <h3>Diskretion</h3>
-                    <p>100% diskrete Verpackung und Lieferung garantiert.</p>
-                    <div class="rating-bar"><div class="rating-bar-fill" data-width="100"></div></div>
-                </div>
-                <div class="rating-card reveal">
-                    <span class="rating-number">05</span>
-                    <div class="rating-icon">⚡</div>
-                    <h3>Schnelligkeit</h3>
-                    <p>Expressversand für dringende Wünsche verfügbar.</p>
-                    <div class="rating-bar"><div class="rating-bar-fill" data-width="92"></div></div>
-                </div>
-                <div class="rating-card reveal">
-                    <span class="rating-number">06</span>
-                    <div class="rating-icon">💝</div>
-                    <h3>Persönlicher Service</h3>
-                    <p>Individuelle Beratung für deine perfekte Auswahl.</p>
-                    <div class="rating-bar"><div class="rating-bar-fill" data-width="99"></div></div>
+                <div class="reveal">
+                    <h3>Supernova <span class="supernova-badge">VIP</span></h3>
+                    <p>Unser höchster Status eröffnet dir den Zugang zum geheimen VIP‑Cabinet und mehr.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- REWARDS -->
-    <section class="section section--rewards" id="rewards">
+    <!-- Newsletter Section -->
+    <section id="newsletter" class="section section-alt">
         <div class="container">
-            <div class="rewards-grid">
-                <div class="rewards-info">
-                    <span class="section-tag reveal">Exklusiv</span>
-                    <h2 class="section-title reveal">Dein<br><span class="text-gradient">Belohnungssystem</span></h2>
-                    <p class="reveal">Je mehr du bestellst, desto mehr Vorteile genießt du. Sammle Punkte bei jeder Bestellung und tausche sie im exklusiven Bonus-Shop ein.</p>
-                    <a href="#contact" class="btn-primary btn-glow reveal"><span>Jetzt starten</span></a>
-                </div>
-                <div class="rewards-tiers">
-                    <div class="tier-card reveal">
-                        <div class="tier-icon">🌙</div>
-                        <div class="tier-info"><h4>Mondlicht</h4><p>0 - 100 Punkte • 5% Rabatt auf alles</p></div>
-                        <span class="tier-badge">Start</span>
-                    </div>
-                    <div class="tier-card reveal">
-                        <div class="tier-icon">⭐</div>
-                        <div class="tier-info"><h4>Sternenlicht</h4><p>100 - 300 Punkte • 10% Rabatt + Gratis Versand</p></div>
-                        <span class="tier-badge tier-badge--silver">Silber</span>
-                    </div>
-                    <div class="tier-card reveal">
-                        <div class="tier-icon">💫</div>
-                        <div class="tier-info"><h4>Galaxie</h4><p>300 - 500 Punkte • 15% Rabatt + Exklusive Previews</p></div>
-                        <span class="tier-badge tier-badge--gold">Gold</span>
-                    </div>
-                    <div class="tier-card reveal">
-                        <div class="tier-icon">👑</div>
-                        <div class="tier-info"><h4>Supernova</h4><p>500+ Punkte • 20% Rabatt + VIP Bonus-Shop Zugang</p></div>
-                        <span class="tier-badge tier-badge--vip">VIP</span>
-                    </div>
-                </div>
-            </div>
+            <h2>Newsletter</h2>
+            <p>Erhalte exklusive Angebote und Neuigkeiten aus dem LUNARA‑Kosmos.</p>
+            <form id="newsletter-form">
+                <input type="email" name="newsletter-email" placeholder="Deine E-Mail" style="padding:0.75rem 1rem; width:70%; max-width:280px; border-radius:var(--radius-md); border:1px solid var(--color-muted); background-color:var(--color-surface); color:var(--color-text);">
+                <button type="submit" class="btn" style="margin-left:0.5rem;">Anmelden</button>
+            </form>
         </div>
     </section>
 
-    <!-- MERCH -->
-    <section class="section section--merch" id="merch">
+    <!-- Footer -->
+    <footer class="section" style="background-color:var(--color-surface);">
         <div class="container">
-            <div class="section-header">
-                <span class="section-tag reveal">Merch</span>
-                <h2 class="section-title reveal">LUNARA <span class="text-gradient">Lifestyle</span></h2>
-            </div>
-            <div class="merch-grid">
-                <div class="merch-card reveal">
-                    <div class="merch-image">
-                        <div class="merch-placeholder"><svg viewBox="0 0 100 100"><rect x="30" y="25" width="40" height="55" rx="5" fill="none" stroke="var(--rose)" stroke-width="2"/><path d="M40 25 L50 15 L60 25" fill="none" stroke="var(--rose)" stroke-width="2"/><text x="50" y="58" text-anchor="middle" font-family="serif" font-size="8" fill="var(--rose)">LUNARA</text></svg></div>
-                        <span class="merch-badge">NEU</span>
-                    </div>
-                    <div class="merch-details">
-                        <h3>LUNARA Premium T-Shirt</h3>
-                        <p>100% Bio-Baumwolle, Cream mit Rose-Gold Branding</p>
-                        <div class="merch-price">39€</div>
-                        <button class="btn-primary btn-small">In den Warenkorb</button>
-                    </div>
-                </div>
-                <div class="merch-card reveal">
-                    <div class="merch-image">
-                        <div class="merch-placeholder"><svg viewBox="0 0 100 100"><path d="M35 20 L35 60 Q35 75 50 80 L50 80 Q65 75 65 60 L65 40" fill="none" stroke="var(--rose)" stroke-width="2"/><path d="M35 35 L65 35" stroke="var(--rose)" stroke-width="2"/><circle cx="50" cy="28" r="4" fill="var(--rose)"/></svg></div>
-                        <span class="merch-badge merch-badge--hot">BESTSELLER</span>
-                    </div>
-                    <div class="merch-details">
-                        <h3>LUNARA Signature Socken</h3>
-                        <p>Premium Baumwolle, dezentes Moon-Logo</p>
-                        <div class="merch-price">19€</div>
-                        <button class="btn-primary btn-small">In den Warenkorb</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FEEDBACK -->
-    <section class="section section--feedback" id="feedback">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag reveal">Kundenstimmen</span>
-                <h2 class="section-title reveal">Was andere <span class="text-gradient">sagen</span></h2>
-            </div>
-            <div class="feedback-slider-wrapper">
-                <div class="feedback-slider" id="feedbackSlider">
-                    <div class="feedback-card">
-                        <span class="feedback-quote">"</span>
-                        <p class="feedback-text">Absolut diskret und die Qualität ist unglaublich! Ich bin so froh, LUNARA gefunden zu haben.</p>
-                        <div class="feedback-author">
-                            <div class="feedback-avatar">👤</div>
-                            <div><div class="feedback-name">M****a S.</div><div class="feedback-stars">★★★★★</div></div>
-                        </div>
-                    </div>
-                    <div class="feedback-card">
-                        <span class="feedback-quote">"</span>
-                        <p class="feedback-text">Die persönliche Beratung war so hilfreich. Es wurde genau verstanden, was ich wollte.</p>
-                        <div class="feedback-author">
-                            <div class="feedback-avatar">👤</div>
-                            <div><div class="feedback-name">L***a K.</div><div class="feedback-stars">★★★★★</div></div>
-                        </div>
-                    </div>
-                    <div class="feedback-card">
-                        <span class="feedback-quote">"</span>
-                        <p class="feedback-text">Schnelle Lieferung, wunderschöne Verpackung. Fühlt sich wirklich wie ein Geschenk an sich selbst an!</p>
-                        <div class="feedback-author">
-                            <div class="feedback-avatar">👤</div>
-                            <div><div class="feedback-name">A**a M.</div><div class="feedback-stars">★★★★★</div></div>
-                        </div>
-                    </div>
-                    <div class="feedback-card">
-                        <span class="feedback-quote">"</span>
-                        <p class="feedback-text">Das Belohnungssystem ist genial! Nach drei Bestellungen schon auf Gold-Status.</p>
-                        <div class="feedback-author">
-                            <div class="feedback-avatar">👤</div>
-                            <div><div class="feedback-name">S***e R.</div><div class="feedback-stars">★★★★★</div></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="section section--faq" id="faq">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag reveal">FAQ</span>
-                <h2 class="section-title reveal">Häufig gestellte <span class="text-gradient">Fragen</span></h2>
-            </div>
-            <div class="faq-container">
-                <div class="faq-item reveal">
-                    <button class="faq-question"><span>Wie läuft die Bestellung ab?</span><span class="faq-icon">+</span></button>
-                    <div class="faq-answer"><p>Kontaktiere mich über das Formular oder direkt per E-Mail. Wir besprechen deine Wünsche und ich sende dir eine personalisierte Auswahl. Nach deiner Bestätigung erfolgt diskrete Zahlung und Versand.</p></div>
-                </div>
-                <div class="faq-item reveal">
-                    <button class="faq-question"><span>Wie diskret ist der Versand?</span><span class="faq-icon">+</span></button>
-                    <div class="faq-answer"><p>100% diskret. Neutrale Verpackung ohne Hinweis auf den Inhalt, anonymer Absender. Niemand wird wissen, was in deinem Paket ist.</p></div>
-                </div>
-                <div class="faq-item reveal">
-                    <button class="faq-question"><span>Kann ich individuelle Wünsche äußern?</span><span class="faq-icon">+</span></button>
-                    <div class="faq-answer"><p>Absolut! Individuelle Wünsche werden nach Absprache und Genehmigung schnell umgesetzt. Ich freue mich auf deine Ideen.</p></div>
-                </div>
-                <div class="faq-item reveal">
-                    <button class="faq-question"><span>Welche Zahlungsmethoden gibt es?</span><span class="faq-icon">+</span></button>
-                    <div class="faq-answer"><p>PayPal, Überweisung und diskrete Kryptowährungen. Alle Zahlungen erscheinen neutral auf deinem Kontoauszug.</p></div>
-                </div>
-                <div class="faq-item reveal">
-                    <button class="faq-question"><span>Wie funktioniert das Punkte-System?</span><span class="faq-icon">+</span></button>
-                    <div class="faq-answer"><p>Pro 10€ Bestellwert erhältst du 1 Punkt. Punkte können im Bonus-Shop gegen exklusive Artikel, Rabatte und VIP-Vorteile eingetauscht werden.</p></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- NEWSLETTER -->
-    <section class="section section--newsletter" id="contact">
-        <div class="container">
-            <div class="newsletter-content">
-                <span class="section-tag reveal">Newsletter</span>
-                <h2 class="section-title reveal">Bleib auf dem <span class="text-gradient">Laufenden</span></h2>
-                <p class="reveal">Exklusive Previews, Rabattcodes und News direkt in dein Postfach. Diskret und unverbindlich.</p>
-                <form class="newsletter-form reveal" id="newsletterForm">
-                    <div class="form-group">
-                        <input type="email" id="emailInput" placeholder="deine@email.de" required>
-                        <label for="emailInput">E-Mail Adresse</label>
-                    </div>
-                    <button type="submit" class="btn-primary btn-glow">
-                        <span>Anmelden</span>
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
-                    </button>
-                </form>
-                <div class="newsletter-success" id="newsletterSuccess">
-                    <div class="success-icon">✓</div>
-                    <p>Willkommen bei LUNARA! Check deine E-Mails.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="footer-marquee"><span>LUNARA • CURATED INTIMACY • LUNARA • CURATED INTIMACY • LUNARA • CURATED INTIMACY • LUNARA • CURATED INTIMACY • </span></div>
-        <div class="footer-content">
-            <div class="container">
-                <div class="footer-grid">
-                    <div class="footer-brand">
-                        <a href="#hero" class="footer-logo">
-                            <svg class="footer-logo-icon" viewBox="0 0 50 50"><circle cx="25" cy="25" r="22" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M25 5 Q40 25 25 45" fill="none" stroke="currentColor" stroke-width="1"/></svg>
-                            <span>LUNARA</span>
-                        </a>
-                        <p>Curated Intimacy. Exklusive Dessous & Lingerie, handverlesen und diskret zu dir geliefert.</p>
-                        <div class="footer-social">
-                            <a href="#" class="social-link" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="18" cy="6" r="1.5"/></svg></a>
-                            <a href="mailto:contact@lunara.de" class="social-link" aria-label="Email"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
-                        </div>
-                    </div>
-                    <div class="footer-links-group">
-                        <h4>Navigation</h4>
-                        <div class="footer-links">
-                            <a href="#about">Über mich</a>
-                            <a href="#collection">Kollektion</a>
-                            <a href="#rewards">Belohnungen</a>
-                            <a href="#merch">Merch</a>
-                        </div>
-                    </div>
-                    <div class="footer-links-group">
-                        <h4>Info</h4>
-                        <div class="footer-links">
-                            <a href="#faq">FAQ</a>
-                            <a href="#" id="imprintLink">Impressum</a>
-                            <a href="#" id="privacyLink">Datenschutz</a>
-                            <a href="#" id="termsLink">AGB</a>
-                        </div>
-                    </div>
-                    <div class="footer-links-group">
-                        <h4>Kontakt</h4>
-                        <div class="footer-links">
-                            <a href="mailto:contact@lunara.de">contact@lunara.de</a>
-                            <p>Emsdetten, Deutschland</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="footer-bottom">
-                    <p>© 2026 LUNARA. Alle Rechte vorbehalten.</p>
-                    <p>Made with ♡ für diskrete Eleganz</p>
-                </div>
-            </div>
+            <p>&copy; 2026 LUNARA. Alle Rechte vorbehalten.</p>
+            <p><a href="#">Impressum</a> | <a href="#">Datenschutz</a> | <a href="#">AGB</a></p>
         </div>
     </footer>
 
-    <!-- LOGIN MODAL -->
-    <div class="modal" id="loginModal">
-        <div class="modal-overlay"></div>
-        <div class="modal-content">
-            <button class="modal-close" id="modalClose"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+    <!-- Cart Drawer -->
+    <div class="cart-overlay"></div>
+    <div class="cart-drawer">
+        <div class="cart-header">
+            <h3>Dein Warenkorb</h3>
+            <button class="close-cart">×</button>
+        </div>
+        <div class="cart-content"></div>
+        <div class="cart-footer">
+            <div class="cart-total">Gesamt: <span class="cart-total-amount">€0.00</span></div>
+            <button class="btn" onclick="checkout.proceed()">Zur Kasse</button>
+        </div>
+    </div>
+
+    <!-- Product Quick View Modal -->
+    <div id="product-modal" class="modal-overlay">
+        <div class="modal"></div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal-overlay">
+        <div class="modal">
             <div class="modal-header">
-                <div class="modal-logo"><svg viewBox="0 0 50 50"><circle cx="25" cy="25" r="22" fill="none" stroke="var(--rose)" stroke-width="1.5"/><path d="M25 5 Q40 25 25 45" fill="none" stroke="var(--rose)" stroke-width="1"/></svg></div>
-                <h2>Willkommen zurück</h2>
-                <p>Melde dich an, um auf dein Konto zuzugreifen</p>
+                <h2 class="modal-title">Login</h2>
+                <button class="modal-close">×</button>
             </div>
-            <form class="login-form" id="loginForm">
-                <div class="form-group">
-                    <input type="email" id="loginEmail" placeholder=" " required>
-                    <label for="loginEmail">E-Mail</label>
-                </div>
-                <div class="form-group">
-                    <input type="password" id="loginPassword" placeholder=" " required>
-                    <label for="loginPassword">Passwort</label>
-                    <button type="button" class="password-toggle" aria-label="Passwort anzeigen"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-                </div>
-                <div class="form-options">
-                    <label class="checkbox-wrapper">
-                        <input type="checkbox" id="rememberMe">
-                        <span class="checkbox-custom"></span>
-                        <span>Angemeldet bleiben</span>
-                    </label>
-                    <a href="#" class="forgot-link">Passwort vergessen?</a>
-                </div>
-                <button type="submit" class="btn-primary btn-full"><span>Anmelden</span></button>
-                <p class="register-text">Noch kein Konto? <a href="#" class="register-link">Registrieren</a></p>
+            <form id="login-form">
+                <label>E‑Mail:</label>
+                <input type="email" name="email" placeholder="you@example.com" style="padding:0.75rem 1rem; width:100%; border-radius:var(--radius-md); border:1px solid var(--color-muted); background-color:var(--color-surface); color:var(--color-text); margin-bottom:1rem;">
+                <button type="submit" class="btn" style="width:100%;">Login</button>
             </form>
         </div>
     </div>
 
-    <!-- TOAST CONTAINER -->
-    <div class="toast-container" id="toastContainer"></div>
+    <!-- Toast Container -->
+    <div class="toast-container"></div>
 
-    <script src="js/main.js"></script>
+    <!-- Scripts -->
+    <script src="js/store.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/checkout.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/motion.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        // Mobile nav toggle functionality
+        const navToggle = document.getElementById('nav-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                navToggle.classList.toggle('active');
+                navMenu.classList.toggle('open');
+            });
+        }
+        // Cart button
+        document.getElementById('cart-button').addEventListener('click', () => {
+            cartUI.open();
+        });
+        // Newsletter form demo
+        document.getElementById('newsletter-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = e.target.elements['newsletter-email'].value.trim();
+            if (!email) {
+                showToast('Bitte gib eine gültige E-Mail ein.', 'error');
+                return;
+            }
+            showToast('Danke für deine Anmeldung! (Demo)', 'success');
+            e.target.reset();
+        });
+    </script>
 </body>
 </html>
