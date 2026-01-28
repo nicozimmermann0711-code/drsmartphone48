@@ -3,6 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- SEO Meta Tags -->
+        <meta name="description" content="LUNARA Shop – Entdecke unsere kuratierte Kollektion an Dessous, BHs, Panties, Sets und Accessoires.">
+        <meta name="keywords" content="LUNARA Shop, Dessous, Lingerie, BHs, Panties, Sets, Accessoires">
+        <meta property="og:title" content="LUNARA – Shop">
+        <meta property="og:description" content="Durchstöbere alle Produkte in unserem LUNARA Shop. Exklusiv kuratierte Dessous für deine sinnlichsten Momente.">
+        <meta property="og:image" content="assets/img/hero-bg.png">
+        <meta property="og:type" content="website">
     <title>LUNARA – Shop</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,7 +19,7 @@
 <body>
     <nav>
         <div class="logo"><a href="index.html">LUNARA</a></div>
-        <div class="nav-toggle" id="nav-toggle">
+        <div class="nav-toggle" id="nav-toggle" role="button" aria-label="Navigation umschalten" tabindex="0">
             <span></span>
             <span></span>
             <span></span>
@@ -33,6 +40,15 @@
         <div class="container">
             <h2>Shop</h2>
             <p>Durchstöbere alle Produkte.</p>
+            <!-- Search & Sort for shop -->
+            <div class="search-sort">
+                <input type="text" id="product-search" placeholder="Suche..." aria-label="Produkte durchsuchen">
+                <select id="product-sort" aria-label="Sortieren nach">
+                    <option value="name">Nach Name sortieren</option>
+                    <option value="price-asc">Preis aufsteigend</option>
+                    <option value="price-desc">Preis absteigend</option>
+                </select>
+            </div>
             <div id="products-container" class="grid grid-3"></div>
         </div>
     </section>
@@ -52,12 +68,12 @@
     </div>
 
     <!-- Product Modal -->
-    <div id="product-modal" class="modal-overlay">
+    <div id="product-modal" class="modal-overlay" role="dialog" aria-modal="true">
         <div class="modal"></div>
     </div>
 
     <!-- Login Modal -->
-    <div id="login-modal" class="modal-overlay">
+    <div id="login-modal" class="modal-overlay" role="dialog" aria-modal="true">
         <div class="modal">
             <div class="modal-header">
                 <h2 class="modal-title">Login</h2>

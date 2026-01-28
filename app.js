@@ -10,6 +10,10 @@
 (function(window) {
     const productsContainerSelector = '#products-container';
     let products = [];
+    // State variables for filtering, searching and sorting
+    let currentFilter = 'All';
+    let currentSearch = '';
+    let currentSort = 'name';
 
     async function loadProducts() {
         try {
@@ -23,11 +27,40 @@
         }
     }
 
-    function renderProducts(filterCategory = 'All') {
+    /**
+     * Render products with current filter, search and sort settings.
+     * @param {string} filterCategory Category to filter by. Defaults to current state.
+     */
+    function renderProducts(filterCategory = currentFilter) {
+        currentFilter = filterCategory;
         const container = document.querySelector(productsContainerSelector);
         if (!container) return;
         container.innerHTML = '';
-        const filtered = filterCategory === 'All' ? products : products.filter(p => p.category.toLowerCase() === filterCategory.toLowerCase());
+        // Filter by category
+        let filtered = currentFilter === 'All'
+            ? products.slice()
+            : products.filter(p => p.category.toLowerCase() === currentFilter.toLowerCase());
+        // Filter by search string
+        const query = currentSearch.toLowerCase();
+        if (query) {
+            filtered = filtered.filter(p => {
+                const haystack = (p.name + ' ' + (p.shortDesc || '') + ' ' + (p.longDesc || '')).toLowerCase();
+                return haystack.includes(query);
+            });
+        }
+        // Sort
+        filtered.sort((a, b) => {
+            switch (currentSort) {
+                case 'price-asc':
+                    return a.price - b.price;
+                case 'price-desc':
+                    return b.price - a.price;
+                case 'name':
+                default:
+                    return a.name.localeCompare(b.name);
+            }
+        });
+        // Render cards
         filtered.forEach(product => {
             const card = document.createElement('div');
             card.className = 'product-card reveal';
@@ -79,6 +112,35 @@
         const modal = modalOverlay.querySelector('.modal');
         // Build variants options
         const options = product.variants.map((v, index) => `<option value="${index}">${v.size.toUpperCase()} / ${v.color}</option>`).join('');
+        // Build quality score HTML for modal
+        const qualityLabels = {
+            zustand: 'Zustand',
+            duft: 'Duft',
+            waschzustand: 'Waschzustand',
+            materialqualitaet: 'Materialqualität',
+            materialqualität: 'Materialqualität',
+            tragedauer: 'Tragedauer',
+            extras: 'Extras'
+        };
+        let qualityHtml = '';
+        if (product.qualityScore) {
+            const items = Object.keys(product.qualityScore);
+            qualityHtml = `<div class="quality-list">` +
+                items.map(key => {
+                    const score = product.qualityScore[key];
+                    const label = qualityLabels[key] || key;
+                    return `
+                        <div class="quality-item">
+                            <div class="quality-label">${label}</div>
+                            <div class="quality-bar">
+                                <div class="quality-bar-fill" data-score="${score}"></div>
+                            </div>
+                        </div>
+                    `;
+                }).join('') +
+            `</div>`;
+        }
+
         modal.innerHTML = `
             <div class="modal-header">
                 <h2 class="modal-title">${product.name}</h2>
@@ -87,6 +149,7 @@
             <img src="${product.images[0]}" alt="${product.name}" style="width:100%; height:300px; object-fit:cover; border-radius: var(--radius-sm); margin-bottom:1rem;">
             <p>${product.longDesc}</p>
             <p><strong>Preis: </strong>€${product.price.toFixed(2)}</p>
+            ${qualityHtml}
             <label>Variante:</label>
             <select class="variant-select">${options}</select>
             <div style="margin-top:1rem; text-align:right;">
@@ -153,6 +216,21 @@
                 btn.classList.add('active');
             });
         });
+        // Search and sort controls
+        const searchInput = document.getElementById('product-search');
+        const sortSelect = document.getElementById('product-sort');
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                currentSearch = e.target.value;
+                renderProducts(currentFilter);
+            });
+        }
+        if (sortSelect) {
+            sortSelect.addEventListener('change', (e) => {
+                currentSort = e.target.value;
+                renderProducts(currentFilter);
+            });
+        }
     });
 
 })(window);
