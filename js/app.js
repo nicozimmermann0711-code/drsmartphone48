@@ -23,6 +23,11 @@
         } catch (e) {
             console.error('Fehler beim Laden der Produktdaten:', e);
             showToast('Produkte konnten nicht geladen werden.', 'error');
+            // Fallback: if global productsData exists, use it
+            if (window.productsData && Array.isArray(window.productsData)) {
+                products = window.productsData;
+                return products;
+            }
             return [];
         }
     }
@@ -74,6 +79,7 @@
                     <div class="product-actions">
                         <button class="btn add-cart" data-id="${product.id}">In den Warenkorb</button>
                         <button class="btn-secondary quick-view-btn" data-id="${product.id}">Quick View</button>
+                        <button class="btn-secondary wishlist-btn" data-id="${product.id}" title="Zur Wunschliste hinzufügen">❤</button>
                     </div>
                 </div>
             `;
@@ -88,6 +94,7 @@
     function handleProductClick(e) {
         const addBtn = e.target.closest('.add-cart');
         const quickBtn = e.target.closest('.quick-view-btn');
+        const wishlistBtn = e.target.closest('.wishlist-btn');
         if (addBtn) {
             const id = parseInt(addBtn.dataset.id);
             const product = products.find(p => p.id === id);
@@ -102,6 +109,11 @@
         if (quickBtn) {
             const id = parseInt(quickBtn.dataset.id);
             openQuickView(id);
+        }
+        if (wishlistBtn) {
+            const id = parseInt(wishlistBtn.dataset.id);
+            wishlist.add(id);
+            showToast('Zur Wunschliste hinzugefügt.', 'success');
         }
     }
 
@@ -197,6 +209,8 @@
     // Initialize the app
     document.addEventListener('DOMContentLoaded', async () => {
         products = await loadProducts();
+        // Expose products globally so other pages (account, checkout) can reference product data
+        window.appProducts = products;
         renderProducts();
         const productsContainer = document.querySelector(productsContainerSelector);
         if (productsContainer) {
