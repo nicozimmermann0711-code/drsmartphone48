@@ -1,216 +1,735 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" data-theme="dark">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LUNARA – Curated Intimacy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="LUNARA – Exklusive Luxury Lingerie. Entdecke handverlesene Dessous mit kosmischer Eleganz.">
+    <meta name="theme-color" content="#0a0a0a">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌙</text></svg>">
+    
+    <!-- Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- GSAP for premium animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+    
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+    
+    <title>LUNARA – Luxury Lingerie</title>
+    
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="logo"><a href="#">LUNARA</a></div>
-        <div class="nav-toggle" id="nav-toggle">
-            <span></span>
-            <span></span>
-            <span></span>
+    <!-- Safe Exit Button -->
+    <button class="safe-exit" id="safeExit" aria-label="Seite verlassen" title="Schnell verlassen (ESC halten)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/>
+            <polyline points="16 17 21 12 16 7"/>
+            <line x1="21" y1="12" x2="9" y2="12"/>
+        </svg>
+    </button>
+
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <div class="loading-moon">
+                <svg viewBox="0 0 100 100" class="moon-svg">
+                    <defs>
+                        <linearGradient id="moonGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#D4AF37"/>
+                            <stop offset="100%" style="stop-color:#8B7355"/>
+                        </linearGradient>
+                    </defs>
+                    <circle cx="50" cy="50" r="45" fill="url(#moonGrad)" class="moon-circle"/>
+                    <circle cx="65" cy="50" r="38" fill="#0a0a0a" class="moon-shadow"/>
+                </svg>
+            </div>
+            <div class="loading-text">LUNARA</div>
+            <div class="loading-bar"><div class="loading-progress"></div></div>
         </div>
-        <ul id="nav-menu">
-            <li><a href="#hero" class="active">Home</a></li>
-            <li><a href="#kollektion">Kollektion</a></li>
-            <li><a href="#qualität">Qualität</a></li>
-            <li><a href="#rewards">Rewards</a></li>
-            <li><a href="#newsletter">Newsletter</a></li>
-            <li><a href="account.html" class="account-link" style="display:none;">Konto</a></li>
-            <li><button class="btn-secondary login-btn">Login</button></li>
-            <li>
-                <button class="btn-secondary" id="cart-button">
-                    🛒 <span class="cart-count">0</span>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="header-inner">
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menü öffnen">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <a href="#" class="logo" id="logo">
+                <span class="logo-icon">☾</span>
+                <span class="logo-text">LUNARA</span>
+            </a>
+            
+            <nav class="nav" id="mainNav">
+                <a href="#kollektion" class="nav-link">Kollektion</a>
+                <a href="#qualitaet" class="nav-link">Qualität</a>
+                <a href="#ueber-uns" class="nav-link">Über Uns</a>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="header-btn" id="searchBtn" aria-label="Suche">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"/>
+                        <path d="M21 21l-4.35-4.35"/>
+                    </svg>
                 </button>
-            </li>
-        </ul>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero" id="hero">
-        <div>
-            <h1>Curated Intimacy</h1>
-            <p>Exklusive Dessous, sorgfältig kuratiert für deine sinnlichsten Momente. Entdecke unseren Kosmos aus Luxus und Leidenschaft.</p>
-            <div class="cta">
-                <a href="#kollektion" class="btn">Jetzt entdecken</a>
-                <a href="#newsletter" class="btn-secondary">Bleib informiert</a>
+                <button class="header-btn" id="accountBtn" aria-label="Konto">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+                        <circle cx="12" cy="7" r="4"/>
+                    </svg>
+                </button>
+                <button class="header-btn" id="wishlistBtn" aria-label="Wunschliste">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+                    </svg>
+                    <span class="badge wishlist-count" data-count="0">0</span>
+                </button>
+                <button class="header-btn cart-btn" id="cartBtn" aria-label="Warenkorb">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="9" cy="21" r="1"/>
+                        <circle cx="20" cy="21" r="1"/>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/>
+                    </svg>
+                    <span class="badge cart-count" data-count="0">0</span>
+                </button>
             </div>
         </div>
-    </section>
+    </header>
 
-    <!-- Kollektion Section -->
-    <section id="kollektion" class="section">
-        <div class="container">
-            <h2>Kollektion</h2>
-            <p>Wähle deine Kategorie und lass dich verzaubern.</p>
-            <div class="filters" style="margin-bottom:1.5rem;">
-                <button class="btn-secondary active" data-filter="All">Alle</button>
-                <button class="btn-secondary" data-filter="Bras">BHs</button>
-                <button class="btn-secondary" data-filter="Panties">Panties</button>
-                <button class="btn-secondary" data-filter="Sets">Sets</button>
-                <button class="btn-secondary" data-filter="Accessories">Accessoires</button>
-            </div>
-            <div id="products-container" class="grid grid-3"></div>
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-content">
+            <a href="#kollektion" class="mobile-nav-link">Kollektion</a>
+            <a href="#qualitaet" class="mobile-nav-link">Qualität</a>
+            <a href="#ueber-uns" class="mobile-nav-link">Über Uns</a>
+            <div class="mobile-nav-divider"></div>
+            <a href="#" class="mobile-nav-link" data-action="login">Mein Konto</a>
+            <a href="#" class="mobile-nav-link" data-action="rewards">Meine Punkte</a>
         </div>
-    </section>
+    </div>
 
-    <!-- Qualität Section -->
-    <section id="qualität" class="section section-alt">
-        <div class="container">
-            <h2>Unser 6‑Punkte‑Qualitätssystem</h2>
-            <p>Wir bewerten jedes Produkt anhand von sechs Kriterien, damit du genau weißt, was dich erwartet.</p>
-            <div class="grid grid-2">
-                <div class="reveal">
-                    <h3>Zustand</h3>
-                    <p>Neuwertig oder getragen – wir kennzeichnen jeden Zustand transparent und ehrlich.</p>
-                </div>
-                <div class="reveal">
-                    <h3>Duft</h3>
-                    <p>Von neutral bis intensiv – du wählst dein olfaktorisches Erlebnis.</p>
-                </div>
-                <div class="reveal">
-                    <h3>Waschzustand</h3>
-                    <p>Frisch gereinigt oder mit authentischem Tragegefühl – wir listen den Waschstatus.</p>
-                </div>
-                <div class="reveal">
-                    <h3>Materialqualität</h3>
-                    <p>Nur hochwertigste Stoffe – vom zarten Tüll bis zur edlen Spitze.</p>
-                </div>
-                <div class="reveal">
-                    <h3>Tragedauer</h3>
-                    <p>Wie lange das Kleidungsstück getragen wurde, erfährst du transparent.</p>
-                </div>
-                <div class="reveal">
-                    <h3>Extras</h3>
-                    <p>Kleine Geheimnisse, die jedes Teil einzigartig machen – erfahre mehr im Detail.</p>
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <div class="hero-bg">
+                <div class="hero-gradient"></div>
+                <div class="hero-stars" id="heroStars"></div>
+                <div class="hero-orbit" id="heroOrbit">
+                    <div class="orbit-ring"></div>
+                    <div class="orbit-dot"></div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Rewards Section -->
-    <section id="rewards" class="section">
-        <div class="container">
-            <h2>Rewards & Loyalty</h2>
-            <p>Sammle Punkte bei jedem Einkauf und steige im Status – von Mondlicht bis Supernova. Schalte exklusive Vorteile frei.</p>
-            <div class="grid grid-2">
-                <div class="reveal">
-                    <h3>Mondlicht</h3>
-                    <p>Beginne deine Reise mit ersten Belohnungen und exklusiven Einblicken.</p>
+            
+            <div class="hero-content">
+                <div class="hero-badge reveal-up">
+                    <span class="badge-dot"></span>
+                    Neue Kollektion 2025
                 </div>
-                <div class="reveal">
-                    <h3>Sternenlicht</h3>
-                    <p>Steige auf und genieße attraktive Rabatte und Überraschungen.</p>
-                </div>
-                <div class="reveal">
-                    <h3>Galaxie</h3>
-                    <p>Werde Teil unseres inneren Kreises mit besonderen Geschenken.</p>
-                </div>
-                <div class="reveal">
-                    <h3>Supernova <span class="supernova-badge">VIP</span></h3>
-                    <p>Unser höchster Status eröffnet dir den Zugang zum geheimen VIP‑Cabinet und mehr.</p>
+                
+                <h1 class="hero-title reveal-up">
+                    <span class="hero-title-line">Kosmische</span>
+                    <span class="hero-title-line accent">Eleganz</span>
+                </h1>
+                
+                <p class="hero-subtitle reveal-up">
+                    Handverlesene Dessous für außergewöhnliche Momente.<br>
+                    Diskret. Luxuriös. Unvergesslich.
+                </p>
+                
+                <div class="hero-cta reveal-up">
+                    <a href="#kollektion" class="btn btn-primary magnetic">
+                        <span class="btn-text">Entdecken</span>
+                        <span class="btn-shine"></span>
+                    </a>
+                    <a href="#qualitaet" class="btn btn-ghost">Mehr erfahren</a>
                 </div>
             </div>
-        </div>
-    </section>
+            
+            <div class="hero-scroll">
+                <div class="scroll-indicator">
+                    <div class="scroll-line"></div>
+                </div>
+            </div>
+        </section>
 
-    <!-- Newsletter Section -->
-    <section id="newsletter" class="section section-alt">
-        <div class="container">
-            <h2>Newsletter</h2>
-            <p>Erhalte exklusive Angebote und Neuigkeiten aus dem LUNARA‑Kosmos.</p>
-            <form id="newsletter-form">
-                <input type="email" name="newsletter-email" placeholder="Deine E-Mail" style="padding:0.75rem 1rem; width:70%; max-width:280px; border-radius:var(--radius-md); border:1px solid var(--color-muted); background-color:var(--color-surface); color:var(--color-text);">
-                <button type="submit" class="btn" style="margin-left:0.5rem;">Anmelden</button>
-            </form>
-        </div>
-    </section>
+        <!-- Trust Bar -->
+        <section class="trust-bar" id="trustBar">
+            <div class="container">
+                <div class="trust-items" id="trustItems">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Collection Section -->
+        <section class="section collection" id="kollektion">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-badge reveal-up">Kollektion</span>
+                    <h2 class="section-title reveal-up">Unsere Pieces</h2>
+                    <p class="section-subtitle reveal-up">Jedes Stück erzählt eine Geschichte von Eleganz und Sinnlichkeit</p>
+                </div>
+                
+                <!-- Filters -->
+                <div class="filters reveal-up" id="filters">
+                    <div class="filter-chips" id="categoryFilters">
+                        <!-- Populated by JS -->
+                    </div>
+                    
+                    <div class="filter-sort">
+                        <select id="sortSelect" class="sort-select">
+                            <option value="featured">Empfohlen</option>
+                            <option value="newest">Neueste</option>
+                            <option value="bestseller">Bestseller</option>
+                            <option value="price-asc">Preis: Niedrig → Hoch</option>
+                            <option value="price-desc">Preis: Hoch → Niedrig</option>
+                            <option value="quality">Beste Qualität</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Product Grid -->
+                <div class="product-grid" id="productGrid">
+                    <!-- Populated by JS -->
+                </div>
+                
+                <!-- Load More -->
+                <div class="load-more" id="loadMore">
+                    <button class="btn btn-outline magnetic" id="loadMoreBtn">
+                        <span class="btn-text">Mehr laden</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quality Section -->
+        <section class="section quality-section" id="qualitaet">
+            <div class="container">
+                <div class="quality-grid">
+                    <div class="quality-content">
+                        <span class="section-badge reveal-left">Qualitätsversprechen</span>
+                        <h2 class="section-title reveal-left">Das 6-Punkte System</h2>
+                        <p class="quality-text reveal-left">
+                            Jedes LUNARA Piece durchläuft unsere strenge Qualitätskontrolle. 
+                            Sechs Kriterien, transparent bewertet, für dein absolutes Vertrauen.
+                        </p>
+                        
+                        <div class="quality-criteria reveal-left" id="qualityCriteria">
+                            <div class="criterion" data-criterion="zustand">
+                                <div class="criterion-header">
+                                    <span class="criterion-icon">◈</span>
+                                    <span class="criterion-name">Zustand</span>
+                                    <span class="criterion-score">—</span>
+                                </div>
+                                <div class="criterion-bar">
+                                    <div class="criterion-fill" data-max="6"></div>
+                                </div>
+                                <p class="criterion-tooltip">Allgemeiner Erhaltungszustand des Stücks</p>
+                            </div>
+                            
+                            <div class="criterion" data-criterion="duft">
+                                <div class="criterion-header">
+                                    <span class="criterion-icon">✧</span>
+                                    <span class="criterion-name">Duft</span>
+                                    <span class="criterion-score">—</span>
+                                </div>
+                                <div class="criterion-bar">
+                                    <div class="criterion-fill" data-max="6"></div>
+                                </div>
+                                <p class="criterion-tooltip">Intensität und Authentizität</p>
+                            </div>
+                            
+                            <div class="criterion" data-criterion="waschzustand">
+                                <div class="criterion-header">
+                                    <span class="criterion-icon">◯</span>
+                                    <span class="criterion-name">Waschzustand</span>
+                                    <span class="criterion-score">—</span>
+                                </div>
+                                <div class="criterion-bar">
+                                    <div class="criterion-fill" data-max="6"></div>
+                                </div>
+                                <p class="criterion-tooltip">Frische und Sauberkeit</p>
+                            </div>
+                            
+                            <div class="criterion" data-criterion="materialqualitaet">
+                                <div class="criterion-header">
+                                    <span class="criterion-icon">◆</span>
+                                    <span class="criterion-name">Materialqualität</span>
+                                    <span class="criterion-score">—</span>
+                                </div>
+                                <div class="criterion-bar">
+                                    <div class="criterion-fill" data-max="6"></div>
+                                </div>
+                                <p class="criterion-tooltip">Hochwertige Stoffe und Verarbeitung</p>
+                            </div>
+                            
+                            <div class="criterion" data-criterion="tragedauer">
+                                <div class="criterion-header">
+                                    <span class="criterion-icon">☽</span>
+                                    <span class="criterion-name">Tragedauer</span>
+                                    <span class="criterion-score">—</span>
+                                </div>
+                                <div class="criterion-bar">
+                                    <div class="criterion-fill" data-max="6"></div>
+                                </div>
+                                <p class="criterion-tooltip">Zeitraum der Nutzung vor Versand</p>
+                            </div>
+                            
+                            <div class="criterion" data-criterion="extras">
+                                <div class="criterion-header">
+                                    <span class="criterion-icon">★</span>
+                                    <span class="criterion-name">Extras</span>
+                                    <span class="criterion-score">—</span>
+                                </div>
+                                <div class="criterion-bar">
+                                    <div class="criterion-fill" data-max="6"></div>
+                                </div>
+                                <p class="criterion-tooltip">Besondere Beigaben und Services</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="quality-visual reveal-right">
+                        <div class="quality-orb">
+                            <svg viewBox="0 0 200 200" class="orb-svg">
+                                <defs>
+                                    <radialGradient id="orbGrad" cx="30%" cy="30%">
+                                        <stop offset="0%" style="stop-color:#D4AF37;stop-opacity:0.8"/>
+                                        <stop offset="100%" style="stop-color:#8B7355;stop-opacity:0.2"/>
+                                    </radialGradient>
+                                </defs>
+                                <circle cx="100" cy="100" r="80" fill="url(#orbGrad)" class="orb-main"/>
+                                <circle cx="100" cy="100" r="80" fill="none" stroke="#D4AF37" stroke-width="0.5" stroke-dasharray="4 4" class="orb-ring"/>
+                            </svg>
+                            <div class="orb-score" id="avgQualityScore">5.2</div>
+                            <div class="orb-label">Ø Qualität</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="section newsletter-section" id="newsletter">
+            <div class="container">
+                <div class="newsletter-card reveal-up">
+                    <div class="newsletter-decor">
+                        <span class="decor-star">✦</span>
+                        <span class="decor-star">✧</span>
+                        <span class="decor-star">✦</span>
+                    </div>
+                    
+                    <h2 class="newsletter-title">Bleib im Orbit</h2>
+                    <p class="newsletter-text">
+                        Erhalte exklusive Angebote, Early Access zu neuen Pieces und 
+                        10% auf deine erste Bestellung.
+                    </p>
+                    
+                    <form class="newsletter-form" id="newsletterForm">
+                        <div class="form-group">
+                            <input 
+                                type="email" 
+                                id="newsletterEmail" 
+                                class="form-input" 
+                                placeholder="deine@email.de"
+                                required
+                                autocomplete="email"
+                            >
+                            <button type="submit" class="btn btn-primary magnetic">
+                                <span class="btn-text">Anmelden</span>
+                                <span class="btn-loader"></span>
+                            </button>
+                        </div>
+                        <p class="form-note">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="newsletterConsent" required>
+                                <span class="checkbox-custom"></span>
+                                Ich akzeptiere die <a href="#datenschutz">Datenschutzerklärung</a>
+                            </label>
+                        </p>
+                        <div class="form-feedback" id="newsletterFeedback"></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="section about-section" id="ueber-uns">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-image reveal-left">
+                        <div class="about-img-wrapper">
+                            <div class="about-img-placeholder">
+                                <span class="placeholder-icon">☾</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="about-content">
+                        <span class="section-badge reveal-right">Über LUNARA</span>
+                        <h2 class="section-title reveal-right">Mehr als Dessous</h2>
+                        <p class="about-text reveal-right">
+                            LUNARA wurde aus der Überzeugung geboren, dass Intimität und Ästhetik 
+                            Hand in Hand gehen. Jedes Piece unserer Kollektion wird sorgfältig 
+                            ausgewählt und geprüft, um dir ein unvergleichliches Erlebnis zu bieten.
+                        </p>
+                        <p class="about-text reveal-right">
+                            Diskret, luxuriös und mit Respekt für deine Privatsphäre – das ist 
+                            unser Versprechen. Von der Auswahl bis zur Lieferung steht dein 
+                            Vertrauen an erster Stelle.
+                        </p>
+                        
+                        <div class="about-features reveal-right">
+                            <div class="feature">
+                                <span class="feature-icon">◈</span>
+                                <span class="feature-text">Handverlesen</span>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon">✧</span>
+                                <span class="feature-text">Premium Qualität</span>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon">☽</span>
+                                <span class="feature-text">100% Diskret</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <!-- Footer -->
-    <footer class="section" style="background-color:var(--color-surface);">
+    <footer class="footer" id="footer">
         <div class="container">
-            <p>&copy; 2026 LUNARA. Alle Rechte vorbehalten.</p>
-            <p><a href="#">Impressum</a> | <a href="#">Datenschutz</a> | <a href="#">AGB</a></p>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="footer-logo">
+                        <span class="logo-icon">☾</span>
+                        <span class="logo-text">LUNARA</span>
+                    </a>
+                    <p class="footer-tagline">Kosmische Eleganz für besondere Momente.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4 class="footer-title">Shop</h4>
+                    <a href="#kollektion">Alle Produkte</a>
+                    <a href="#kollektion" data-filter="sets">Sets</a>
+                    <a href="#kollektion" data-filter="panties">Panties</a>
+                    <a href="#kollektion" data-filter="accessoires">Accessoires</a>
+                </div>
+                
+                <div class="footer-links">
+                    <h4 class="footer-title">Info</h4>
+                    <a href="#qualitaet">Qualitätssystem</a>
+                    <a href="#ueber-uns">Über Uns</a>
+                    <a href="#faq">FAQ</a>
+                    <a href="#kontakt">Kontakt</a>
+                </div>
+                
+                <div class="footer-links">
+                    <h4 class="footer-title">Legal</h4>
+                    <a href="#impressum">Impressum</a>
+                    <a href="#datenschutz">Datenschutz</a>
+                    <a href="#agb">AGB</a>
+                    <a href="#widerruf">Widerruf</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="footer-copy">© 2025 LUNARA. Alle Rechte vorbehalten.</p>
+                <div class="footer-payment">
+                    <span class="payment-icon">💳</span>
+                    <span class="payment-text">Sichere Zahlung</span>
+                </div>
+            </div>
         </div>
     </footer>
 
     <!-- Cart Drawer -->
-    <div class="cart-overlay"></div>
-    <div class="cart-drawer">
-        <div class="cart-header">
-            <h3>Dein Warenkorb</h3>
-            <button class="close-cart">×</button>
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+    <aside class="cart-drawer" id="cartDrawer" role="dialog" aria-label="Warenkorb" aria-modal="true">
+        <div class="drawer-header">
+            <h2 class="drawer-title">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="9" cy="21" r="1"/>
+                    <circle cx="20" cy="21" r="1"/>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/>
+                </svg>
+                Warenkorb
+            </h2>
+            <button class="drawer-close" id="cartClose" aria-label="Schließen">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 6L6 18M6 6l12 12"/>
+                </svg>
+            </button>
         </div>
-        <div class="cart-content"></div>
-        <div class="cart-footer">
-            <div class="cart-total">Gesamt: <span class="cart-total-amount">€0.00</span></div>
-            <button class="btn" onclick="checkout.proceed()">Zur Kasse</button>
+        
+        <div class="drawer-content" id="cartContent">
+            <!-- Cart items populated by JS -->
         </div>
-    </div>
+        
+        <div class="drawer-footer" id="cartFooter">
+            <div class="cart-subtotal">
+                <span>Zwischensumme</span>
+                <span id="cartSubtotal">€0,00</span>
+            </div>
+            <p class="cart-shipping">Versandkosten werden im Checkout berechnet</p>
+            <button class="btn btn-primary btn-full magnetic" id="checkoutBtn">
+                <span class="btn-text">Zur Kasse</span>
+                <span class="btn-shine"></span>
+            </button>
+        </div>
+        
+        <div class="cart-empty" id="cartEmpty">
+            <div class="empty-icon">☾</div>
+            <p class="empty-text">Dein Warenkorb ist leer</p>
+            <a href="#kollektion" class="btn btn-outline" id="cartContinue">Weiter shoppen</a>
+        </div>
+    </aside>
 
     <!-- Product Quick View Modal -->
-    <div id="product-modal" class="modal-overlay">
-        <div class="modal"></div>
+    <div class="modal-overlay" id="modalOverlay"></div>
+    <div class="modal product-modal" id="productModal" role="dialog" aria-modal="true">
+        <button class="modal-close" id="modalClose" aria-label="Schließen">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 6L6 18M6 6l12 12"/>
+            </svg>
+        </button>
+        
+        <div class="modal-content">
+            <div class="modal-gallery" id="modalGallery">
+                <div class="gallery-main">
+                    <img src="" alt="" id="modalMainImg" class="gallery-img">
+                    <button class="gallery-nav gallery-prev" id="galleryPrev">‹</button>
+                    <button class="gallery-nav gallery-next" id="galleryNext">›</button>
+                </div>
+                <div class="gallery-thumbs" id="galleryThumbs"></div>
+            </div>
+            
+            <div class="modal-info">
+                <div class="modal-badges" id="modalBadges"></div>
+                <h2 class="modal-title" id="modalTitle"></h2>
+                <div class="modal-price" id="modalPrice"></div>
+                <p class="modal-desc" id="modalDesc"></p>
+                
+                <div class="modal-variants" id="modalVariants"></div>
+                
+                <div class="modal-quality" id="modalQuality">
+                    <h4 class="quality-title">Qualitätsprofil</h4>
+                    <div class="quality-bars" id="modalQualityBars"></div>
+                </div>
+                
+                <div class="modal-trust">
+                    <div class="trust-item">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                        <span>100% Diskret verpackt</span>
+                    </div>
+                    <div class="trust-item">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="1" y="3" width="15" height="13" rx="2"/>
+                            <path d="M16 8h4a2 2 0 012 2v9a2 2 0 01-2 2H8"/>
+                            <circle cx="5.5" cy="18.5" r="2.5"/>
+                        </svg>
+                        <span>1-3 Tage Lieferung</span>
+                    </div>
+                </div>
+                
+                <div class="modal-actions">
+                    <button class="btn btn-primary btn-full magnetic" id="modalAddCart">
+                        <span class="btn-text">In den Warenkorb</span>
+                        <span class="btn-shine"></span>
+                    </button>
+                    <button class="btn btn-icon" id="modalWishlist" aria-label="Zur Wunschliste">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- Login Modal -->
-    <div id="login-modal" class="modal-overlay">
-        <div class="modal">
-            <div class="modal-header">
-                <h2 class="modal-title">Login</h2>
-                <button class="modal-close">×</button>
+    <!-- Auth Modal -->
+    <div class="modal auth-modal" id="authModal" role="dialog" aria-modal="true">
+        <button class="modal-close" id="authClose" aria-label="Schließen">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 6L6 18M6 6l12 12"/>
+            </svg>
+        </button>
+        
+        <div class="auth-content">
+            <div class="auth-header">
+                <span class="auth-icon">☾</span>
+                <h2 class="auth-title" id="authTitle">Willkommen zurück</h2>
+                <p class="auth-subtitle" id="authSubtitle">Melde dich an, um deine Bestellungen und Punkte zu sehen</p>
             </div>
-            <form id="login-form">
-                <label>E‑Mail:</label>
-                <input type="email" name="email" placeholder="you@example.com" style="padding:0.75rem 1rem; width:100%; border-radius:var(--radius-md); border:1px solid var(--color-muted); background-color:var(--color-surface); color:var(--color-text); margin-bottom:1rem;">
-                <button type="submit" class="btn" style="width:100%;">Login</button>
+            
+            <form class="auth-form" id="authForm">
+                <div class="form-group">
+                    <label for="authEmail">E-Mail</label>
+                    <input type="email" id="authEmail" class="form-input" placeholder="deine@email.de" required>
+                </div>
+                
+                <div class="form-feedback" id="authFeedback"></div>
+                
+                <button type="submit" class="btn btn-primary btn-full magnetic" id="authSubmit">
+                    <span class="btn-text">Magic Link senden</span>
+                    <span class="btn-loader"></span>
+                </button>
             </form>
+            
+            <p class="auth-note">
+                Wir senden dir einen sicheren Login-Link per E-Mail. Kein Passwort nötig.
+            </p>
+        </div>
+    </div>
+
+    <!-- Account Panel -->
+    <div class="modal account-modal" id="accountModal" role="dialog" aria-modal="true">
+        <button class="modal-close" id="accountClose" aria-label="Schließen">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 6L6 18M6 6l12 12"/>
+            </svg>
+        </button>
+        
+        <div class="account-content">
+            <div class="account-header">
+                <div class="account-avatar" id="accountAvatar">
+                    <span>☾</span>
+                </div>
+                <h2 class="account-name" id="accountName">Mein Konto</h2>
+                <p class="account-email" id="accountEmail"></p>
+            </div>
+            
+            <div class="account-tabs">
+                <button class="tab-btn active" data-tab="rewards">Punkte</button>
+                <button class="tab-btn" data-tab="orders">Bestellungen</button>
+                <button class="tab-btn" data-tab="wishlist">Wunschliste</button>
+            </div>
+            
+            <!-- Rewards Tab -->
+            <div class="tab-content active" id="rewardsTab">
+                <div class="rewards-card">
+                    <div class="rewards-orbit" id="rewardsOrbit">
+                        <svg viewBox="0 0 200 200" class="orbit-svg">
+                            <defs>
+                                <linearGradient id="progressGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:#C0C0C0"/>
+                                    <stop offset="100%" style="stop-color:#D4AF37"/>
+                                </linearGradient>
+                            </defs>
+                            <circle cx="100" cy="100" r="85" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="4"/>
+                            <circle cx="100" cy="100" r="85" fill="none" stroke="url(#progressGrad)" stroke-width="4" 
+                                stroke-linecap="round" stroke-dasharray="534" stroke-dashoffset="534" 
+                                class="progress-ring" id="progressRing"/>
+                        </svg>
+                        <div class="rewards-center">
+                            <div class="rewards-points" id="rewardsPoints">0</div>
+                            <div class="rewards-label">Punkte</div>
+                        </div>
+                    </div>
+                    
+                    <div class="rewards-tier" id="rewardsTier">
+                        <span class="tier-badge" id="tierBadge">Mondlicht</span>
+                        <span class="tier-next" id="tierNext">Noch 100 Punkte bis Sternenlicht</span>
+                    </div>
+                    
+                    <div class="rewards-perks" id="rewardsPerks">
+                        <!-- Perks populated by JS -->
+                    </div>
+                </div>
+                
+                <div class="vip-cabinet" id="vipCabinet" hidden>
+                    <h3 class="vip-title">✧ VIP Cabinet ✧</h3>
+                    <p class="vip-text">Exklusive Produkte für Supernova Mitglieder</p>
+                    <button class="btn btn-gold magnetic" id="vipEnter">
+                        <span class="btn-text">Betreten</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Orders Tab -->
+            <div class="tab-content" id="ordersTab">
+                <div class="orders-list" id="ordersList">
+                    <div class="empty-state">
+                        <span class="empty-icon">📦</span>
+                        <p>Noch keine Bestellungen</p>
+                        <p class="empty-note">Bestellhistorie wird angezeigt, sobald der Checkout aktiv ist.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Wishlist Tab -->
+            <div class="tab-content" id="wishlistTab">
+                <div class="wishlist-grid" id="wishlistGrid">
+                    <!-- Wishlist items populated by JS -->
+                </div>
+                <div class="empty-state wishlist-empty" id="wishlistEmpty">
+                    <span class="empty-icon">♡</span>
+                    <p>Deine Wunschliste ist leer</p>
+                    <a href="#kollektion" class="btn btn-outline">Entdecken</a>
+                </div>
+            </div>
+            
+            <button class="btn btn-ghost btn-full" id="logoutBtn">Abmelden</button>
+        </div>
+    </div>
+
+    <!-- Search Modal -->
+    <div class="modal search-modal" id="searchModal" role="dialog" aria-modal="true">
+        <div class="search-content">
+            <form class="search-form" id="searchForm">
+                <input type="search" id="searchInput" class="search-input" placeholder="Suchen..." autocomplete="off">
+                <button type="button" class="search-close" id="searchClose" aria-label="Schließen">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 6L6 18M6 6l12 12"/>
+                    </svg>
+                </button>
+            </form>
+            <div class="search-results" id="searchResults"></div>
+        </div>
+    </div>
+
+    <!-- Setup Dialog -->
+    <div class="modal setup-modal" id="setupModal" role="dialog" aria-modal="true">
+        <button class="modal-close" id="setupClose" aria-label="Schließen">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 6L6 18M6 6l12 12"/>
+            </svg>
+        </button>
+        
+        <div class="setup-content">
+            <div class="setup-icon">⚙️</div>
+            <h2 class="setup-title" id="setupTitle">Setup erforderlich</h2>
+            <p class="setup-text" id="setupText"></p>
+            
+            <div class="setup-steps" id="setupSteps">
+                <!-- Steps populated by JS -->
+            </div>
+            
+            <a href="#" class="btn btn-outline" id="setupDocs" target="_blank">Dokumentation</a>
         </div>
     </div>
 
     <!-- Toast Container -->
-    <div class="toast-container"></div>
+    <div class="toast-container" id="toastContainer"></div>
 
     <!-- Scripts -->
-    <script src="js/store.js"></script>
-    <script src="js/cart.js"></script>
-    <script src="js/checkout.js"></script>
-    <script src="js/auth.js"></script>
-    <script src="js/motion.js"></script>
-    <script src="js/app.js"></script>
-    <script>
-        // Mobile nav toggle functionality
-        const navToggle = document.getElementById('nav-toggle');
-        const navMenu = document.getElementById('nav-menu');
-        if (navToggle) {
-            navToggle.addEventListener('click', () => {
-                navToggle.classList.toggle('active');
-                navMenu.classList.toggle('open');
-            });
-        }
-        // Cart button
-        document.getElementById('cart-button').addEventListener('click', () => {
-            cartUI.open();
-        });
-        // Newsletter form demo
-        document.getElementById('newsletter-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = e.target.elements['newsletter-email'].value.trim();
-            if (!email) {
-                showToast('Bitte gib eine gültige E-Mail ein.', 'error');
-                return;
-            }
-            showToast('Danke für deine Anmeldung! (Demo)', 'success');
-            e.target.reset();
-        });
-    </script>
+    <script src="js/app.js" type="module"></script>
 </body>
 </html>
